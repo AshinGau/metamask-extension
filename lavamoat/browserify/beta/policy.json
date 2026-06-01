@@ -10,85 +10,9 @@
         "SuppressedError": true
       }
     },
-    "@mui/x-date-pickers>@date-io/luxon": {
-      "globals": {
-        "Intl": true
-      },
+    "@date-io/luxon": {
       "packages": {
         "luxon": true
-      }
-    },
-    "@emotion/react>@emotion/cache": {
-      "globals": {
-        "document": true
-      },
-      "packages": {
-        "@emotion/react>@emotion/cache>@emotion/memoize": true,
-        "@emotion/react>@emotion/cache>@emotion/sheet": true,
-        "@emotion/react>@emotion/weak-memoize": true,
-        "@emotion/react>@emotion/cache>stylis": true
-      }
-    },
-    "@emotion/styled>@emotion/is-prop-valid": {
-      "packages": {
-        "@emotion/react>@emotion/cache>@emotion/memoize": true
-      }
-    },
-    "@emotion/react": {
-      "globals": {
-        "HTMLElement": true,
-        "document": true
-      },
-      "packages": {
-        "@babel/runtime": true,
-        "@emotion/react>@emotion/cache": true,
-        "@emotion/react>@emotion/serialize": true,
-        "@emotion/react>@emotion/use-insertion-effect-with-fallbacks": true,
-        "@emotion/react>@emotion/utils": true,
-        "@emotion/react>@emotion/weak-memoize": true,
-        "react-redux>hoist-non-react-statics": true,
-        "react": true
-      }
-    },
-    "@emotion/react>@emotion/serialize": {
-      "packages": {
-        "@emotion/react>@emotion/serialize>@emotion/hash": true,
-        "@emotion/react>@emotion/cache>@emotion/memoize": true,
-        "@emotion/react>@emotion/serialize>@emotion/unitless": true
-      }
-    },
-    "@emotion/react>@emotion/cache>@emotion/sheet": {
-      "globals": {
-        "document.createElement": true,
-        "document.createTextNode": true,
-        "document.styleSheets": true
-      }
-    },
-    "@emotion/styled": {
-      "globals": {
-        "document": true
-      },
-      "packages": {
-        "@babel/runtime": true,
-        "@emotion/styled>@emotion/is-prop-valid": true,
-        "@emotion/react": true,
-        "@emotion/react>@emotion/serialize": true,
-        "@emotion/react>@emotion/use-insertion-effect-with-fallbacks": true,
-        "@emotion/react>@emotion/utils": true,
-        "react": true
-      }
-    },
-    "@emotion/react>@emotion/use-insertion-effect-with-fallbacks": {
-      "globals": {
-        "document": true
-      },
-      "packages": {
-        "react": true
-      }
-    },
-    "@emotion/react>@emotion/utils": {
-      "globals": {
-        "document": true
       }
     },
     "@ensdomains/content-hash": {
@@ -764,6 +688,97 @@
         "TextEncoder": true
       }
     },
+    "@material-ui/core": {
+      "globals": {
+        "_formatMuiErrorMessage": true,
+        "addEventListener": true,
+        "clearInterval": true,
+        "clearTimeout": true,
+        "console.error": true,
+        "console.warn": true,
+        "document": true,
+        "getComputedStyle": true,
+        "getSelection": true,
+        "performance.now": true,
+        "removeEventListener": true,
+        "requestAnimationFrame": true,
+        "setInterval": true,
+        "setTimeout": true
+      },
+      "packages": {
+        "@babel/runtime": true,
+        "@material-ui/core>@material-ui/styles": true,
+        "@material-ui/core>@material-ui/system": true,
+        "@material-ui/core>@material-ui/utils": true,
+        "@material-ui/core>clsx": true,
+        "@material-ui/core>popper.js": true,
+        "prop-types": true,
+        "react": true,
+        "react-dom": true,
+        "react-redux>react-is": true,
+        "react-transition-group": true
+      }
+    },
+    "@material-ui/pickers": {
+      "globals": {
+        "addEventListener": true,
+        "innerHeight": true,
+        "orientation": true,
+        "removeEventListener": true,
+        "screen": true
+      },
+      "packages": {
+        "@babel/runtime": true,
+        "@material-ui/core": true,
+        "@material-ui/pickers>clsx": true,
+        "prop-types": true,
+        "react": true,
+        "react-transition-group": true,
+        "@material-ui/pickers>rifm": true
+      }
+    },
+    "@material-ui/core>@material-ui/styles": {
+      "globals": {
+        "console.error": true,
+        "console.warn": true,
+        "document.createComment": true,
+        "document.head": true
+      },
+      "packages": {
+        "@babel/runtime": true,
+        "@material-ui/core>@material-ui/utils": true,
+        "@material-ui/core>@material-ui/styles>clsx": true,
+        "react-redux>hoist-non-react-statics": true,
+        "@material-ui/core>@material-ui/styles>jss-plugin-camel-case": true,
+        "@material-ui/core>@material-ui/styles>jss-plugin-default-unit": true,
+        "@material-ui/core>@material-ui/styles>jss-plugin-global": true,
+        "@material-ui/core>@material-ui/styles>jss-plugin-nested": true,
+        "@material-ui/core>@material-ui/styles>jss-plugin-props-sort": true,
+        "@material-ui/core>@material-ui/styles>jss-plugin-rule-value-function": true,
+        "@material-ui/core>@material-ui/styles>jss-plugin-vendor-prefixer": true,
+        "@material-ui/core>@material-ui/styles>jss": true,
+        "prop-types": true,
+        "react": true
+      }
+    },
+    "@material-ui/core>@material-ui/system": {
+      "globals": {
+        "console.error": true,
+        "console.warn": true
+      },
+      "packages": {
+        "@babel/runtime": true,
+        "@material-ui/core>@material-ui/utils": true,
+        "prop-types": true
+      }
+    },
+    "@material-ui/core>@material-ui/utils": {
+      "packages": {
+        "@babel/runtime": true,
+        "prop-types": true,
+        "react-redux>react-is": true
+      }
+    },
     "@metamask/abi-utils": {
       "packages": {
         "@metamask/superstruct": true,
@@ -819,7 +834,7 @@
         "@metamask/base-controller": true,
         "@metamask/eth-snap-keyring": true,
         "@metamask/keyring-api": true,
-        "@metamask/keyring-controller": true,
+        "@metamask/accounts-controller>@metamask/keyring-controller": true,
         "@metamask/eth-hd-keyring>@metamask/keyring-sdk": true,
         "@metamask/keyring-utils": true,
         "@metamask/superstruct": true,
@@ -1298,25 +1313,6 @@
         "lodash": true
       }
     },
-    "@metamask/smart-transactions-controller>@metamask/controller-utils": {
-      "globals": {
-        "URL": true,
-        "console.error": true,
-        "fetch": true,
-        "setTimeout": true
-      },
-      "packages": {
-        "@metamask/controller-utils>@metamask/ethjs-unit": true,
-        "@metamask/utils": true,
-        "@metamask/controller-utils>@spruceid/siwe-parser": true,
-        "ethereumjs-util>bn.js": true,
-        "browserify>buffer": true,
-        "cockatiel": true,
-        "eth-ens-namehash": true,
-        "eslint>fast-deep-equal": true,
-        "lodash": true
-      }
-    },
     "@metamask/user-operation-controller>@metamask/controller-utils": {
       "globals": {
         "URL": true,
@@ -1587,7 +1583,7 @@
         "@metamask/eth-sig-util": true,
         "@metamask/keyring-api": true,
         "@metamask/keyring-internal-api": true,
-        "@metamask/keyring-internal-snap-client": true,
+        "@metamask/eth-snap-keyring>@metamask/keyring-internal-snap-client": true,
         "@metamask/eth-hd-keyring>@metamask/keyring-sdk": true,
         "@metamask/eth-snap-keyring>@metamask/keyring-snap-sdk": true,
         "@metamask/keyring-utils": true,
@@ -1841,6 +1837,40 @@
         "@metamask/keyring-controller>ulid": true
       }
     },
+    "@metamask/accounts-controller>@metamask/keyring-controller": {
+      "globals": {
+        "console.error": true
+      },
+      "packages": {
+        "@ethereumjs/tx>@ethereumjs/util": true,
+        "@metamask/base-controller": true,
+        "@metamask/eth-hd-keyring": true,
+        "@metamask/eth-sig-util": true,
+        "@metamask/keyring-controller>@metamask/eth-simple-keyring": true,
+        "@metamask/utils": true,
+        "async-mutex": true,
+        "@metamask/keyring-controller>ethereumjs-wallet": true,
+        "lodash": true,
+        "@metamask/keyring-controller>ulid": true
+      }
+    },
+    "@metamask/profile-sync-controller>@metamask/keyring-controller": {
+      "globals": {
+        "console.error": true
+      },
+      "packages": {
+        "@ethereumjs/tx>@ethereumjs/util": true,
+        "@metamask/base-controller": true,
+        "@metamask/eth-hd-keyring": true,
+        "@metamask/eth-sig-util": true,
+        "@metamask/keyring-controller>@metamask/eth-simple-keyring": true,
+        "@metamask/utils": true,
+        "async-mutex": true,
+        "@metamask/keyring-controller>ethereumjs-wallet": true,
+        "lodash": true,
+        "@metamask/keyring-controller>ulid": true
+      }
+    },
     "@metamask/keyring-internal-api": {
       "packages": {
         "@metamask/keyring-api": true,
@@ -1848,7 +1878,7 @@
         "@metamask/superstruct": true
       }
     },
-    "@metamask/keyring-internal-snap-client": {
+    "@metamask/eth-snap-keyring>@metamask/keyring-internal-snap-client": {
       "packages": {
         "@metamask/keyring-api": true,
         "@metamask/keyring-internal-api": true,
@@ -2278,7 +2308,7 @@
       },
       "packages": {
         "@metamask/base-controller": true,
-        "@metamask/keyring-controller": true,
+        "@metamask/profile-sync-controller>@metamask/keyring-controller": true,
         "@noble/ciphers": true,
         "@noble/hashes": true,
         "browserify>buffer": true,
@@ -2441,7 +2471,7 @@
         "@ethersproject/bytes": true,
         "ethers>@ethersproject/keccak256": true,
         "@ethersproject/transactions": true,
-        "@metamask/smart-transactions-controller>@metamask/controller-utils": true,
+        "@metamask/controller-utils": true,
         "@metamask/controller-utils>@metamask/eth-query": true,
         "@metamask/polling-controller": true,
         "@metamask/superstruct": true,
@@ -2746,129 +2776,12 @@
         "semver": true
       }
     },
-    "@mui/material": {
-      "globals": {
-        "CSS": true,
-        "DocumentFragment": true,
-        "Image": true,
-        "IntersectionObserver": true,
-        "MutationObserver": true,
-        "ResizeObserver": true,
-        "addEventListener": true,
-        "cancelAnimationFrame": true,
-        "clearInterval": true,
-        "clearTimeout": true,
-        "console.error": true,
-        "console.warn": true,
-        "document": true,
-        "getSelection": true,
-        "navigator": true,
-        "performance.now": true,
-        "removeEventListener": true,
-        "requestAnimationFrame": true,
-        "setInterval": true,
-        "setTimeout": true
-      },
+    "@metamask/wallet": {
       "packages": {
-        "@babel/runtime": true,
-        "@mui/system": true,
-        "@mui/system>@mui/utils": true,
-        "@popperjs/core": true,
-        "clsx": true,
-        "prop-types": true,
-        "react": true,
-        "react-dom": true,
-        "@mui/material>react-is": true,
-        "react-transition-group": true
-      }
-    },
-    "@mui/system>@mui/private-theming": {
-      "globals": {
-        "console.error": true
-      },
-      "packages": {
-        "@babel/runtime": true,
-        "@mui/system>@mui/utils": true,
-        "prop-types": true,
-        "react": true
-      }
-    },
-    "@mui/system>@mui/styled-engine": {
-      "globals": {
-        "console.error": true,
-        "document": true
-      },
-      "packages": {
-        "@babel/runtime": true,
-        "@emotion/react>@emotion/cache": true,
-        "@emotion/react": true,
-        "@emotion/react>@emotion/serialize": true,
-        "@emotion/styled": true,
-        "prop-types": true,
-        "react": true
-      }
-    },
-    "@mui/system": {
-      "globals": {
-        "clearTimeout": true,
-        "console.error": true,
-        "console.warn": true,
-        "document": true,
-        "getComputedStyle": true,
-        "localStorage.getItem": true,
-        "localStorage.setItem": true,
-        "matchMedia": true,
-        "setTimeout": true
-      },
-      "packages": {
-        "@babel/runtime": true,
-        "@mui/system>@mui/private-theming": true,
-        "@mui/system>@mui/styled-engine": true,
-        "@mui/system>@mui/utils": true,
-        "clsx": true,
-        "prop-types": true,
-        "react": true
-      }
-    },
-    "@mui/system>@mui/utils": {
-      "globals": {
-        "clearTimeout": true,
-        "console.error": true,
-        "document": true,
-        "innerWidth": true,
-        "setTimeout": true
-      },
-      "packages": {
-        "@babel/runtime": true,
-        "clsx": true,
-        "prop-types": true,
-        "react": true,
-        "@mui/system>@mui/utils>react-is": true
-      }
-    },
-    "@mui/x-date-pickers": {
-      "globals": {
-        "addEventListener": true,
-        "console.warn": true,
-        "document": true,
-        "innerHeight": true,
-        "navigator": true,
-        "orientation": true,
-        "removeEventListener": true,
-        "screen": true,
-        "setTimeout": true
-      },
-      "packages": {
-        "@babel/runtime": true,
-        "@mui/x-date-pickers>@date-io/luxon": true,
-        "@mui/material": true,
-        "@mui/system": true,
-        "@mui/system>@mui/utils": true,
-        "@mui/x-date-pickers>clsx": true,
-        "prop-types": true,
-        "react": true,
-        "react-transition-group": true,
-        "@mui/x-date-pickers>rifm": true
+        "@metamask/browser-passworder": true,
+        "@metamask/keyring-controller": true,
+        "@metamask/messenger": true,
+        "@metamask/utils": true
       }
     },
     "@ngraveio/bc-ur": {
@@ -3818,7 +3731,7 @@
         "Buffer": true
       },
       "packages": {
-        "gulp-watch>object-assign": true,
+        "react>object-assign": true,
         "browserify>assert>util": true
       }
     },
@@ -4361,11 +4274,22 @@
         "react-beautiful-dnd>css-box-model>tiny-invariant": true
       }
     },
+    "@material-ui/core>@material-ui/styles>jss-plugin-vendor-prefixer>css-vendor": {
+      "globals": {
+        "document.createElement": true,
+        "document.documentElement": true,
+        "getComputedStyle": true
+      },
+      "packages": {
+        "@babel/runtime": true,
+        "@material-ui/core>@material-ui/styles>jss>is-in-browser": true
+      }
+    },
     "currency-formatter": {
       "packages": {
         "currency-formatter>accounting": true,
         "currency-formatter>locale-currency": true,
-        "gulp-watch>object-assign": true
+        "react>object-assign": true
       }
     },
     "nock>debug": {
@@ -5035,6 +4959,11 @@
         "string.prototype.matchall>es-abstract>safe-regex-test": true
       }
     },
+    "@material-ui/core>@material-ui/styles>jss>is-in-browser": {
+      "globals": {
+        "document": true
+      }
+    },
     "@metamask/eth-token-tracker>deep-equal>which-boxed-primitive>is-number-object": {
       "packages": {
         "string.prototype.matchall>call-bound": true,
@@ -5140,6 +5069,55 @@
     "@metamask/message-manager>jsonschema": {
       "packages": {
         "browserify>url": true
+      }
+    },
+    "@material-ui/core>@material-ui/styles>jss-plugin-camel-case": {
+      "packages": {
+        "@material-ui/core>@material-ui/styles>jss-plugin-camel-case>hyphenate-style-name": true
+      }
+    },
+    "@material-ui/core>@material-ui/styles>jss-plugin-default-unit": {
+      "globals": {
+        "CSS": true
+      },
+      "packages": {
+        "@material-ui/core>@material-ui/styles>jss": true
+      }
+    },
+    "@material-ui/core>@material-ui/styles>jss-plugin-global": {
+      "packages": {
+        "@babel/runtime": true,
+        "@material-ui/core>@material-ui/styles>jss": true
+      }
+    },
+    "@material-ui/core>@material-ui/styles>jss-plugin-nested": {
+      "packages": {
+        "@babel/runtime": true,
+        "@material-ui/core>@material-ui/styles>jss>tiny-warning": true
+      }
+    },
+    "@material-ui/core>@material-ui/styles>jss-plugin-rule-value-function": {
+      "packages": {
+        "@material-ui/core>@material-ui/styles>jss": true,
+        "@material-ui/core>@material-ui/styles>jss>tiny-warning": true
+      }
+    },
+    "@material-ui/core>@material-ui/styles>jss-plugin-vendor-prefixer": {
+      "packages": {
+        "@material-ui/core>@material-ui/styles>jss-plugin-vendor-prefixer>css-vendor": true,
+        "@material-ui/core>@material-ui/styles>jss": true
+      }
+    },
+    "@material-ui/core>@material-ui/styles>jss": {
+      "globals": {
+        "CSS": true,
+        "document.createElement": true,
+        "document.querySelector": true
+      },
+      "packages": {
+        "@babel/runtime": true,
+        "@material-ui/core>@material-ui/styles>jss>is-in-browser": true,
+        "@material-ui/core>@material-ui/styles>jss>tiny-warning": true
       }
     },
     "ethereumjs-util>ethereum-cryptography>keccak": {
@@ -5531,6 +5509,23 @@
         "@ngraveio/bc-ur>sha.js>to-buffer": true
       }
     },
+    "@material-ui/core>popper.js": {
+      "globals": {
+        "MSInputMethodContext": true,
+        "Node.DOCUMENT_POSITION_FOLLOWING": true,
+        "cancelAnimationFrame": true,
+        "console.warn": true,
+        "define": true,
+        "devicePixelRatio": true,
+        "document": true,
+        "getComputedStyle": true,
+        "innerHeight": true,
+        "innerWidth": true,
+        "navigator": true,
+        "requestAnimationFrame": true,
+        "setTimeout": true
+      }
+    },
     "react-tippy>popper.js": {
       "globals": {
         "MSInputMethodContext": true,
@@ -5570,7 +5565,7 @@
         "console": true
       },
       "packages": {
-        "gulp-watch>object-assign": true,
+        "react>object-assign": true,
         "prop-types>react-is": true
       }
     },
@@ -5670,9 +5665,10 @@
     },
     "react": {
       "globals": {
-        "MessageChannel": true,
-        "__REACT_DEVTOOLS_GLOBAL_HOOK__": true,
         "console": true
+      },
+      "packages": {
+        "react>object-assign": true
       }
     },
     "react-beautiful-dnd": {
@@ -5730,7 +5726,6 @@
     "react-dom": {
       "globals": {
         "HTMLIFrameElement": true,
-        "IS_REACT_ACT_ENVIRONMENT": true,
         "MSApp": true,
         "__REACT_DEVTOOLS_GLOBAL_HOOK__": true,
         "addEventListener": true,
@@ -5743,14 +5738,13 @@
         "jest": true,
         "location.protocol": true,
         "navigator.userAgent.indexOf": true,
-        "queueMicrotask": true,
         "removeEventListener": true,
-        "reportError": true,
         "self": true,
         "setTimeout": true,
         "top": true
       },
       "packages": {
+        "react>object-assign": true,
         "react": true,
         "react-dom>scheduler": true
       }
@@ -5823,11 +5817,6 @@
         "console": true
       }
     },
-    "react-markdown>react-is": {
-      "globals": {
-        "console": true
-      }
-    },
     "react-redux>react-is": {
       "globals": {
         "console": true
@@ -5842,7 +5831,7 @@
         "prop-types": true,
         "react-markdown>property-information": true,
         "react": true,
-        "react-markdown>react-is": true,
+        "react-redux>react-is": true,
         "react-markdown>remark-parse": true,
         "react-markdown>remark-rehype": true,
         "react-markdown>space-separated-tokens": true,
@@ -6205,14 +6194,14 @@
         "browserify>buffer": true
       }
     },
-    "@mui/x-date-pickers>rifm": {
+    "@material-ui/pickers>rifm": {
       "globals": {
         "console.error": true,
-        "console.warn": true,
         "document.addEventListener": true,
         "document.removeEventListener": true
       },
       "packages": {
+        "@babel/runtime": true,
         "react": true
       }
     },
@@ -6277,15 +6266,12 @@
     "react-dom>scheduler": {
       "globals": {
         "MessageChannel": true,
-        "__REACT_DEVTOOLS_GLOBAL_HOOK__": true,
+        "cancelAnimationFrame": true,
         "clearTimeout": true,
         "console": true,
-        "navigator": true,
         "performance": true,
+        "requestAnimationFrame": true,
         "setTimeout": true
-      },
-      "packages": {
-        "browserify>timers-browserify": true
       }
     },
     "ethers>@ethersproject/json-wallets>scrypt-js": {
@@ -6466,11 +6452,6 @@
         "react-markdown>style-to-object>inline-style-parser": true
       }
     },
-    "@emotion/react>@emotion/cache>stylis": {
-      "globals": {
-        "define": true
-      }
-    },
     "@metamask/snaps-controllers>tar-stream": {
       "packages": {
         "@metamask/snaps-controllers>tar-stream>b4a": true,
@@ -6488,6 +6469,11 @@
       },
       "packages": {
         "process": true
+      }
+    },
+    "@material-ui/core>@material-ui/styles>jss>tiny-warning": {
+      "globals": {
+        "console": true
       }
     },
     "@ngraveio/bc-ur>sha.js>to-buffer": {
