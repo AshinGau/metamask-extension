@@ -1,0 +1,203 @@
+name: Upload extension to Firefox AMO
+
+# INFRA-3647 — workflow_dispatch AMO upload via amo-submission Lambda (B1).
+# Runner: OIDC + lambda:InvokeFunction only (no JWT, no release zip on runner).
+# Beta: amo-beta environment + *_BETA repository variables (UAT / 722264665990).
+# Production: amo-production environment + prod variables (PRD / 363762752069).
+# PRD IAM trust: refs/heads/main, workflow_ref pinned to main, runway-github[bot] (INFRA-3649).
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version (e.g. 13.12.0) — must match GitHub Release tag v{version}'
+        required: true
+        type: string
+      target:
+        description: 'AMO listing target'
+        required: true
+        type: choice
+        default: beta
+        options:
+          - beta
+          - production
+      expected_sha256:
+        description: 'Optional SHA-256 of metamask-firefox-{version}.zip (64 lowercase hex). Omit to use release digest / SHA256SUMS when available.'
+        required: false
+        type: string
+      asset_name:
+        description: 'Optional release asset filename (default metamask-firefox-{version}.zip)'
+        required: false
+        type: string
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  upload:
+    name: Upload to AMO (${{ inputs.target }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}-${{ inputs.target }}
+      cancel-in-progress: false
+    environment: ${{ inputs.target == 'production' && 'amo-production' || inputs.target == 'beta' && 'amo-beta' || null }}
+    env:
+      VERSION: ${{ inputs.version }}
+      RELEASE_TAG: v${{ inputs.version }}
+      ZIP_NAME: metamask-firefox-${{ inputs.version }}.zip
+    steps:
+      - name: Validate inputs and configuration
+        env:
+          TARGET: ${{ inputs.target }}
+          EXPECTED_SHA256: ${{ inputs.expected_sha256 }}
+          ASSET_NAME: ${{ inputs.asset_name }}
+          ROLE_ARN_BETA: ${{ vars.AMO_ROLE_ARN_BETA }}
+          ROLE_ARN_PROD: ${{ vars.AMO_ROLE_ARN }}
+          AWS_REGION_BETA: ${{ vars.AMO_SECRETS_REGION_BETA }}
+          AWS_REGION_PROD: ${{ vars.AMO_SECRETS_REGION }}
+          LAMBDA_NAME_BETA: ${{ vars.AMO_LAMBDA_NAME_BETA }}
+          LAMBDA_NAME_PROD: ${{ vars.AMO_LAMBDA_NAME }}
+        run: |
+          set -euo pipefail
+          if [[ ! "${VERSION}" =~ ^[0-9]+(\.[0-9]+){0,3}$ ]]; then
+            echo "::error::Invalid version format: ${VERSION} — use 1–4 dot-separated integers (e.g. 13.12.0)"
+            exit 1
+          fi
+          IFS='.' read -r -a version_parts <<< "${VERSION}"
+          for part in "${version_parts[@]}"; do
+            if [[ ! "${part}" =~ ^(0|[1-9][0-9]*)$ ]]; then
+              echo "::error::Version segment must be a non-negative integer without leading zeros: ${part} in ${VERSION}"
+              exit 1
+            fi
+          done
+          if [[ -n "${EXPECTED_SHA256}" && ! "${EXPECTED_SHA256}" =~ ^[0-9a-f]{64}$ ]]; then
+            echo "::error::expected_sha256 must be 64 lowercase hex characters"
+            exit 1
+          fi
+          if [[ "${TARGET}" == "production" && "${{ github.ref }}" != "refs/heads/main" ]]; then
+            echo "::error::Production uploads must run from the main branch (current: ${{ github.ref }})"
+            exit 1
+          fi
+          if [[ "${TARGET}" == "beta" ]]; then
+            ROLE_ARN="${ROLE_ARN_BETA}"
+            AWS_REGION="${AWS_REGION_BETA}"
+            LAMBDA_NAME="${LAMBDA_NAME_BETA}"
+            DEPLOYMENT_ENV="beta"
+          elif [[ "${TARGET}" == "production" ]]; then
+            ROLE_ARN="${ROLE_ARN_PROD}"
+            AWS_REGION="${AWS_REGION_PROD}"
+            LAMBDA_NAME="${LAMBDA_NAME_PROD}"
+            DEPLOYMENT_ENV="production"
+          else
+            echo "::error::Invalid target: ${TARGET}"
+            exit 1
+          fi
+          missing=""
+          for name in ROLE_ARN AWS_REGION LAMBDA_NAME; do
+            if [[ -z "${!name:-}" ]]; then
+              missing="${missing} ${name}"
+            fi
+          done
+          if [[ -n "${missing}" ]]; then
+            echo "::error::Missing repository variables for target '${TARGET}':${missing}"
+            exit 1
+          fi
+          {
+            echo "ROLE_ARN=${ROLE_ARN}"
+            echo "AWS_REGION=${AWS_REGION}"
+            echo "LAMBDA_NAME=${LAMBDA_NAME}"
+            echo "DEPLOYMENT_ENV=${DEPLOYMENT_ENV}"
+          } >> "${GITHUB_ENV}"
+          if [[ -n "${EXPECTED_SHA256}" ]]; then
+            echo "EXPECTED_SHA256=${EXPECTED_SHA256}" >> "${GITHUB_ENV}"
+          fi
+          if [[ -n "${ASSET_NAME}" ]]; then
+            echo "ASSET_NAME=${ASSET_NAME}" >> "${GITHUB_ENV}"
+          else
+            echo "ASSET_NAME=${ZIP_NAME}" >> "${GITHUB_ENV}"
+          fi
+          {
+            echo "## AMO upload"
+            echo ""
+            echo "| Field | Value |"
+            echo "|-------|-------|"
+            echo "| Target | \`${TARGET}\` |"
+            echo "| Version | \`${VERSION}\` |"
+            echo "| Release tag | \`${RELEASE_TAG}\` |"
+            echo "| Asset | \`${ASSET_NAME:-${ZIP_NAME}}\` |"
+            echo "| Lambda | \`${LAMBDA_NAME}\` |"
+            echo "| AWS region | \`${AWS_REGION}\` |"
+            echo "| Deployment env | \`${DEPLOYMENT_ENV}\` |"
+          } >> "${GITHUB_STEP_SUMMARY}"
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@acca2b1b2070338fb9fd1ca27ecee81d687e58e5 # v6.1.2
+        with:
+          role-to-assume: ${{ env.ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+          role-session-name: amo-${{ inputs.target }}-${{ github.run_id }}
+
+      - name: Submit AMO upload via Lambda invoke (B1)
+        id: amo-upload
+        run: |
+          set -euo pipefail
+          PAYLOAD="$(jq -n \
+            --arg environment "${DEPLOYMENT_ENV}" \
+            --arg run_id "${{ github.run_id }}" \
+            --arg version "${VERSION}" \
+            --arg expected_sha256 "${EXPECTED_SHA256:-}" \
+            --arg asset_name "${ASSET_NAME}" \
+            '{
+              environment: $environment,
+              run_id: $run_id,
+              version: $version,
+              asset_name: $asset_name
+            }
+            + (if $expected_sha256 != "" then {expected_sha256: $expected_sha256} else {} end)')"
+
+          aws lambda invoke \
+            --function-name "${LAMBDA_NAME}" \
+            --invocation-type RequestResponse \
+            --cli-binary-format raw-in-base64-out \
+            --payload "${PAYLOAD}" \
+            /tmp/amo-response.json
+
+          if jq -e '.errorMessage // empty' /tmp/amo-response.json >/dev/null; then
+            echo "::error::Lambda runtime error: $(cat /tmp/amo-response.json)"
+            exit 1
+          fi
+
+          if jq -e '.error // empty' /tmp/amo-response.json >/dev/null; then
+            echo "::error::Lambda returned error: $(jq -r '.message // .error' /tmp/amo-response.json)"
+            cat /tmp/amo-response.json
+            exit 1
+          fi
+
+          STATUS="$(jq -r '.status // empty' /tmp/amo-response.json)"
+          if [[ "${STATUS}" != "submitted" ]]; then
+            echo "::error::Unexpected Lambda response (status=${STATUS:-<empty>})"
+            cat /tmp/amo-response.json
+            exit 1
+          fi
+
+          {
+            echo "upload_uuid=$(jq -r '.upload_uuid // ""' /tmp/amo-response.json)"
+            echo "amo_version_id=$(jq -r '.amo_version_id // ""' /tmp/amo-response.json)"
+            echo "amo_version_url=$(jq -r '.amo_version_url // ""' /tmp/amo-response.json)"
+            echo "attestation_verified=$(jq -r '.attestation_verified // false' /tmp/amo-response.json)"
+          } >> "${GITHUB_OUTPUT}"
+
+          {
+            echo "### AMO submission accepted"
+            echo ""
+            echo "- Version: \`${VERSION}\`"
+            echo "- Target: \`${{ inputs.target }}\`"
+            echo "- Upload UUID: \`$(jq -r '.upload_uuid // "n/a"' /tmp/amo-response.json)\`"
+            echo "- AMO Version ID: \`$(jq -r '.amo_version_id // "n/a"' /tmp/amo-response.json)\`"
+            echo "- AMO Version URL: $(jq -r '.amo_version_url // "n/a"' /tmp/amo-response.json)"
+            echo "- Attestation verified: \`$(jq -r '.attestation_verified // false' /tmp/amo-response.json)\`"
+          } >> "${GITHUB_STEP_SUMMARY}"
+
+          rm -f /tmp/amo-response.json
