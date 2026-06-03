@@ -2,8 +2,8 @@ name: Upload extension to Firefox AMO
 
 # INFRA-3647 — workflow_dispatch AMO upload via amo-submission Lambda (B1).
 # Runner: OIDC + lambda:InvokeFunction only (no JWT, no release zip on runner).
-# Beta: amo-beta environment + AMO_ROLE_ARN_BETA (UAT / 722264665990).
-# Production: amo-production environment + AMO_ROLE_ARN (PRD / 363762752069).
+# Beta: amo-beta environment + AMO_ROLE_ARN_BETA + AMO_ADDON_GUID_BETA (UAT / 722264665990).
+# Production: amo-production environment + AMO_ROLE_ARN + AMO_ADDON_GUID (PRD / 363762752069).
 # Lambda name (amo-submission) and region (us-east-2) are fixed in Terraform for both envs.
 # PRD IAM trust: refs/heads/main, workflow_ref pinned to main, runway-github[bot] (INFRA-3649).
 
@@ -58,6 +58,8 @@ jobs:
           ASSET_NAME: ${{ inputs.asset_name }}
           ROLE_ARN_BETA: ${{ vars.AMO_ROLE_ARN_BETA }}
           ROLE_ARN_PROD: ${{ vars.AMO_ROLE_ARN }}
+          ADDON_GUID_BETA: ${{ vars.AMO_ADDON_GUID_BETA }}
+          ADDON_GUID_PROD: ${{ vars.AMO_ADDON_GUID }}
         run: |
           set -euo pipefail
           if [[ ! "${VERSION}" =~ ^[0-9]+(\.[0-9]+){0,3}$ ]]; then
@@ -81,9 +83,11 @@ jobs:
           fi
           if [[ "${TARGET}" == "beta" ]]; then
             ROLE_ARN="${ROLE_ARN_BETA}"
+            ADDON_GUID="${ADDON_GUID_BETA}"
             DEPLOYMENT_ENV="beta"
           elif [[ "${TARGET}" == "production" ]]; then
             ROLE_ARN="${ROLE_ARN_PROD}"
+            ADDON_GUID="${ADDON_GUID_PROD}"
             DEPLOYMENT_ENV="production"
           else
             echo "::error::Invalid target: ${TARGET}"
@@ -93,8 +97,13 @@ jobs:
             echo "::error::Missing repository variable AMO_ROLE_ARN for target '${TARGET}' (use AMO_ROLE_ARN_BETA for beta, AMO_ROLE_ARN for production)"
             exit 1
           fi
+          if [[ -z "${ADDON_GUID:-}" ]]; then
+            echo "::error::Missing repository variable AMO_ADDON_GUID for target '${TARGET}' (use AMO_ADDON_GUID_BETA for beta, AMO_ADDON_GUID for production)"
+            exit 1
+          fi
           {
             echo "ROLE_ARN=${ROLE_ARN}"
+            echo "ADDON_GUID=${ADDON_GUID}"
             echo "DEPLOYMENT_ENV=${DEPLOYMENT_ENV}"
           } >> "${GITHUB_ENV}"
           if [[ -n "${EXPECTED_SHA256}" ]]; then
@@ -134,12 +143,14 @@ jobs:
             --arg environment "${DEPLOYMENT_ENV}" \
             --arg run_id "${{ github.run_id }}" \
             --arg version "${VERSION}" \
+            --arg amo_addon_guid "${ADDON_GUID}" \
             --arg expected_sha256 "${EXPECTED_SHA256:-}" \
             --arg asset_name "${ASSET_NAME}" \
             '{
               environment: $environment,
               run_id: $run_id,
               version: $version,
+              amo_addon_guid: $amo_addon_guid,
               asset_name: $asset_name
             }
             + (if $expected_sha256 != "" then {expected_sha256: $expected_sha256} else {} end)')"
