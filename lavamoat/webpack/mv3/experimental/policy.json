@@ -10,14 +10,6 @@
         "SuppressedError": true
       }
     },
-    "@mui/x-date-pickers>@date-io/luxon": {
-      "globals": {
-        "Intl": true
-      },
-      "packages": {
-        "luxon": true
-      }
-    },
     "@emotion/react>@emotion/cache": {
       "globals": {
         "document.head": true,
@@ -1487,14 +1479,14 @@
       },
       "meta": {
         "webpack-optimization": [
-          "Dependency '@mui/system' reexports from '@emotion/react' and webpack collapsed that to a direct import."
+          "Dependency '@mui/material>@mui/system' reexports from '@emotion/react' and webpack collapsed that to a direct import."
         ]
       },
       "packages": {
         "@babel/runtime": true,
         "@emotion/react": true,
-        "@mui/system": true,
-        "@mui/system>@mui/utils": true,
+        "@mui/material>@mui/system": true,
+        "@mui/material>@mui/utils": true,
         "@popperjs/core": true,
         "clsx": true,
         "prop-types": true,
@@ -1504,18 +1496,18 @@
         "react-transition-group": true
       }
     },
-    "@mui/system>@mui/private-theming": {
+    "@mui/material>@mui/system>@mui/private-theming": {
       "globals": {
         "console.error": true
       },
       "packages": {
         "@babel/runtime": true,
-        "@mui/system>@mui/utils": true,
+        "@mui/material>@mui/utils": true,
         "prop-types": true,
         "react": true
       }
     },
-    "@mui/system>@mui/styled-engine": {
+    "@mui/material>@mui/system>@mui/styled-engine": {
       "globals": {
         "console.error": true,
         "document": true
@@ -1529,29 +1521,30 @@
         "react": true
       }
     },
-    "@mui/system": {
+    "@mui/material>@mui/system": {
       "globals": {
         "console.error": true,
         "console.warn": true,
         "document.createElement": true,
-        "document.querySelector": true
+        "document.querySelector": true,
+        "matchMedia": true
       },
       "meta": {
         "webpack-optimization": [
-          "Dependency '@mui/system>@mui/styled-engine' reexports from '@emotion/react' and webpack collapsed that to a direct import."
+          "Dependency '@mui/material>@mui/system>@mui/styled-engine' reexports from '@emotion/react' and webpack collapsed that to a direct import."
         ]
       },
       "packages": {
         "@babel/runtime": true,
         "@emotion/react": true,
-        "@mui/system>@mui/private-theming": true,
-        "@mui/system>@mui/styled-engine": true,
-        "@mui/system>@mui/utils": true,
+        "@mui/material>@mui/system>@mui/private-theming": true,
+        "@mui/material>@mui/system>@mui/styled-engine": true,
+        "@mui/material>@mui/utils": true,
         "prop-types": true,
         "react": true
       }
     },
-    "@mui/system>@mui/utils": {
+    "@mui/material>@mui/utils": {
       "globals": {
         "clearTimeout": true,
         "console.error": true,
@@ -1563,12 +1556,27 @@
         "@babel/runtime": true,
         "clsx": true,
         "react": true,
-        "@mui/system>@mui/utils>react-is": true
+        "@mui/material>@mui/utils>react-is": true
+      }
+    },
+    "@mui/x-date-pickers>@mui/utils": {
+      "globals": {
+        "URL": true,
+        "console.error": true
+      },
+      "packages": {
+        "clsx": true,
+        "prop-types": true,
+        "react": true
       }
     },
     "@mui/x-date-pickers": {
       "globals": {
+        "Intl": true,
+        "Range": true,
         "addEventListener": true,
+        "clearTimeout": true,
+        "console.error": true,
         "console.warn": true,
         "document": true,
         "innerHeight": true,
@@ -1580,20 +1588,20 @@
       },
       "meta": {
         "webpack-optimization": [
-          "Dependency '@mui/material' reexports from '@mui/system>@mui/utils' and webpack collapsed that to a direct import.",
-          "Dependency '@mui/material' reexports from '@mui/system' and webpack collapsed that to a direct import."
+          "Dependency '@mui/material' reexports from '@mui/material>@mui/system' and webpack collapsed that to a direct import."
         ]
       },
       "packages": {
         "@babel/runtime": true,
         "@mui/material": true,
-        "@mui/system": true,
-        "@mui/system>@mui/utils": true,
-        "@mui/x-date-pickers>clsx": true,
+        "@mui/material>@mui/system": true,
+        "@mui/x-date-pickers>@mui/utils": true,
+        "@mui/x-date-pickers>@mui/x-internals": true,
+        "clsx": true,
+        "luxon": true,
         "prop-types": true,
         "react": true,
-        "react-transition-group": true,
-        "@mui/x-date-pickers>rifm": true
+        "react-transition-group": true
       }
     },
     "@ngraveio/bc-ur": {
@@ -2897,7 +2905,7 @@
       "packages": {
         "currency-formatter>accounting": true,
         "currency-formatter>locale-currency": true,
-        "gulp-watch>object-assign": true
+        "react>object-assign": true
       }
     },
     "nock>debug": {
@@ -3921,6 +3929,11 @@
         "mockttp>express>safe-buffer": true
       }
     },
+    "react": {
+      "packages": {
+        "react>object-assign": true
+      }
+    },
     "react-beautiful-dnd": {
       "globals": {
         "Element.prototype": true,
@@ -4036,13 +4049,11 @@
         "clipboardData": true,
         "console.error": true,
         "document": true,
-        "event": true,
-        "queueMicrotask": true,
         "removeEventListener": true,
-        "reportError": true,
         "setTimeout": true
       },
       "packages": {
+        "react>object-assign": true,
         "react": true,
         "react-dom>scheduler": true
       }
@@ -4104,7 +4115,7 @@
         "prop-types": true,
         "react-markdown>property-information": true,
         "react": true,
-        "react-markdown>react-is": true,
+        "react-redux>react-is": true,
         "react-markdown>remark-parse": true,
         "react-markdown>remark-rehype": true,
         "react-markdown>space-separated-tokens": true,
@@ -4503,17 +4514,6 @@
         "buffer": true
       }
     },
-    "@mui/x-date-pickers>rifm": {
-      "globals": {
-        "console.error": true,
-        "console.warn": true,
-        "document.addEventListener": true,
-        "document.removeEventListener": true
-      },
-      "packages": {
-        "react": true
-      }
-    },
     "ethereumjs-util>create-hash>ripemd160": {
       "packages": {
         "buffer": true,
@@ -4593,15 +4593,12 @@
     "react-dom>scheduler": {
       "globals": {
         "MessageChannel": true,
+        "cancelAnimationFrame": true,
         "clearTimeout": true,
-        "console.error": true,
-        "navigator": true,
+        "console": true,
         "performance": true,
-        "setImmediate": true,
+        "requestAnimationFrame": true,
         "setTimeout": true
-      },
-      "packages": {
-        "core-js-pure": true
       }
     },
     "ethers>@ethersproject/json-wallets>scrypt-js": {
