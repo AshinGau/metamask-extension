@@ -2,8 +2,9 @@ name: Upload extension to Firefox AMO
 
 # INFRA-3647 — workflow_dispatch AMO upload via amo-submission Lambda (B1).
 # Runner: OIDC + lambda:InvokeFunction only (no JWT, no release zip on runner).
-# Beta: amo-beta environment + *_BETA repository variables (UAT / 722264665990).
-# Production: amo-production environment + prod variables (PRD / 363762752069).
+# Beta: amo-beta environment + AMO_ROLE_ARN_BETA (UAT / 722264665990).
+# Production: amo-production environment + AMO_ROLE_ARN (PRD / 363762752069).
+# Lambda name (amo-submission) and region (us-east-2) are fixed in Terraform for both envs.
 # PRD IAM trust: refs/heads/main, workflow_ref pinned to main, runway-github[bot] (INFRA-3649).
 
 on:
@@ -47,6 +48,8 @@ jobs:
       VERSION: ${{ inputs.version }}
       RELEASE_TAG: v${{ inputs.version }}
       ZIP_NAME: metamask-firefox-${{ inputs.version }}.zip
+      AWS_REGION: us-east-2
+      LAMBDA_NAME: amo-submission
     steps:
       - name: Validate inputs and configuration
         env:
@@ -55,10 +58,6 @@ jobs:
           ASSET_NAME: ${{ inputs.asset_name }}
           ROLE_ARN_BETA: ${{ vars.AMO_ROLE_ARN_BETA }}
           ROLE_ARN_PROD: ${{ vars.AMO_ROLE_ARN }}
-          AWS_REGION_BETA: ${{ vars.AMO_SECRETS_REGION_BETA }}
-          AWS_REGION_PROD: ${{ vars.AMO_SECRETS_REGION }}
-          LAMBDA_NAME_BETA: ${{ vars.AMO_LAMBDA_NAME_BETA }}
-          LAMBDA_NAME_PROD: ${{ vars.AMO_LAMBDA_NAME }}
         run: |
           set -euo pipefail
           if [[ ! "${VERSION}" =~ ^[0-9]+(\.[0-9]+){0,3}$ ]]; then
@@ -82,32 +81,20 @@ jobs:
           fi
           if [[ "${TARGET}" == "beta" ]]; then
             ROLE_ARN="${ROLE_ARN_BETA}"
-            AWS_REGION="${AWS_REGION_BETA}"
-            LAMBDA_NAME="${LAMBDA_NAME_BETA}"
             DEPLOYMENT_ENV="beta"
           elif [[ "${TARGET}" == "production" ]]; then
             ROLE_ARN="${ROLE_ARN_PROD}"
-            AWS_REGION="${AWS_REGION_PROD}"
-            LAMBDA_NAME="${LAMBDA_NAME_PROD}"
             DEPLOYMENT_ENV="production"
           else
             echo "::error::Invalid target: ${TARGET}"
             exit 1
           fi
-          missing=""
-          for name in ROLE_ARN AWS_REGION LAMBDA_NAME; do
-            if [[ -z "${!name:-}" ]]; then
-              missing="${missing} ${name}"
-            fi
-          done
-          if [[ -n "${missing}" ]]; then
-            echo "::error::Missing repository variables for target '${TARGET}':${missing}"
+          if [[ -z "${ROLE_ARN:-}" ]]; then
+            echo "::error::Missing repository variable AMO_ROLE_ARN for target '${TARGET}' (use AMO_ROLE_ARN_BETA for beta, AMO_ROLE_ARN for production)"
             exit 1
           fi
           {
             echo "ROLE_ARN=${ROLE_ARN}"
-            echo "AWS_REGION=${AWS_REGION}"
-            echo "LAMBDA_NAME=${LAMBDA_NAME}"
             echo "DEPLOYMENT_ENV=${DEPLOYMENT_ENV}"
           } >> "${GITHUB_ENV}"
           if [[ -n "${EXPECTED_SHA256}" ]]; then
