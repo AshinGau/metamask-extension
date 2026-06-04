@@ -3,6 +3,7 @@ import React, { useCallback, useMemo, useState } from 'react';
 import { TransactionMeta } from '@metamask/transaction-controller';
 import { useSelector } from 'react-redux';
 import { BigNumber } from 'bignumber.js';
+import { Skeleton } from '@metamask/design-system-react';
 import { isPerpsWithdrawTransaction } from '../../../../../../shared/lib/transactions.utils';
 
 import {
@@ -12,7 +13,6 @@ import {
   IconSize,
   Text,
 } from '../../../../../components/component-library';
-import { Skeleton } from '../../../../../components/component-library/skeleton';
 import { ConfirmInfoRowSize } from '../../../../../components/app/confirm/info/row/row';
 import { ConfirmInfoAlertRow } from '../../../../../components/app/confirm/info/row/alert-row/alert-row';
 import { RowAlertKey } from '../../../../../components/app/confirm/info/row/constants';
