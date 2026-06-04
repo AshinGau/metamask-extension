@@ -1,4 +1,7 @@
-import { filterDiffByFilePath, filterDiffLineAdditions } from '../common/shared';
+import {
+  filterDiffByFilePath,
+  filterDiffLineAdditions,
+} from '../common/shared';
 
 // Note: Remove this file once we have migrated all deprecated components to the design system
 
@@ -51,10 +54,10 @@ function preventDeprecatedImports(diff: string): boolean {
 
   // Exclude non-source paths where substring matches cause false positives
   // (e.g. LavaMoat policy JSON, locale files).
-  let diffToCheck = filterDiffByFilePath(diff, /^lavamoat\//);
+  let diffToCheck = filterDiffByFilePath(diff, /^lavamoat\//u);
   diffToCheck = filterDiffByFilePath(
     diffToCheck,
-    /\.(?:json|jsonc|yml|yaml|md|scss|svg)$/,
+    /\.(?:json|jsonc|yml|yaml|md|scss|svg)$/u,
   );
 
   const diffAdditions = filterDiffLineAdditions(diffToCheck);

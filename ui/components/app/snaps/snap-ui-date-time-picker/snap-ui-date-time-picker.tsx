@@ -1,8 +1,12 @@
-import React, { FunctionComponent, useCallback, useEffect } from 'react';
+import React, {
+  FunctionComponent,
+  useCallback,
+  useEffect,
+  useMemo,
+} from 'react';
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import { MobileDateTimePicker } from '@mui/x-date-pickers/MobileDateTimePicker';
 import { MobileTimePicker } from '@mui/x-date-pickers/MobileTimePicker';
-import TextField from '@mui/material/TextField';
 import { Box } from '@metamask/design-system-react';
 import classnames from 'clsx';
 import { DateTime } from 'luxon';
@@ -161,18 +165,14 @@ export const SnapUIDateTimePicker: FunctionComponent<
   }, [committed, type]);
   const handleClose = useCallback(() => setOpen(false), []);
 
-  const renderInput = useCallback(
-    (params: React.ComponentProps<typeof TextField>) => (
-      <TextField
-        {...params}
-        inputProps={{
-          ...params.inputProps,
-          value: committed ? params.inputProps?.value : '',
+  const pickerSlotProps = useMemo(
+    () => ({
+      textField: {
+        inputProps: {
           placeholder,
           readOnly: true,
-        }}
-        InputProps={{
-          ...params.InputProps,
+        },
+        InputProps: {
           disableUnderline: true,
           sx: {
             fontFamily: 'var(--font-family-default)',
@@ -189,12 +189,15 @@ export const SnapUIDateTimePicker: FunctionComponent<
               padding: '0 16px',
             },
           },
-        }}
-        variant="standard"
-        fullWidth
-      />
-    ),
-    [committed, placeholder],
+        },
+        variant: 'standard' as const,
+        fullWidth: true,
+      },
+      actionBar: {
+        actions: [...PICKER_ACTION_BAR_ACTIONS],
+      },
+    }),
+    [placeholder],
   );
 
   return (
@@ -210,20 +213,15 @@ export const SnapUIDateTimePicker: FunctionComponent<
           open={open}
           onOpen={handleOpen}
           onClose={handleClose}
-          value={pickerValue}
+          value={committed ? pickerValue : null}
           onChange={handleChange}
           onAccept={handleAccept}
           disabled={disabled}
           disablePast={disablePast}
           disableFuture={disableFuture}
-          toolbarTitle=""
+          localeText={{ toolbarTitle: '' }}
           ampm={false}
-          renderInput={renderInput}
-          componentsProps={{
-            actionBar: {
-              actions: [...PICKER_ACTION_BAR_ACTIONS],
-            },
-          }}
+          slotProps={pickerSlotProps}
         />
       )}
       {type === 'date' && (
@@ -232,19 +230,14 @@ export const SnapUIDateTimePicker: FunctionComponent<
           open={open}
           onOpen={handleOpen}
           onClose={handleClose}
-          value={pickerValue}
+          value={committed ? pickerValue : null}
           onChange={handleChange}
           onAccept={handleAccept}
           disabled={disabled}
           disablePast={disablePast}
           disableFuture={disableFuture}
-          toolbarTitle=""
-          renderInput={renderInput}
-          componentsProps={{
-            actionBar: {
-              actions: [...PICKER_ACTION_BAR_ACTIONS],
-            },
-          }}
+          localeText={{ toolbarTitle: '' }}
+          slotProps={pickerSlotProps}
         />
       )}
       {type === 'time' && (
@@ -253,18 +246,13 @@ export const SnapUIDateTimePicker: FunctionComponent<
           open={open}
           onOpen={handleOpen}
           onClose={handleClose}
-          value={pickerValue}
+          value={committed ? pickerValue : null}
           onChange={handleChange}
           onAccept={handleAccept}
           disabled={disabled}
           ampm={false}
-          toolbarTitle=""
-          renderInput={renderInput}
-          componentsProps={{
-            actionBar: {
-              actions: [...PICKER_ACTION_BAR_ACTIONS],
-            },
-          }}
+          localeText={{ toolbarTitle: '' }}
+          slotProps={pickerSlotProps}
         />
       )}
       {error && (

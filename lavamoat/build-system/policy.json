@@ -3097,7 +3097,7 @@
         "@lavamoat/allow-scripts>@npmcli/run-script>node-gyp>npmlog>gauge>aproba": true,
         "@storybook/react>@storybook/node-logger>npmlog>console-control-strings": true,
         "@storybook/react>@storybook/node-logger>npmlog>gauge>has-unicode": true,
-        "gulp-watch>object-assign": true,
+        "react>object-assign": true,
         "nyc>signal-exit": true,
         "@lavamoat/allow-scripts>@npmcli/run-script>node-gyp>npmlog>gauge>string-width": true,
         "@lavamoat/allow-scripts>@npmcli/run-script>node-gyp>npmlog>gauge>strip-ansi": true,
@@ -6901,7 +6901,7 @@
         "process.versions.pnp": true
       },
       "packages": {
-        "eslint-import-resolver-typescript>unrs-resolver>@unrs/resolver-binding-darwin-arm64": true
+        "eslint-import-resolver-typescript>unrs-resolver>@unrs/resolver-binding-linux-x64-gnu": true
       }
     },
     "uri-js": {
