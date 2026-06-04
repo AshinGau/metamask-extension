@@ -1,21 +1,42 @@
 name: Upload extension to Firefox AMO
 
-# INFRA-3647 — workflow_dispatch AMO upload via amo-submission Lambda (B1).
-# Runner: OIDC + lambda:InvokeFunction only (no JWT, no release zip on runner).
-# Beta: amo-beta environment + AMO_ROLE_ARN_BETA + AMO_ADDON_GUID_BETA (UAT / 722264665990).
-# Production: amo-production environment + AMO_ROLE_ARN + AMO_ADDON_GUID (PRD / 363762752069).
-# Lambda name (amo-submission) and region (us-east-2) are fixed in Terraform for both envs.
-# PRD IAM trust: refs/heads/main, workflow_ref pinned to main, runway-github[bot] (INFRA-3649).
+# Uploads metamask-firefox-{version}.zip from a GitHub Release to Mozilla AMO by invoking the
+# amo-submission Lambda (us-east-2). The runner never downloads the zip or AMO credentials;
+# the Lambda fetches the release asset, mints the AMO JWT, and submits the upload.
+#
+# Trigger: workflow_dispatch from refs/heads/main. Production jobs use GitHub environment
+# amo-production
+#
+# OIDC trust (Terraform: va-mmc-extension-submission-infra):
+#
+#   1. permissions.id-token: write lets the job request a GitHub OIDC JWT.
+#   2. environment: amo-production scopes the token sub claim to
+#      repo:MetaMask/metamask-extension:environment:amo-production.
+#   3. aws-actions/configure-aws-credentials calls sts:AssumeRoleWithWebIdentity on the
+#      account GitHub OIDC provider, assuming IAM role amo-submission-production (PRD).
+#   4. That role's trust policy requires all of:
+#        token.actions.githubusercontent.com:aud            = sts.amazonaws.com
+#        token.actions.githubusercontent.com:sub            = repo:MetaMask/metamask-extension:environment:amo-production
+#        token.actions.githubusercontent.com:ref              = refs/heads/main
+#        token.actions.githubusercontent.com:job_workflow_ref = MetaMask/metamask-extension/.github/workflows/upload-extension-to-amo.yml@refs/heads/main
+#        token.actions.githubusercontent.com:actor          = runway-github[bot]
+#        token.actions.githubusercontent.com:actor_id         = 73448015
+#   5. The role policy allows only lambda:InvokeFunction on function amo-submission.
+#      AMO API credentials live in Secrets Manager and are read by the Lambda execution role,
+#      not by this workflow or its assumed IAM role.
+#
+# Beta (UAT) follows the same OIDC pattern with amo-submission-beta and environment amo-beta;
+# trust requires main + this workflow file on main but does not pin actor.
 
 on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Release version (e.g. 13.12.0) — must match GitHub Release tag v{version}'
+        description: "Release version (e.g. 13.12.0) — must match GitHub Release tag v{version}"
         required: true
         type: string
       target:
-        description: 'AMO listing target'
+        description: "AMO listing target"
         required: true
         type: choice
         default: beta
@@ -23,11 +44,11 @@ on:
           - beta
           - production
       expected_sha256:
-        description: 'Optional SHA-256 of metamask-firefox-{version}.zip (64 lowercase hex). Omit to use release digest / SHA256SUMS when available.'
+        description: "Optional SHA-256 of metamask-firefox-{version}.zip (64 lowercase hex). Omit to use release digest / SHA256SUMS when available."
         required: false
         type: string
       asset_name:
-        description: 'Optional release asset filename (default metamask-firefox-{version}.zip)'
+        description: "Optional release asset filename (default metamask-firefox-{version}.zip)"
         required: false
         type: string
 
@@ -62,6 +83,10 @@ jobs:
           ADDON_GUID_PROD: ${{ vars.AMO_ADDON_GUID }}
         run: |
           set -euo pipefail
+          if [[ "${{ github.ref }}" != "refs/heads/main" ]]; then
+            echo "::error::This workflow must run from refs/heads/main (current: ${{ github.ref }})"
+            exit 1
+          fi
           if [[ ! "${VERSION}" =~ ^[0-9]+(\.[0-9]+){0,3}$ ]]; then
             echo "::error::Invalid version format: ${VERSION} — use 1–4 dot-separated integers (e.g. 13.12.0)"
             exit 1
@@ -75,10 +100,6 @@ jobs:
           done
           if [[ -n "${EXPECTED_SHA256}" && ! "${EXPECTED_SHA256}" =~ ^[0-9a-f]{64}$ ]]; then
             echo "::error::expected_sha256 must be 64 lowercase hex characters"
-            exit 1
-          fi
-          if [[ "${TARGET}" == "production" && "${{ github.ref }}" != "refs/heads/main" ]]; then
-            echo "::error::Production uploads must run from the main branch (current: ${{ github.ref }})"
             exit 1
           fi
           if [[ "${TARGET}" == "beta" ]]; then
@@ -126,6 +147,7 @@ jobs:
             echo "| Lambda | \`${LAMBDA_NAME}\` |"
             echo "| AWS region | \`${AWS_REGION}\` |"
             echo "| Deployment env | \`${DEPLOYMENT_ENV}\` |"
+            echo "| Branch | \`${{ github.ref }}\` |"
           } >> "${GITHUB_STEP_SUMMARY}"
 
       - name: Configure AWS credentials (OIDC)
@@ -155,28 +177,42 @@ jobs:
             }
             + (if $expected_sha256 != "" then {expected_sha256: $expected_sha256} else {} end)')"
 
+          INVOKE_RESULT=0
           aws lambda invoke \
             --function-name "${LAMBDA_NAME}" \
             --invocation-type RequestResponse \
             --cli-binary-format raw-in-base64-out \
             --payload "${PAYLOAD}" \
-            /tmp/amo-response.json
+            /tmp/amo-response.json || INVOKE_RESULT=$?
+
+          if [[ "${INVOKE_RESULT}" -ne 0 ]]; then
+            echo "::error::aws lambda invoke failed (exit ${INVOKE_RESULT})"
+            exit "${INVOKE_RESULT}"
+          fi
 
           if jq -e '.errorMessage // empty' /tmp/amo-response.json >/dev/null; then
-            echo "::error::Lambda runtime error: $(cat /tmp/amo-response.json)"
+            ERR_TYPE="$(jq -r '.errorType // "LambdaError"' /tmp/amo-response.json)"
+            ERR_MSG="$(jq -r '.errorMessage // "unknown"' /tmp/amo-response.json | head -c 500)"
+            echo "::error::Lambda runtime error (${ERR_TYPE}): ${ERR_MSG}"
+            echo "AMO_UPLOAD_FAILED=true" >> "${GITHUB_ENV}"
+            echo "AMO_UPLOAD_ERROR=${ERR_TYPE}: ${ERR_MSG}" >> "${GITHUB_ENV}"
             exit 1
           fi
 
           if jq -e '.error // empty' /tmp/amo-response.json >/dev/null; then
-            echo "::error::Lambda returned error: $(jq -r '.message // .error' /tmp/amo-response.json)"
-            cat /tmp/amo-response.json
+            ERR_CODE="$(jq -r '.error // "unknown"' /tmp/amo-response.json)"
+            ERR_MSG="$(jq -r '.message // "no message"' /tmp/amo-response.json | head -c 500)"
+            echo "::error::Lambda returned error (${ERR_CODE}): ${ERR_MSG}"
+            echo "AMO_UPLOAD_FAILED=true" >> "${GITHUB_ENV}"
+            echo "AMO_UPLOAD_ERROR=${ERR_CODE}: ${ERR_MSG}" >> "${GITHUB_ENV}"
             exit 1
           fi
 
           STATUS="$(jq -r '.status // empty' /tmp/amo-response.json)"
           if [[ "${STATUS}" != "submitted" ]]; then
             echo "::error::Unexpected Lambda response (status=${STATUS:-<empty>})"
-            cat /tmp/amo-response.json
+            echo "AMO_UPLOAD_FAILED=true" >> "${GITHUB_ENV}"
+            echo "AMO_UPLOAD_ERROR=unexpected status: ${STATUS:-<empty>}" >> "${GITHUB_ENV}"
             exit 1
           fi
 
@@ -186,6 +222,8 @@ jobs:
             echo "amo_version_url=$(jq -r '.amo_version_url // ""' /tmp/amo-response.json)"
             echo "attestation_verified=$(jq -r '.attestation_verified // false' /tmp/amo-response.json)"
           } >> "${GITHUB_OUTPUT}"
+
+          echo "AMO_UPLOAD_FAILED=false" >> "${GITHUB_ENV}"
 
           {
             echo "### AMO submission accepted"
@@ -199,3 +237,27 @@ jobs:
           } >> "${GITHUB_STEP_SUMMARY}"
 
           rm -f /tmp/amo-response.json
+
+      - name: Summary
+        if: always()
+        run: |
+          {
+            echo ""
+            echo "### Result"
+            echo ""
+            echo "| Field | Value |"
+            echo "|-------|-------|"
+            echo "| Target | \`${{ inputs.target }}\` |"
+            echo "| Version | \`${{ inputs.version }}\` |"
+            echo "| Branch | \`${{ github.ref }}\` |"
+            echo "| Upload step | \`${{ steps.amo-upload.outcome }}\` |"
+            echo "| Upload UUID | \`${{ steps.amo-upload.outputs.upload_uuid || 'n/a' }}\` |"
+            echo "| AMO version ID | \`${{ steps.amo-upload.outputs.amo_version_id || 'n/a' }}\` |"
+            echo "| Attestation verified | \`${{ steps.amo-upload.outputs.attestation_verified || 'n/a' }}\` |"
+            echo "| Workflow run | ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} |"
+          } >> "${GITHUB_STEP_SUMMARY}"
+          if [[ "${{ steps.amo-upload.outcome }}" == "failure" ]]; then
+            echo ""
+            echo "**Failure:** ${AMO_UPLOAD_ERROR:-see Submit AMO upload step logs (Lambda payload not printed)}"
+            exit 1
+          fi
