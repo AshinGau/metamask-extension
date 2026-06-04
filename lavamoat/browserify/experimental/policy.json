@@ -10,6 +10,14 @@
         "SuppressedError": true
       }
     },
+    "@mui/x-date-pickers>@date-io/luxon": {
+      "globals": {
+        "Intl": true
+      },
+      "packages": {
+        "luxon": true
+      }
+    },
     "@emotion/react>@emotion/cache": {
       "globals": {
         "document": true
@@ -2856,8 +2864,8 @@
       },
       "packages": {
         "@babel/runtime": true,
-        "@mui/material>@mui/system": true,
-        "@mui/material>@mui/utils": true,
+        "@mui/system": true,
+        "@mui/system>@mui/utils": true,
         "@popperjs/core": true,
         "clsx": true,
         "prop-types": true,
@@ -2867,18 +2875,18 @@
         "react-transition-group": true
       }
     },
-    "@mui/material>@mui/system>@mui/private-theming": {
+    "@mui/system>@mui/private-theming": {
       "globals": {
         "console.error": true
       },
       "packages": {
         "@babel/runtime": true,
-        "@mui/material>@mui/utils": true,
+        "@mui/system>@mui/utils": true,
         "prop-types": true,
         "react": true
       }
     },
-    "@mui/material>@mui/system>@mui/styled-engine": {
+    "@mui/system>@mui/styled-engine": {
       "globals": {
         "console.error": true,
         "document": true
@@ -2893,7 +2901,7 @@
         "react": true
       }
     },
-    "@mui/material>@mui/system": {
+    "@mui/system": {
       "globals": {
         "clearTimeout": true,
         "console.error": true,
@@ -2907,15 +2915,15 @@
       },
       "packages": {
         "@babel/runtime": true,
-        "@mui/material>@mui/system>@mui/private-theming": true,
-        "@mui/material>@mui/system>@mui/styled-engine": true,
-        "@mui/material>@mui/utils": true,
+        "@mui/system>@mui/private-theming": true,
+        "@mui/system>@mui/styled-engine": true,
+        "@mui/system>@mui/utils": true,
         "clsx": true,
         "prop-types": true,
         "react": true
       }
     },
-    "@mui/material>@mui/utils": {
+    "@mui/system>@mui/utils": {
       "globals": {
         "clearTimeout": true,
         "console.error": true,
@@ -2928,34 +2936,12 @@
         "clsx": true,
         "prop-types": true,
         "react": true,
-        "@mui/material>@mui/utils>react-is": true
-      }
-    },
-    "@mui/x-date-pickers>@mui/utils": {
-      "globals": {
-        "URL": true,
-        "clearTimeout": true,
-        "console.error": true,
-        "console.warn": true,
-        "document": true,
-        "navigator.userAgent.includes": true,
-        "setTimeout": true
-      },
-      "packages": {
-        "@babel/runtime": true,
-        "clsx": true,
-        "prop-types": true,
-        "react": true,
-        "@mui/x-date-pickers>@mui/utils>react-is": true
+        "@mui/system>@mui/utils>react-is": true
       }
     },
     "@mui/x-date-pickers": {
       "globals": {
-        "Intl": true,
-        "Range": true,
         "addEventListener": true,
-        "clearTimeout": true,
-        "console.error": true,
         "console.warn": true,
         "document": true,
         "innerHeight": true,
@@ -2967,21 +2953,15 @@
       },
       "packages": {
         "@babel/runtime": true,
+        "@mui/x-date-pickers>@date-io/luxon": true,
         "@mui/material": true,
-        "@mui/material>@mui/system": true,
-        "@mui/x-date-pickers>@mui/utils": true,
-        "@mui/x-date-pickers>@mui/x-internals": true,
-        "clsx": true,
-        "luxon": true,
+        "@mui/system": true,
+        "@mui/system>@mui/utils": true,
+        "@mui/x-date-pickers>clsx": true,
         "prop-types": true,
         "react": true,
-        "react-transition-group": true
-      }
-    },
-    "@mui/x-date-pickers>@mui/x-internals": {
-      "globals": {
-        "console.error": true,
-        "console.warn": true
+        "react-transition-group": true,
+        "@mui/x-date-pickers>rifm": true
       }
     },
     "@ngraveio/bc-ur": {
@@ -6310,6 +6290,17 @@
     "@metamask/snaps-utils>rfdc": {
       "packages": {
         "browserify>buffer": true
+      }
+    },
+    "@mui/x-date-pickers>rifm": {
+      "globals": {
+        "console.error": true,
+        "console.warn": true,
+        "document.addEventListener": true,
+        "document.removeEventListener": true
+      },
+      "packages": {
+        "react": true
       }
     },
     "ethereumjs-util>create-hash>ripemd160": {

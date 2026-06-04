@@ -996,9 +996,6 @@
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
     },
-    "ui/components/app/snaps/snap-ui-renderer/components/date-time-picker.test.ts": {
-      "warn: Material-UI: You are trying to": 5
-    },
     "ui/components/app/snaps/snap-ui-renderer/components/file-input.test.ts": {
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
@@ -1009,6 +1006,7 @@
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
     },
+
     "ui/components/app/snaps/snap-ui-renderer/snap-ui-renderer.test.js": {
       "React: Act warnings (component updates not wrapped)": 1,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
