@@ -206,7 +206,7 @@ class AssetListPage {
     console.log(`Clicking on the token name `);
     await this.expandLowValueAssetsIfPresent();
     await this.driver.clickElement({
-      css: this.tokenName,
+      css: this.tokenListItem,
       text: assetName,
     });
   }
