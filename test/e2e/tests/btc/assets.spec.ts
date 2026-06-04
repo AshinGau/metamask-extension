@@ -7,7 +7,7 @@ import { login } from '../../page-objects/flows/login.flow';
 import { switchToNetworkFromNetworkSelect } from '../../page-objects/flows/network.flow';
 import AssetListPage from '../../page-objects/pages/home/asset-list';
 import BitcoinAssetDetailsPage from '../../page-objects/pages/asset/bitcoin-asset-details';
-import BitcoinHomepage from '../../page-objects/pages/home/bitcoin-homepage';
+import HomePage from '../../page-objects/pages/home/homepage';
 import {
   mockBtcSpotPrices,
   mockCurrencyExchangeRates,
@@ -63,10 +63,9 @@ describe('BTC Account - Assets', function (this: Suite) {
       },
       async ({ driver }) => {
         await login(driver);
-        const homePage = new BitcoinHomepage(driver);
+        const homePage = new HomePage(driver);
         await switchToNetworkFromNetworkSelect(driver, 'Popular', 'Bitcoin');
         await homePage.checkPageIsLoaded();
-        await homePage.checkIsExpectedBitcoinBalanceDisplayed(0);
 
         const assetList = new AssetListPage(driver);
         await assetList.checkOnlyAssetsArePresent(['Bitcoin']);
@@ -86,12 +85,9 @@ describe('BTC Account - Assets', function (this: Suite) {
       },
       async ({ driver }) => {
         await login(driver);
-        const homePage = new BitcoinHomepage(driver);
+        const homePage = new HomePage(driver);
         await switchToNetworkFromNetworkSelect(driver, 'Popular', 'Bitcoin');
         await homePage.checkPageIsLoaded();
-        await homePage.checkIsExpectedBitcoinBalanceDisplayed(
-          DEFAULT_BTC_BALANCE,
-        );
 
         const assetList = new AssetListPage(driver);
         await assetList.checkTokenExistsInList(
@@ -113,14 +109,15 @@ describe('BTC Account - Assets', function (this: Suite) {
       },
       async ({ driver }) => {
         await login(driver);
-        const homePage = new BitcoinHomepage(driver);
+        const homePage = new HomePage(driver);
         await switchToNetworkFromNetworkSelect(driver, 'Popular', 'Bitcoin');
         await homePage.checkPageIsLoaded();
-        await homePage.checkIsExpectedBitcoinBalanceDisplayed(
-          DEFAULT_BTC_BALANCE,
-        );
 
         const assetList = new AssetListPage(driver);
+        await assetList.checkExpectedTokenBalanceIsDisplayed(
+          `${DEFAULT_BTC_BALANCE}`,
+          'BTC',
+        );
         await assetList.clickOnAsset('Bitcoin');
 
         const details = new BitcoinAssetDetailsPage(driver);
