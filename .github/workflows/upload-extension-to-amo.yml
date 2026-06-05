@@ -1,32 +1,25 @@
 name: Upload extension to Firefox AMO
 
-# Uploads metamask-firefox-{version}.zip from a GitHub Release to Mozilla AMO by invoking the
-# amo-submission Lambda (us-east-2). The runner never downloads the zip or AMO credentials;
-# the Lambda fetches the release asset, mints the AMO JWT, and submits the upload.
+# Uploads a Firefox release asset to Mozilla AMO via amo-submission Lambda (us-east-2).
 #
-# Trigger: workflow_dispatch from refs/heads/main. Production jobs use GitHub environment
-# amo-production
+# Targets: dev (UAT / amo-dev), production (PRD / amo-production), flask (PRD / amo-flask).
+# Extension build-type beta is not supported here.
 #
-# OIDC trust (Terraform: va-mmc-extension-submission-infra):
+# OIDC (va-mmc-extension-submission-infra / extension_amo_invoke_iam.tf):
+#   permissions: id-token: write
+#   flow: configure-aws-credentials → sts:AssumeRoleWithWebIdentity → amo-submission-{dev|flask|production}
+#   role policy: lambda:InvokeFunction on amo-submission only (no Secrets Manager on runner)
 #
-#   1. permissions.id-token: write lets the job request a GitHub OIDC JWT.
-#   2. environment: amo-production scopes the token sub claim to
-#      repo:MetaMask/metamask-extension:environment:amo-production.
-#   3. aws-actions/configure-aws-credentials calls sts:AssumeRoleWithWebIdentity on the
-#      account GitHub OIDC provider, assuming IAM role amo-submission-production (PRD).
-#   4. That role's trust policy requires all of:
-#        token.actions.githubusercontent.com:aud            = sts.amazonaws.com
-#        token.actions.githubusercontent.com:sub            = repo:MetaMask/metamask-extension:environment:amo-production
-#        token.actions.githubusercontent.com:ref              = refs/heads/main
-#        token.actions.githubusercontent.com:job_workflow_ref = MetaMask/metamask-extension/.github/workflows/upload-extension-to-amo.yml@refs/heads/main
-#        token.actions.githubusercontent.com:actor          = runway-github[bot]
-#        token.actions.githubusercontent.com:actor_id         = 73448015
-#   5. The role policy allows only lambda:InvokeFunction on function amo-submission.
-#      AMO API credentials live in Secrets Manager and are read by the Lambda execution role,
-#      not by this workflow or its assumed IAM role.
+# Trust policy conditions on token.actions.githubusercontent.com (all targets):
+#   aud              = sts.amazonaws.com
+#   sub              = repo:MetaMask/metamask-extension:environment:{amo-dev|amo-flask|amo-production}
+#   job_workflow_ref = MetaMask/metamask-extension/.github/workflows/upload-extension-to-amo.yml@refs/heads/main
+#   ref              = refs/heads/main
+# Production only (amo-production / amo-submission-production):
+#   actor    = runway-github[bot]
+#   actor_id = 73448015
 #
-# Beta (UAT) follows the same OIDC pattern with amo-submission-beta and environment amo-beta;
-# trust requires main + this workflow file on main but does not pin actor.
+# AMO JWT secrets are read inside Lambda (assumes amo-submission-secrets-{env}), not by the runner.
 
 on:
   workflow_dispatch:
@@ -36,19 +29,20 @@ on:
         required: true
         type: string
       target:
-        description: "AMO listing target"
+        description: "AMO target — dev (UAT staging), production (PRD main), flask (PRD Flask build)"
         required: true
         type: choice
-        default: beta
+        default: dev
         options:
-          - beta
+          - dev
           - production
+          - flask
       expected_sha256:
-        description: "Optional SHA-256 of metamask-firefox-{version}.zip (64 lowercase hex). Omit to use release digest / SHA256SUMS when available."
+        description: "Optional SHA-256 of the release asset (64 lowercase hex). Default asset depends on target."
         required: false
         type: string
       asset_name:
-        description: "Optional release asset filename (default metamask-firefox-{version}.zip)"
+        description: "Optional release asset override (default: main zip for dev/production, *-flask.0.zip for flask)"
         required: false
         type: string
 
@@ -64,22 +58,22 @@ jobs:
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}-${{ inputs.target }}
       cancel-in-progress: false
-    environment: ${{ inputs.target == 'production' && 'amo-production' || inputs.target == 'beta' && 'amo-beta' || null }}
+    environment: ${{ inputs.target == 'production' && 'amo-production' || inputs.target == 'flask' && 'amo-flask' || inputs.target == 'dev' && 'amo-dev' || null }}
     env:
       VERSION: ${{ inputs.version }}
       RELEASE_TAG: v${{ inputs.version }}
-      ZIP_NAME: metamask-firefox-${{ inputs.version }}.zip
       AWS_REGION: us-east-2
-      LAMBDA_NAME: amo-submission
     steps:
       - name: Validate inputs and configuration
         env:
           TARGET: ${{ inputs.target }}
           EXPECTED_SHA256: ${{ inputs.expected_sha256 }}
           ASSET_NAME: ${{ inputs.asset_name }}
-          ROLE_ARN_BETA: ${{ vars.AMO_ROLE_ARN_BETA }}
+          ROLE_ARN_DEV: ${{ vars.AMO_ROLE_ARN_DEV }}
+          ROLE_ARN_FLASK: ${{ vars.AMO_ROLE_ARN_FLASK }}
           ROLE_ARN_PROD: ${{ vars.AMO_ROLE_ARN }}
-          ADDON_GUID_BETA: ${{ vars.AMO_ADDON_GUID_BETA }}
+          ADDON_GUID_DEV: ${{ vars.AMO_ADDON_GUID_DEV }}
+          ADDON_GUID_FLASK: ${{ vars.AMO_ADDON_GUID_FLASK }}
           ADDON_GUID_PROD: ${{ vars.AMO_ADDON_GUID }}
         run: |
           set -euo pipefail
@@ -102,30 +96,55 @@ jobs:
             echo "::error::expected_sha256 must be 64 lowercase hex characters"
             exit 1
           fi
-          if [[ "${TARGET}" == "beta" ]]; then
-            ROLE_ARN="${ROLE_ARN_BETA}"
-            ADDON_GUID="${ADDON_GUID_BETA}"
-            DEPLOYMENT_ENV="beta"
+          if [[ "${TARGET}" == "dev" ]]; then
+            ROLE_ARN="${ROLE_ARN_DEV}"
+            ADDON_GUID="${ADDON_GUID_DEV}"
+            DEPLOYMENT_ENV="dev"
+            DEFAULT_ASSET="metamask-firefox-${VERSION}.zip"
           elif [[ "${TARGET}" == "production" ]]; then
             ROLE_ARN="${ROLE_ARN_PROD}"
             ADDON_GUID="${ADDON_GUID_PROD}"
             DEPLOYMENT_ENV="production"
+            DEFAULT_ASSET="metamask-firefox-${VERSION}.zip"
+          elif [[ "${TARGET}" == "flask" ]]; then
+            ROLE_ARN="${ROLE_ARN_FLASK}"
+            ADDON_GUID="${ADDON_GUID_FLASK}"
+            DEPLOYMENT_ENV="flask"
+            DEFAULT_ASSET="metamask-firefox-${VERSION}-flask.0.zip"
           else
             echo "::error::Invalid target: ${TARGET}"
             exit 1
           fi
           if [[ -z "${ROLE_ARN:-}" ]]; then
-            echo "::error::Missing repository variable AMO_ROLE_ARN for target '${TARGET}' (use AMO_ROLE_ARN_BETA for beta, AMO_ROLE_ARN for production)"
+            echo "::error::Missing AMO_ROLE_ARN_* repository variable for target '${TARGET}'"
             exit 1
           fi
           if [[ -z "${ADDON_GUID:-}" ]]; then
-            echo "::error::Missing repository variable AMO_ADDON_GUID for target '${TARGET}' (use AMO_ADDON_GUID_BETA for beta, AMO_ADDON_GUID for production)"
+            echo "::error::Missing AMO_ADDON_GUID_* repository variable for target '${TARGET}'"
             exit 1
           fi
+          RESOLVED_ASSET="${ASSET_NAME:-${DEFAULT_ASSET}}"
+          if [[ "${TARGET}" == "flask" ]]; then
+            if [[ ! "${RESOLVED_ASSET}" =~ ^metamask-firefox-[0-9]+(\.[0-9]+){0,3}-flask\.0\.zip$ ]]; then
+              echo "::error::Flask target requires asset *-flask.0.zip (got: ${RESOLVED_ASSET})"
+              exit 1
+            fi
+          elif [[ "${TARGET}" == "production" || "${TARGET}" == "dev" ]]; then
+            if [[ ! "${RESOLVED_ASSET}" =~ ^metamask-firefox-[0-9]+(\.[0-9]+){0,3}\.zip$ ]]; then
+              echo "::error::Main target requires asset metamask-firefox-{version}.zip (got: ${RESOLVED_ASSET})"
+              exit 1
+            fi
+            if [[ "${RESOLVED_ASSET}" == *"-flask"* || "${RESOLVED_ASSET}" == *"-beta"* ]]; then
+              echo "::error::Non-main artifact not allowed for target '${TARGET}'"
+              exit 1
+            fi
+          fi
+          LAMBDA_NAME="amo-submission"
           {
             echo "ROLE_ARN=${ROLE_ARN}"
             echo "ADDON_GUID=${ADDON_GUID}"
             echo "DEPLOYMENT_ENV=${DEPLOYMENT_ENV}"
+            echo "LAMBDA_NAME=${LAMBDA_NAME}"
           } >> "${GITHUB_ENV}"
           if [[ -n "${EXPECTED_SHA256}" ]]; then
             echo "EXPECTED_SHA256=${EXPECTED_SHA256}" >> "${GITHUB_ENV}"
@@ -133,7 +152,7 @@ jobs:
           if [[ -n "${ASSET_NAME}" ]]; then
             echo "ASSET_NAME=${ASSET_NAME}" >> "${GITHUB_ENV}"
           else
-            echo "ASSET_NAME=${ZIP_NAME}" >> "${GITHUB_ENV}"
+            echo "ASSET_NAME=${DEFAULT_ASSET}" >> "${GITHUB_ENV}"
           fi
           {
             echo "## AMO upload"
@@ -143,7 +162,7 @@ jobs:
             echo "| Target | \`${TARGET}\` |"
             echo "| Version | \`${VERSION}\` |"
             echo "| Release tag | \`${RELEASE_TAG}\` |"
-            echo "| Asset | \`${ASSET_NAME:-${ZIP_NAME}}\` |"
+            echo "| Asset | \`${ASSET_NAME:-${DEFAULT_ASSET}}\` |"
             echo "| Lambda | \`${LAMBDA_NAME}\` |"
             echo "| AWS region | \`${AWS_REGION}\` |"
             echo "| Deployment env | \`${DEPLOYMENT_ENV}\` |"
@@ -221,6 +240,9 @@ jobs:
             echo "amo_version_id=$(jq -r '.amo_version_id // ""' /tmp/amo-response.json)"
             echo "amo_version_url=$(jq -r '.amo_version_url // ""' /tmp/amo-response.json)"
             echo "attestation_verified=$(jq -r '.attestation_verified // false' /tmp/amo-response.json)"
+            echo "source_attached=$(jq -r '.source_attached // false' /tmp/amo-response.json)"
+            echo "release_notes_attached=$(jq -r '.release_notes_attached // false' /tmp/amo-response.json)"
+            echo "approval_notes_attached=$(jq -r '.approval_notes_attached // false' /tmp/amo-response.json)"
           } >> "${GITHUB_OUTPUT}"
 
           echo "AMO_UPLOAD_FAILED=false" >> "${GITHUB_ENV}"
@@ -234,6 +256,9 @@ jobs:
             echo "- AMO Version ID: \`$(jq -r '.amo_version_id // "n/a"' /tmp/amo-response.json)\`"
             echo "- AMO Version URL: $(jq -r '.amo_version_url // "n/a"' /tmp/amo-response.json)"
             echo "- Attestation verified: \`$(jq -r '.attestation_verified // false' /tmp/amo-response.json)\`"
+            echo "- Source attached: \`$(jq -r '.source_attached // false' /tmp/amo-response.json)\`"
+            echo "- Release notes attached: \`$(jq -r '.release_notes_attached // false' /tmp/amo-response.json)\`"
+            echo "- Approval notes attached: \`$(jq -r '.approval_notes_attached // false' /tmp/amo-response.json)\`"
           } >> "${GITHUB_STEP_SUMMARY}"
 
           rm -f /tmp/amo-response.json
@@ -254,6 +279,9 @@ jobs:
             echo "| Upload UUID | \`${{ steps.amo-upload.outputs.upload_uuid || 'n/a' }}\` |"
             echo "| AMO version ID | \`${{ steps.amo-upload.outputs.amo_version_id || 'n/a' }}\` |"
             echo "| Attestation verified | \`${{ steps.amo-upload.outputs.attestation_verified || 'n/a' }}\` |"
+            echo "| Source attached | \`${{ steps.amo-upload.outputs.source_attached || 'n/a' }}\` |"
+            echo "| Release notes | \`${{ steps.amo-upload.outputs.release_notes_attached || 'n/a' }}\` |"
+            echo "| Approval notes | \`${{ steps.amo-upload.outputs.approval_notes_attached || 'n/a' }}\` |"
             echo "| Workflow run | ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} |"
           } >> "${GITHUB_STEP_SUMMARY}"
           if [[ "${{ steps.amo-upload.outcome }}" == "failure" ]]; then
