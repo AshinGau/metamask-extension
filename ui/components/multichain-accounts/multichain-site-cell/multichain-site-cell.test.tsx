@@ -6,7 +6,7 @@ import { EthAccountType, SolAccountType } from '@metamask/keyring-api';
 import { AccountGroupType, AccountWalletType } from '@metamask/account-api';
 import { AccountGroupObject } from '@metamask/account-tree-controller';
 import { RpcEndpointType } from '@metamask/network-controller';
-import configureStore from '../../../store/store';
+import configureMockStore from 'redux-mock-store';
 import { createMockInternalAccount } from '../../../../test/jest/mocks';
 import { AccountGroupWithInternalAccounts } from '../../../selectors/multichain-accounts/account-tree.types';
 import { EvmAndMultichainNetworkConfigurationsWithCaipChainId } from '../../../selectors/selectors.types';
@@ -250,7 +250,7 @@ const renderComponent = (
   const supportedAccountGroups =
     props.supportedAccountGroups ?? mockAccountGroups;
 
-  const store = configureStore(createMockState(stateOverrides));
+  const store = configureMockStore()(createMockState(stateOverrides));
 
   return render(
     <Provider store={store}>

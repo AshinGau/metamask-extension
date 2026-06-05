@@ -1,4 +1,4 @@
-import { screen, waitFor } from '@testing-library/react';
+import { fireEvent, screen, waitFor } from '@testing-library/react';
 import React from 'react';
 import configureMockStore from 'redux-mock-store';
 import { useParams } from 'react-router-dom';
@@ -15,9 +15,8 @@ import {
   renderWithConfirmContextProvider,
   renderWithConfirmContext,
 } from '../../../../../../test/lib/confirmations/render-helpers';
-import { unapprovedTypedSignMsgV4WithPermission } from '../../../../../../test/data/confirmations/typed_sign';
 import { useAssetDetails } from '../../../hooks/useAssetDetails';
-import { useEnabledAdvancedPermissions } from '../../../../../hooks/gator-permissions/useEnabledAdvancedPermissions';
+import { getEnabledAdvancedPermissions } from '../../../../../../shared/lib/gator-permissions/feature-flags';
 import { DEFAULT_ROUTE } from '../../../../../helpers/constants/routes';
 import { ConfirmationLoader } from '../../../hooks/useConfirmationNavigation';
 import { enLocale as messages } from '../../../../../../test/lib/i18n-helpers';
@@ -60,9 +59,12 @@ jest.mock('../../../hooks/useTransactionFocusEffect', () => ({
 }));
 
 jest.mock(
-  '../../../../../hooks/gator-permissions/useEnabledAdvancedPermissions',
+  '../../../../../../shared/lib/gator-permissions/feature-flags',
   () => ({
-    useEnabledAdvancedPermissions: jest
+    ...jest.requireActual(
+      '../../../../../../shared/lib/gator-permissions/feature-flags',
+    ),
+    getEnabledAdvancedPermissions: jest
       .fn()
       .mockReturnValue(['native-token-stream']),
   }),
@@ -100,21 +102,18 @@ jest.mock('../../../context/confirm', () => {
 describe('Info', () => {
   const mockedAssetDetails = jest.mocked(useAssetDetails);
   const mockedUseParams = jest.mocked(useParams);
-  const mockedUseEnabledAdvancedPermissions = jest.mocked(
-    useEnabledAdvancedPermissions,
-  );
   const MOCK_CONFIRMATION_ID = '1';
 
   beforeEach(() => {
+    jest
+      .mocked(getEnabledAdvancedPermissions)
+      .mockReturnValue(['native-token-stream']);
     mockedAssetDetails.mockImplementation(() => ({
       // TODO: Fix in https://github.com/MetaMask/metamask-extension/issues/31973
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       decimals: '4' as any,
     }));
     mockedUseParams.mockReturnValue({});
-    mockedUseEnabledAdvancedPermissions.mockReturnValue([
-      'native-token-stream',
-    ]);
     mockUseConfirmationNavigationOptions.mockReturnValue({ loader: null });
   });
 
@@ -133,9 +132,7 @@ describe('Info', () => {
   });
 
   it('renders info section for typed sign request with permission', () => {
-    const state = getMockTypedSignPermissionConfirmState(
-      unapprovedTypedSignMsgV4WithPermission.decodedPermission,
-    );
+    const state = getMockTypedSignPermissionConfirmState();
     const mockStore = configureMockStore([])(state);
     const { container } = renderWithConfirmContextProvider(<Info />, mockStore);
     expect(container).toMatchSnapshot();
@@ -143,7 +140,7 @@ describe('Info', () => {
 
   it('throws an error if gator permissions feature is not enabled', () => {
     // the requested permission type is `native-token-stream`
-    mockedUseEnabledAdvancedPermissions.mockReturnValue([]);
+    jest.mocked(getEnabledAdvancedPermissions).mockReturnValue([]);
 
     const state = getMockTypedSignPermissionConfirmState();
     const mockStore = configureMockStore([])(state);
@@ -154,7 +151,9 @@ describe('Info', () => {
 
   it('throws an error if the specific permission type is not enabled', () => {
     // the requested permission type is `native-token-stream`
-    mockedUseEnabledAdvancedPermissions.mockReturnValue(['erc20-token-stream']);
+    jest
+      .mocked(getEnabledAdvancedPermissions)
+      .mockReturnValue(['erc20-token-stream']);
 
     const state = getMockTypedSignPermissionConfirmState();
     const mockStore = configureMockStore([])(state);
@@ -179,6 +178,13 @@ describe('Info', () => {
       expect(screen.getByText(messages.speed.message)).toBeInTheDocument();
     });
 
+    const networkImage = container.querySelector(
+      '.mm-avatar-network__network-image',
+    );
+    if (networkImage) {
+      fireEvent.error(networkImage);
+    }
+
     expect(container).toMatchSnapshot();
   });
 
@@ -190,6 +196,13 @@ describe('Info', () => {
     await waitFor(() => {
       expect(screen.getByText(messages.speed.message)).toBeInTheDocument();
     });
+
+    const networkImage = container.querySelector(
+      '.mm-avatar-network__network-image',
+    );
+    if (networkImage) {
+      fireEvent.error(networkImage);
+    }
 
     expect(container).toMatchSnapshot();
   });

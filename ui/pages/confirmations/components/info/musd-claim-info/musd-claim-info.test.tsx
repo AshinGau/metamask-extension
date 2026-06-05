@@ -115,13 +115,17 @@ describe('MusdClaimInfo', () => {
     });
     const mockStore = configureMockStore()(state);
 
-    let result: ReturnType<typeof renderWithConfirmContextProvider>;
+    const { getByTestId } = renderWithConfirmContextProvider(
+      <MusdClaimInfo />,
+      mockStore,
+    );
+
     await act(async () => {
-      result = renderWithConfirmContextProvider(<MusdClaimInfo />, mockStore);
+      // Intentionally empty — flush async state updates from child hooks
     });
 
-    expect(result!.getByTestId('musd-claim-heading-amount')).toBeDefined();
-    expect(result!.getByTestId('musd-claim-details-section')).toBeDefined();
-    expect(result!.getByTestId('gas-fee-section')).toBeDefined();
+    expect(getByTestId('musd-claim-heading-amount')).toBeDefined();
+    expect(getByTestId('musd-claim-details-section')).toBeDefined();
+    expect(getByTestId('gas-fee-section')).toBeDefined();
   });
 });

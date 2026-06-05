@@ -54,25 +54,15 @@
     "app/scripts/messenger-client-init/snaps/snap-controller-init.test.ts": {
       "error: Error: A handler for SnapController:setClientActive": 2
     },
-    "app/scripts/metamask-controller.actions.test.js": {
-      "Test errors: Fetch failures": 4,
-      "Third-party: Bindings failed, using pure JS": 1,
-      "µWebSockets: Compatibility warnings": 1,
-      "µWebSockets: Fallback to Node implementation": 1
-    },
     "app/scripts/metamask-controller.test.js": {
       "MetaMask: MetaMetrics invalid trait types": 1,
       "MetaMask: Sentry initialization warnings": 1,
       "ObjectMultiplex: Malformed chunk warnings": 1,
-      "Third-party: Bindings failed, using pure JS": 1,
       "error: AssertionError: The Snaps platform requires": 1,
       "error: Error: NetworkController state is invalid:": 1,
       "error: Error: invalid address (argument=\"address\", value=\"0x\",": 2,
-      "error: This browser doesn't support cancelAnimationFrame.": 1,
       "error: {": 1,
-      "warn: Error during SnapController initialization. AssertionError:": 2,
-      "µWebSockets: Compatibility warnings": 1,
-      "µWebSockets: Fallback to Node implementation": 1
+      "warn: Error during SnapController initialization. AssertionError:": 2
     },
     "app/scripts/migrations/092.2.test.ts": {
       "error: Migration 92.2: Invalid NetworkController state:": 2
@@ -175,16 +165,6 @@
     "shared/lib/bridge-utils/security-alerts-api.util.test.ts": {
       "warn: Missing token alert translation for": 1
     },
-    "shared/lib/contract-utils.test.js": {
-      "Third-party: Bindings failed, using pure JS": 1,
-      "µWebSockets: Compatibility warnings": 1,
-      "µWebSockets: Fallback to Node implementation": 1
-    },
-    "shared/lib/metametrics.test.ts": {
-      "Third-party: Bindings failed, using pure JS": 1,
-      "µWebSockets: Compatibility warnings": 1,
-      "µWebSockets: Fallback to Node implementation": 1
-    },
     "shared/lib/selectors/index.test.ts": {
       "Reselect: Identity function warnings": 2
     },
@@ -200,11 +180,6 @@
       "error: StorageService: Failed to get keys": 1,
       "error: StorageService: Failed to remove item:": 1,
       "error: StorageService: Failed to set item:": 1
-    },
-    "shared/lib/transaction.utils.test.js": {
-      "Third-party: Bindings failed, using pure JS": 1,
-      "µWebSockets: Compatibility warnings": 1,
-      "µWebSockets: Fallback to Node implementation": 1
     },
     "ui/components/app/account-list-item/account-list-item-component.test.js": {
       "error: Warning: I18nProvider: Support for defaultProps": 1,
@@ -592,7 +567,6 @@
     },
     "ui/components/app/musd/hooks/useMerklRewards.test.ts": {
       "Deprecation warnings": 1,
-      "React: State updates on unmounted components": 1,
       "error: Warning: ReactDOM.render is no longer": 19,
       "error: Warning: `ReactDOMTestUtils.act` is deprecated in": 1
     },
@@ -600,9 +574,6 @@
       "Deprecation warnings": 1,
       "error: Warning: ReactDOM.render is no longer": 14,
       "error: Warning: `ReactDOMTestUtils.act` is deprecated in": 1
-    },
-    "ui/components/app/musd/info-popover/info-popover.test.tsx": {
-      "React: State updates on unmounted components": 1
     },
     "ui/components/app/musd/musd-asset-cta.test.tsx": {
       "error: Warning: I18nProvider: Support for defaultProps": 1,
@@ -739,7 +710,6 @@
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
     },
     "ui/components/app/perps/order-entry/components/order-summary/order-summary.test.tsx": {
-      "MetaMask: Background connection not initialized": 1,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
@@ -869,15 +839,58 @@
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
     },
+    "ui/components/app/qr-hardware-popover/base-qr-reader/base-qr-reader.test.tsx": {
+      "error: Warning: I18nProvider: Support for defaultProps": 1,
+      "error: Warning: LegacyI18nProvider uses the legacy": 1,
+      "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1,
+      "error: Warning: PageContainerFooter uses the legacy": 1
+    },
     "ui/components/app/qr-hardware-popover/qr-error-content/qr-error-content.test.tsx": {
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1
     },
     "ui/components/app/qr-hardware-popover/qr-hardware-popover.test.tsx": {
+      "React: Act warnings (component updates not wrapped)": 12,
       "error: Warning: I18nProvider: Support for defaultProps": 1
     },
+    "ui/components/app/qr-hardware-popover/qr-hardware-sign-request/qr-hardware-sign-request/qr-hardware-sign-request.test.tsx": {
+      "React: Act warnings (component updates not wrapped)": 8,
+      "error: Warning: I18nProvider: Support for defaultProps": 1,
+      "error: Warning: LegacyI18nProvider uses the legacy": 1,
+      "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
+    },
+    "ui/components/app/qr-hardware-popover/qr-hardware-sign-request/qr-player/qr-player.test.tsx": {
+      "error: Warning: I18nProvider: Support for defaultProps": 1,
+      "error: Warning: LegacyI18nProvider uses the legacy": 1,
+      "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1,
+      "error: Warning: PageContainerFooter uses the legacy": 1
+    },
+    "ui/components/app/qr-hardware-popover/qr-hardware-sign-request/qr-reader/qr-reader.test.tsx": {
+      "error: Warning: I18nProvider: Support for defaultProps": 1,
+      "error: Warning: LegacyI18nProvider uses the legacy": 1,
+      "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
+    },
+    "ui/components/app/qr-hardware-popover/qr-hardware-wallet-importer/qr-hardware-wallet-importer.test.tsx": {
+      "error: Warning: I18nProvider: Support for defaultProps": 1,
+      "error: Warning: LegacyI18nProvider uses the legacy": 1,
+      "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
+    },
+    "ui/components/app/qr-hardware-popover/qr-hooks/base-reader-reducer/useBaseReaderReducer.test.ts": {
+      "Deprecation warnings": 1,
+      "error: Warning: ReactDOM.render is no longer": 1,
+      "error: Warning: `ReactDOMTestUtils.act` is deprecated in": 1
+    },
+    "ui/components/app/qr-hardware-popover/qr-hooks/camera-permission/useCameraPermission.test.ts": {
+      "Deprecation warnings": 1,
+      "error: Warning: ReactDOM.render is no longer": 17,
+      "error: Warning: `ReactDOMTestUtils.act` is deprecated in": 1
+    },
+    "ui/components/app/qr-hardware-popover/qr-hooks/decoder-lifecycle/useDecoderLifecycle.test.ts": {
+      "Deprecation warnings": 1,
+      "error: Warning: ReactDOM.render is no longer": 17,
+      "error: Warning: `ReactDOMTestUtils.act` is deprecated in": 1
+    },
     "ui/components/app/reveal-srp-list/reveal-srp-list.test.tsx": {
-      "Reselect: Identity function warnings": 1,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
@@ -887,7 +900,6 @@
       "error: Warning: LegacyI18nProvider uses the legacy": 1
     },
     "ui/components/app/rewards/RewardsVipBadge.test.tsx": {
-      "React: State updates on unmounted components": 1,
       "error: Error: test": 1,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
@@ -956,14 +968,12 @@
     "ui/components/app/snaps/snap-ui-renderer/components/account-selector.test.ts": {
       "MetaMask: Background connection not initialized": 4,
       "React: DOM nesting violations": 1,
-      "Reselect: Identity function warnings": 2,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
     },
     "ui/components/app/snaps/snap-ui-renderer/components/address-input.test.ts": {
       "MetaMask: Background connection not initialized": 8,
-      "Reselect: Identity function warnings": 3,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
@@ -998,8 +1008,7 @@
       "React: Act warnings (component updates not wrapped)": 1,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
-      "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1,
-      "error: Warning: React does not recognize": 1
+      "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
     },
     "ui/components/app/snaps/snap-version/snap-external-pill.test.js": {
       "error: Warning: I18nProvider: Support for defaultProps": 1,
@@ -1016,7 +1025,7 @@
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
     },
     "ui/components/app/srp-input/srp-input.test.js": {
-      "React: Act warnings (component updates not wrapped)": 51712,
+      "React: Act warnings (component updates not wrapped)": 51702,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1
     },
@@ -1377,7 +1386,7 @@
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
     },
     "ui/components/multichain/asset-picker-amount/asset-picker-modal/asset-picker-modal.test.tsx": {
-      "React: Act warnings (component updates not wrapped)": 16,
+      "React: Act warnings (component updates not wrapped)": 12,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
@@ -1453,7 +1462,7 @@
       "error: Warning: React does not recognize": 1
     },
     "ui/components/multichain/import-tokens-modal/import-tokens-modal.test.js": {
-      "React: Act warnings (component updates not wrapped)": 15,
+      "React: Act warnings (component updates not wrapped)": 11,
       "React: DOM nesting violations": 1,
       "React: PropTypes validation failures": 2,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
@@ -1539,8 +1548,6 @@
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
     },
     "ui/components/multichain/networks-form/networks-form.test.js": {
-      "React: Act warnings (component updates not wrapped)": 1,
-      "React: State updates on unmounted components": 1,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
@@ -1766,7 +1773,6 @@
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
     },
     "ui/components/ui/update-nickname-popover/update-nickname-popover.test.js": {
-      "React: PropTypes validation failures": 1,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
@@ -2381,7 +2387,6 @@
     },
     "ui/hooks/rewards/useValidateReferralCode.test.tsx": {
       "Deprecation warnings": 1,
-      "React: Act warnings (component updates not wrapped)": 1,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1,
@@ -2390,7 +2395,6 @@
     },
     "ui/hooks/rewards/useVipTier.test.ts": {
       "Deprecation warnings": 1,
-      "React: State updates on unmounted components": 1,
       "error: Error: fail": 1,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
@@ -2429,6 +2433,11 @@
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1,
       "error: Warning: ReactDOM.render is no longer": 5,
+      "error: Warning: `ReactDOMTestUtils.act` is deprecated in": 1
+    },
+    "ui/hooks/swap/hardware-wallets/useHwSwapQrState.test.ts": {
+      "Deprecation warnings": 1,
+      "error: Warning: ReactDOM.render is no longer": 14,
       "error: Warning: `ReactDOMTestUtils.act` is deprecated in": 1
     },
     "ui/hooks/useABTest.test.ts": {
@@ -2492,7 +2501,7 @@
     },
     "ui/hooks/useCurrencyRatePolling.test.ts": {
       "Deprecation warnings": 1,
-      "React: Act warnings (component updates not wrapped)": 7,
+      "React: Act warnings (component updates not wrapped)": 3,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1,
@@ -2506,8 +2515,7 @@
     },
     "ui/hooks/useDecodedTransactionData.test.ts": {
       "Deprecation warnings": 1,
-      "React: Act usage warnings (incorrect await)": 10,
-      "React: Act warnings (component updates not wrapped)": 10,
+      "React: Act warnings (component updates not wrapped)": 7,
       "error: Unexpected keys \"data\", \"to\", \"chainId\"": 1,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
@@ -2521,7 +2529,7 @@
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1,
-      "error: Warning: ReactDOM.render is no longer": 23,
+      "error: Warning: ReactDOM.render is no longer": 24,
       "error: Warning: `ReactDOMTestUtils.act` is deprecated in": 1
     },
     "ui/hooks/useEarliestNonceByChain.test.ts": {
@@ -2719,7 +2727,7 @@
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1,
-      "error: Warning: ReactDOM.render is no longer": 8,
+      "error: Warning: ReactDOM.render is no longer": 2,
       "error: Warning: `ReactDOMTestUtils.act` is deprecated in": 1
     },
     "ui/hooks/useTokenData.test.js": {
@@ -2804,7 +2812,6 @@
     },
     "ui/hooks/useTrustSignals.test.ts": {
       "Deprecation warnings": 1,
-      "Test errors: Uncaught Errors": 4,
       "error: Warning: ReactDOM.render is no longer": 15,
       "error: Warning: `ReactDOMTestUtils.act` is deprecated in": 1
     },
@@ -2823,6 +2830,11 @@
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1,
       "error: Warning: LegacyRouteMessengerProvider uses the legacy": 1
+    },
+    "ui/pages/activity/query-filters/query-filters.test.ts": {
+      "Deprecation warnings": 1,
+      "error: Warning: ReactDOM.render is no longer": 1,
+      "error: Warning: `ReactDOMTestUtils.act` is deprecated in": 1
     },
     "ui/pages/asset/components/asset-page.test.tsx": {
       "React: DOM nesting violations": 2,
@@ -2930,7 +2942,7 @@
       "error: Warning: `ReactDOMTestUtils.act` is deprecated in": 1
     },
     "ui/pages/bridge/index.test.tsx": {
-      "React: Act warnings (component updates not wrapped)": 5,
+      "React: Act warnings (component updates not wrapped)": 3,
       "Reselect: Identity function warnings": 1,
       "Reselect: Input stability warnings": 1,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
@@ -2969,12 +2981,9 @@
     },
     "ui/pages/bridge/prepare/components/bridge-alert-banner-list.test.tsx": {
       "Reselect: Identity function warnings": 1,
-      "Third-party: Bindings failed, using pure JS": 1,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
-      "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1,
-      "µWebSockets: Compatibility warnings": 1,
-      "µWebSockets: Fallback to Node implementation": 1
+      "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
     },
     "ui/pages/bridge/prepare/components/bridge-alert-modal.test.tsx": {
       "error: Warning: I18nProvider: Support for defaultProps": 1,
@@ -3003,22 +3012,16 @@
     },
     "ui/pages/bridge/prepare/prepare-bridge-page-ensure-network.test.tsx": {
       "Reselect: Identity function warnings": 1,
-      "Third-party: Bindings failed, using pure JS": 1,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
-      "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1,
-      "µWebSockets: Compatibility warnings": 1,
-      "µWebSockets: Fallback to Node implementation": 1
+      "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
     },
     "ui/pages/bridge/prepare/prepare-bridge-page.test.tsx": {
       "Reselect: Identity function warnings": 1,
-      "Third-party: Bindings failed, using pure JS": 1,
       "error: Warning: A component is changing": 2,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
-      "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1,
-      "µWebSockets: Compatibility warnings": 1,
-      "µWebSockets: Fallback to Node implementation": 1
+      "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
     },
     "ui/pages/bridge/quotes/bridge-quotes-modal.test.tsx": {
       "error: Warning: I18nProvider: Support for defaultProps": 1,
@@ -3049,7 +3052,7 @@
       "error: Warning: PageContainerFooter uses the legacy": 1
     },
     "ui/pages/confirm-decrypt-message/confirm-decrypt-message.component.test.js": {
-      "React: Act warnings (component updates not wrapped)": 16,
+      "React: Act warnings (component updates not wrapped)": 1,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1,
@@ -3234,8 +3237,8 @@
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
     },
     "ui/pages/confirmations/components/confirm/info/approve/approve.test.tsx": {
-      "MetaMask: Background connection not initialized": 39,
-      "React: Act warnings (component updates not wrapped)": 14,
+      "MetaMask: Background connection not initialized": 25,
+      "React: Act warnings (component updates not wrapped)": 10,
       "Reselect: Identity function warnings": 1,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
@@ -3276,8 +3279,8 @@
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
     },
     "ui/pages/confirmations/components/confirm/info/base-transaction-info/base-transaction-info.test.tsx": {
-      "MetaMask: Background connection not initialized": 77,
-      "React: Act warnings (component updates not wrapped)": 14,
+      "MetaMask: Background connection not initialized": 53,
+      "React: Act warnings (component updates not wrapped)": 10,
       "Reselect: Identity function warnings": 1,
       "Reselect: Input stability warnings": 1,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
@@ -3286,7 +3289,6 @@
     },
     "ui/pages/confirmations/components/confirm/info/batch/batch-simulation-details/batch-simulation-details.test.tsx": {
       "MetaMask: Background connection not initialized": 14,
-      "React: Act warnings (component updates not wrapped)": 2,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
@@ -3319,8 +3321,7 @@
     },
     "ui/pages/confirmations/components/confirm/info/hooks/useDecodedTransactionData.test.ts": {
       "Deprecation warnings": 1,
-      "React: Act usage warnings (incorrect await)": 9,
-      "React: Act warnings (component updates not wrapped)": 9,
+      "React: Act warnings (component updates not wrapped)": 7,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1,
@@ -3337,7 +3338,7 @@
     },
     "ui/pages/confirmations/components/confirm/info/hooks/useFeeCalculations.test.ts": {
       "Deprecation warnings": 1,
-      "MetaMask: Background connection not initialized": 48,
+      "MetaMask: Background connection not initialized": 32,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1,
@@ -3354,7 +3355,7 @@
     },
     "ui/pages/confirmations/components/confirm/info/hooks/useGasFeeToken.test.ts": {
       "Deprecation warnings": 1,
-      "MetaMask: Background connection not initialized": 96,
+      "MetaMask: Background connection not initialized": 64,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1,
@@ -3433,8 +3434,8 @@
       "error: Warning: `ReactDOMTestUtils.act` is deprecated in": 1
     },
     "ui/pages/confirmations/components/confirm/info/info.test.tsx": {
-      "MetaMask: Background connection not initialized": 122,
-      "React: Act warnings (component updates not wrapped)": 22,
+      "MetaMask: Background connection not initialized": 84,
+      "React: Act warnings (component updates not wrapped)": 18,
       "Reselect: Identity function warnings": 1,
       "Reselect: Input stability warnings": 1,
       "Test errors: Uncaught Errors": 4,
@@ -3443,16 +3444,16 @@
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
     },
     "ui/pages/confirmations/components/confirm/info/native-transfer/native-transfer.test.tsx": {
-      "MetaMask: Background connection not initialized": 43,
-      "React: Act warnings (component updates not wrapped)": 17,
-      "Reselect: Identity function warnings": 4,
+      "MetaMask: Background connection not initialized": 28,
+      "React: Act warnings (component updates not wrapped)": 12,
+      "Reselect: Identity function warnings": 1,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
     },
     "ui/pages/confirmations/components/confirm/info/nft-token-transfer/nft-token-transfer.test.tsx": {
-      "MetaMask: Background connection not initialized": 40,
-      "React: Act warnings (component updates not wrapped)": 15,
+      "MetaMask: Background connection not initialized": 26,
+      "React: Act warnings (component updates not wrapped)": 11,
       "Reselect: Identity function warnings": 1,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
@@ -3479,8 +3480,8 @@
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
     },
     "ui/pages/confirmations/components/confirm/info/set-approval-for-all-info/set-approval-for-all-info.test.tsx": {
-      "MetaMask: Background connection not initialized": 39,
-      "React: Act warnings (component updates not wrapped)": 15,
+      "MetaMask: Background connection not initialized": 25,
+      "React: Act warnings (component updates not wrapped)": 11,
       "Reselect: Identity function warnings": 1,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
@@ -3499,8 +3500,7 @@
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
     },
     "ui/pages/confirmations/components/confirm/info/shared/batched-approval-function/batched-approval-function.test.tsx": {
-      "React: Act usage warnings (incorrect await)": 4,
-      "React: Act warnings (component updates not wrapped)": 4,
+      "React: Act warnings (component updates not wrapped)": 2,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
@@ -3511,7 +3511,7 @@
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
     },
     "ui/pages/confirmations/components/confirm/info/shared/edit-gas-fees-row/edit-gas-fees-row.test.tsx": {
-      "MetaMask: Background connection not initialized": 132,
+      "MetaMask: Background connection not initialized": 88,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
@@ -3527,25 +3527,25 @@
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
     },
     "ui/pages/confirmations/components/confirm/info/shared/gas-fee-token-list-item/gas-fee-token-list-item.test.tsx": {
-      "MetaMask: Background connection not initialized": 48,
+      "MetaMask: Background connection not initialized": 32,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
     },
     "ui/pages/confirmations/components/confirm/info/shared/gas-fee-token-modal/gas-fee-token-modal.test.tsx": {
-      "MetaMask: Background connection not initialized": 138,
+      "MetaMask: Background connection not initialized": 92,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
     },
     "ui/pages/confirmations/components/confirm/info/shared/gas-fee-token-toast/gas-fee-token-toast.test.tsx": {
-      "MetaMask: Background connection not initialized": 12,
+      "MetaMask: Background connection not initialized": 8,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
     },
     "ui/pages/confirmations/components/confirm/info/shared/gas-fees-details/gas-fees-details.test.tsx": {
-      "MetaMask: Background connection not initialized": 364,
+      "MetaMask: Background connection not initialized": 266,
       "Reselect: Identity function warnings": 1,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
@@ -3557,7 +3557,7 @@
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
     },
     "ui/pages/confirmations/components/confirm/info/shared/gas-fees-section/gas-fees-section.test.tsx": {
-      "MetaMask: Background connection not initialized": 52,
+      "MetaMask: Background connection not initialized": 38,
       "Reselect: Identity function warnings": 1,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
@@ -3582,7 +3582,7 @@
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
     },
     "ui/pages/confirmations/components/confirm/info/shared/selected-gas-fee-token/selected-gas-fee-token.test.tsx": {
-      "MetaMask: Background connection not initialized": 84,
+      "MetaMask: Background connection not initialized": 56,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
@@ -3599,8 +3599,7 @@
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
     },
     "ui/pages/confirmations/components/confirm/info/shared/transaction-data/transaction-data.test.tsx": {
-      "React: Act usage warnings (incorrect await)": 10,
-      "React: Act warnings (component updates not wrapped)": 9,
+      "React: Act warnings (component updates not wrapped)": 1,
       "React: Missing key props in lists": 1,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
@@ -3623,8 +3622,8 @@
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
     },
     "ui/pages/confirmations/components/confirm/info/shield-subscription-approve/shield-subscription-approve.test.tsx": {
-      "MetaMask: Background connection not initialized": 52,
-      "React: Act warnings (component updates not wrapped)": 19,
+      "MetaMask: Background connection not initialized": 14,
+      "React: Act warnings (component updates not wrapped)": 10,
       "Reselect: Identity function warnings": 1,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
@@ -3641,8 +3640,8 @@
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
     },
     "ui/pages/confirmations/components/confirm/info/token-transfer/token-transfer.test.tsx": {
-      "MetaMask: Background connection not initialized": 39,
-      "React: Act warnings (component updates not wrapped)": 15,
+      "MetaMask: Background connection not initialized": 25,
+      "React: Act warnings (component updates not wrapped)": 11,
       "Reselect: Identity function warnings": 1,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
@@ -3893,8 +3892,7 @@
       "React: Act warnings (component updates not wrapped)": 28,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
-      "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1,
-      "error: Warning: ReactDOM.render is no longer": 7
+      "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
     },
     "ui/pages/confirmations/components/rows/bridge-time-row/bridge-time-row.test.tsx": {
       "error: Warning: I18nProvider: Support for defaultProps": 1,
@@ -4072,7 +4070,7 @@
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
     },
     "ui/pages/confirmations/confirm/confirm.test.tsx": {
-      "MetaMask: Background connection not initialized": 235,
+      "MetaMask: Background connection not initialized": 163,
       "React: Act warnings (component updates not wrapped)": 3,
       "Reselect: Identity function warnings": 3,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
@@ -4233,7 +4231,7 @@
     },
     "ui/pages/confirmations/hooks/alerts/transactions/useInsufficientBalanceAlerts.test.ts": {
       "Deprecation warnings": 1,
-      "MetaMask: Background connection not initialized": 90,
+      "MetaMask: Background connection not initialized": 60,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1,
@@ -4497,6 +4495,11 @@
     "ui/pages/confirmations/hooks/pay/useAutomaticTransactionPayToken.test.tsx": {
       "Deprecation warnings": 1,
       "error: Warning: ReactDOM.render is no longer": 13,
+      "error: Warning: `ReactDOMTestUtils.act` is deprecated in": 1
+    },
+    "ui/pages/confirmations/hooks/pay/useIsPaidByMetaMask.test.ts": {
+      "Deprecation warnings": 1,
+      "error: Warning: ReactDOM.render is no longer": 11,
       "error: Warning: `ReactDOMTestUtils.act` is deprecated in": 1
     },
     "ui/pages/confirmations/hooks/pay/usePerpsWithdrawDefaultToken.test.tsx": {
@@ -4999,7 +5002,7 @@
     },
     "ui/pages/confirmations/hooks/useConfirmationAlerts.test.ts": {
       "Deprecation warnings": 1,
-      "MetaMask: Background connection not initialized": 7,
+      "MetaMask: Background connection not initialized": 5,
       "React: Act warnings (component updates not wrapped)": 3,
       "Reselect: Identity function warnings": 3,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
@@ -5095,7 +5098,7 @@
     },
     "ui/pages/confirmations/hooks/useHasInsufficientBalance.test.ts": {
       "Deprecation warnings": 1,
-      "MetaMask: Background connection not initialized": 54,
+      "MetaMask: Background connection not initialized": 36,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1,
@@ -5263,7 +5266,6 @@
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
     },
     "ui/pages/custom-token-import/custom-token-import.test.tsx": {
-      "React: Act warnings (component updates not wrapped)": 2,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
@@ -5462,7 +5464,6 @@
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
     },
     "ui/pages/onboarding-flow/creation-successful/creation-successful.test.tsx": {
-      "error: Error opening side panel: Error:": 4,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
@@ -5480,7 +5481,6 @@
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
     },
     "ui/pages/onboarding-flow/metametrics/metametrics.test.tsx": {
-      "React: Act usage warnings (incorrect await)": 4,
       "React: Act warnings (component updates not wrapped)": 4,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
@@ -5497,7 +5497,6 @@
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
     },
     "ui/pages/onboarding-flow/onboarding-flow.test.tsx": {
-      "MetaMask: Background connection not initialized": 13,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
@@ -5551,8 +5550,6 @@
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
     },
     "ui/pages/onboarding-flow/welcome/welcome.test.tsx": {
-      "MetaMask: Background connection not initialized": 16,
-      "React: State updates on unmounted components": 1,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
@@ -5883,8 +5880,7 @@
       "React: Act warnings (component updates not wrapped)": 7,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
-      "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1,
-      "error: [useShieldRewards error]: Error: Actions must": 7
+      "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
     },
     "ui/pages/shield/transaction-shield/claims-form/claims-form.test.tsx": {
       "MetaMask: Background connection not initialized": 4,
@@ -6177,7 +6173,7 @@
     },
     "ui/pages/unlock-page/unlock-page.test.tsx": {
       "MetaMask: Background connection not initialized": 1,
-      "React: Act warnings (component updates not wrapped)": 2,
+      "React: Act warnings (component updates not wrapped)": 1,
       "error: Warning: A suspended resource finished": 1,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,

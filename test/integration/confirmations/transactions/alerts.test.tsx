@@ -1,5 +1,5 @@
 import { randomUUID } from 'crypto';
-import { ApprovalType } from '@metamask/controller-utils';
+import { ApprovalType, ERC20 } from '@metamask/controller-utils';
 import { act, fireEvent, screen } from '@testing-library/react';
 import nock from 'nock';
 import { SimulationTokenStandard } from '@metamask/transaction-controller';
@@ -16,6 +16,25 @@ jest.mock('../../../../ui/store/background-connection', () => ({
   ...jest.requireActual('../../../../ui/store/background-connection'),
   submitRequestToBackground: jest.fn(),
 }));
+
+jest.mock('../../../../ui/pages/confirmations/hooks/useAssetDetails', () => ({
+  useAssetDetails: () => ({
+    decimals: '4',
+    assetStandard: 'ERC20',
+    tokenSymbol: 'TST',
+    assetName: 'Test Token',
+  }),
+}));
+
+jest.mock(
+  '../../../../ui/pages/confirmations/components/confirm/info/approve/hooks/use-is-nft',
+  () => ({
+    useIsNFT: () => ({
+      isNFT: false,
+      pending: false,
+    }),
+  }),
+);
 
 const mockedBackgroundConnection = jest.mocked(backgroundConnection);
 
@@ -108,6 +127,17 @@ const getMetaMaskStateWithUnapprovedApproveTransaction = (
     },
     pendingApprovalCount: 1,
     knownMethodData: {
+      '0x095ea7b3': {
+        name: 'Approve',
+        params: [
+          {
+            type: 'address',
+          },
+          {
+            type: 'uint256',
+          },
+        ],
+      },
       '0x3b4b1381': {
         name: 'Mint NFTs',
         params: [
@@ -229,15 +259,48 @@ const getMetaMaskStateWithUnapprovedContractInteractionTransaction = (
   };
 };
 
+const advancedDetailsMockedRequests = {
+  getGasFeeTimeEstimate: {
+    lowerTimeBound: new Date().getTime(),
+    upperTimeBound: new Date().getTime(),
+  },
+  getNextNonce: '9',
+  decodeTransactionData: {
+    data: [
+      {
+        name: 'Approve',
+        params: [
+          {
+            type: 'address',
+            value: '0x2e0D7E8c45221FcA00d74a3609A0f7097035d09B',
+          },
+          {
+            type: 'uint256',
+            value: 1,
+          },
+        ],
+      },
+    ],
+    source: 'FourByte',
+  },
+  addKnownMethodData: {},
+};
+
 const setupSubmitRequestToBackgroundMocks = (
   mockRequests?: Record<string, unknown>,
 ) => {
   mockedBackgroundConnection.submitRequestToBackground.mockImplementation(
     createMockImplementation({
+      ...advancedDetailsMockedRequests,
       ...mockRequests,
     }),
   );
 };
+
+async function waitForApproveConfirmationLoaded() {
+  await screen.findByTestId('confirmation__approve-details');
+  await screen.findByTestId('gas-fee-section');
+}
 
 const addTokenBalanceChangesToTransaction = (
   // TODO: Fix in https://github.com/MetaMask/metamask-extension/issues/31973
@@ -272,11 +335,13 @@ describe('Contract Interaction Confirmation Alerts', () => {
     jest.resetAllMocks();
     setupSubmitRequestToBackgroundMocks({
       getTokenStandardAndDetailsByChain: {
+        standard: ERC20,
         decimals: '4',
       },
     });
-    const APPROVE_NFT_HEX_SIG = '0x095ea7b3';
-    mock4byte(APPROVE_NFT_HEX_SIG);
+    const APPROVE_ERC20_HEX_SIG = '0x095ea7b3';
+    const APPROVE_ERC20_TEXT_SIG = 'approve(address,uint256)';
+    mock4byte(APPROVE_ERC20_HEX_SIG, APPROVE_ERC20_TEXT_SIG);
   });
 
   afterEach(() => {
@@ -320,6 +385,8 @@ describe('Contract Interaction Confirmation Alerts', () => {
       });
     });
 
+    await waitForApproveConfirmationLoaded();
+
     fireEvent.click(await screen.findByTestId('inline-alert'));
 
     expect(await screen.findByTestId('alert-modal')).toBeInTheDocument();
@@ -352,8 +419,13 @@ describe('Contract Interaction Confirmation Alerts', () => {
 
     const mockedMetaMaskState =
       getMetaMaskStateWithUnapprovedApproveTransaction(account.address);
-    const transaction = mockedMetaMaskState.transactions[0];
-    transaction.txParams.gas = '0x0';
+    const transaction = {
+      ...mockedMetaMaskState.transactions[0],
+      txParams: {
+        ...mockedMetaMaskState.transactions[0].txParams,
+        gas: '0x0',
+      },
+    };
 
     await act(async () => {
       await integrationTestRender({
@@ -364,6 +436,8 @@ describe('Contract Interaction Confirmation Alerts', () => {
         backgroundConnection: backgroundConnectionMocked,
       });
     });
+
+    await waitForApproveConfirmationLoaded();
 
     fireEvent.click(await screen.findByTestId('inline-alert'));
 
@@ -410,6 +484,8 @@ describe('Contract Interaction Confirmation Alerts', () => {
         backgroundConnection: backgroundConnectionMocked,
       });
     });
+
+    await waitForApproveConfirmationLoaded();
 
     fireEvent.click(await screen.findByTestId('inline-alert'));
 
@@ -486,6 +562,8 @@ describe('Contract Interaction Confirmation Alerts', () => {
       });
     });
 
+    await waitForApproveConfirmationLoaded();
+
     expect(await screen.findAllByTestId('inline-alert')).toHaveLength(2);
 
     fireEvent.click((await screen.findAllByTestId('inline-alert'))[0]);
@@ -534,6 +612,8 @@ describe('Contract Interaction Confirmation Alerts', () => {
         backgroundConnection: backgroundConnectionMocked,
       });
     });
+
+    await waitForApproveConfirmationLoaded();
 
     fireEvent.click(await screen.findByTestId('inline-alert'));
 
@@ -648,6 +728,8 @@ describe('Contract Interaction Confirmation Alerts', () => {
       });
     });
 
+    await waitForApproveConfirmationLoaded();
+
     fireEvent.click(await screen.findByTestId('inline-alert'));
 
     expect(await screen.findByTestId('alert-modal')).toBeInTheDocument();
@@ -684,6 +766,8 @@ describe('Contract Interaction Confirmation Alerts', () => {
         backgroundConnection: backgroundConnectionMocked,
       });
     });
+
+    await waitForApproveConfirmationLoaded();
 
     fireEvent.click(await screen.findByTestId('inline-alert'));
 
@@ -727,6 +811,8 @@ describe('Contract Interaction Confirmation Alerts', () => {
         backgroundConnection: backgroundConnectionMocked,
       });
     });
+
+    await waitForApproveConfirmationLoaded();
 
     // Should have multiple inline alerts
     const alerts = await screen.findAllByTestId('inline-alert');
@@ -847,6 +933,8 @@ describe('Contract Interaction Confirmation Alerts', () => {
       });
     });
 
+    await screen.findByTestId('gas-fee-section');
+
     fireEvent.click(await screen.findByTestId('inline-alert'));
 
     expect(await screen.findByTestId('alert-modal')).toBeInTheDocument();
@@ -889,6 +977,8 @@ describe('Contract Interaction Confirmation Alerts', () => {
         backgroundConnection: backgroundConnectionMocked,
       });
     });
+
+    await screen.findByTestId('gas-fee-section');
 
     fireEvent.click(await screen.findByTestId('inline-alert'));
 
@@ -975,6 +1065,8 @@ describe('Contract Interaction Confirmation Alerts', () => {
         backgroundConnection: backgroundConnectionMocked,
       });
     });
+
+    await screen.findByTestId('gas-fee-section');
 
     // Should have multiple inline alerts
     const alerts = await screen.findAllByTestId('inline-alert');
