@@ -106,10 +106,11 @@ describe('MusdClaimAccountRow', () => {
     });
     const mockStore = configureMockStore()(state);
 
-    const result = await act(async () =>
-      renderWithConfirmContextProvider(<MusdClaimAccountRow />, mockStore),
-    );
+    let result: ReturnType<typeof renderWithConfirmContextProvider>;
+    await act(async () => {
+      result = renderWithConfirmContextProvider(<MusdClaimAccountRow />, mockStore);
+    });
 
-    expect(result.getByTestId('musd-claim-account-address')).toBeDefined();
+    expect(result!.getByTestId('musd-claim-account-address')).toBeDefined();
   });
 });
