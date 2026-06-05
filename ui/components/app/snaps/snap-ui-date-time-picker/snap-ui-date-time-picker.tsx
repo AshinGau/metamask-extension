@@ -171,6 +171,7 @@ export const SnapUIDateTimePicker: FunctionComponent<
         inputProps: {
           placeholder,
           readOnly: true,
+          ...(committed ? {} : { value: '' }),
         },
         InputProps: {
           disableUnderline: true,
@@ -197,7 +198,7 @@ export const SnapUIDateTimePicker: FunctionComponent<
         actions: [...PICKER_ACTION_BAR_ACTIONS],
       },
     }),
-    [placeholder],
+    [placeholder, committed],
   );
 
   return (
@@ -213,7 +214,7 @@ export const SnapUIDateTimePicker: FunctionComponent<
           open={open}
           onOpen={handleOpen}
           onClose={handleClose}
-          value={committed ? pickerValue : null}
+          value={pickerValue}
           onChange={handleChange}
           onAccept={handleAccept}
           disabled={disabled}
@@ -230,7 +231,7 @@ export const SnapUIDateTimePicker: FunctionComponent<
           open={open}
           onOpen={handleOpen}
           onClose={handleClose}
-          value={committed ? pickerValue : null}
+          value={pickerValue}
           onChange={handleChange}
           onAccept={handleAccept}
           disabled={disabled}
@@ -246,7 +247,7 @@ export const SnapUIDateTimePicker: FunctionComponent<
           open={open}
           onOpen={handleOpen}
           onClose={handleClose}
-          value={committed ? pickerValue : null}
+          value={pickerValue}
           onChange={handleChange}
           onAccept={handleAccept}
           disabled={disabled}
