@@ -8,17 +8,18 @@ name: Upload extension to Firefox AMO
 # OIDC (va-mmc-extension-submission-infra / extension_amo_invoke_iam.tf):
 #   permissions: id-token: write
 #   flow: configure-aws-credentials → sts:AssumeRoleWithWebIdentity → amo-submission-{dev|flask|production}
-#   role policy: lambda:InvokeFunction on amo-submission only (no Secrets Manager on runner)
+#   role policy: lambda:InvokeFunction on amo-submission:{dev|flask|production} alias only (no Secrets Manager on runner)
 #
 # Trust policy conditions on token.actions.githubusercontent.com (all targets):
 #   aud              = sts.amazonaws.com
 #   sub              = repo:MetaMask/metamask-extension:environment:{amo-dev|amo-flask|amo-production}
 #   job_workflow_ref = MetaMask/metamask-extension/.github/workflows/upload-extension-to-amo.yml@refs/heads/main
 #   ref              = refs/heads/main
-# Production only (amo-production / amo-submission-production):
+# PRD flask + production (amo-flask / amo-production):
 #   actor    = runway-github[bot]
 #   actor_id = 73448015
 #
+# Lambda invoke must use alias qualifier (dev | flask | production); unqualified invoke is denied.
 # AMO JWT secrets are read inside Lambda (assumes amo-submission-secrets-{env}), not by the runner.
 
 on:
@@ -140,11 +141,13 @@ jobs:
             fi
           fi
           LAMBDA_NAME="amo-submission"
+          LAMBDA_QUALIFIER="${DEPLOYMENT_ENV}"
           {
             echo "ROLE_ARN=${ROLE_ARN}"
             echo "ADDON_GUID=${ADDON_GUID}"
             echo "DEPLOYMENT_ENV=${DEPLOYMENT_ENV}"
             echo "LAMBDA_NAME=${LAMBDA_NAME}"
+            echo "LAMBDA_QUALIFIER=${LAMBDA_QUALIFIER}"
           } >> "${GITHUB_ENV}"
           if [[ -n "${EXPECTED_SHA256}" ]]; then
             echo "EXPECTED_SHA256=${EXPECTED_SHA256}" >> "${GITHUB_ENV}"
@@ -163,7 +166,7 @@ jobs:
             echo "| Version | \`${VERSION}\` |"
             echo "| Release tag | \`${RELEASE_TAG}\` |"
             echo "| Asset | \`${ASSET_NAME:-${DEFAULT_ASSET}}\` |"
-            echo "| Lambda | \`${LAMBDA_NAME}\` |"
+            echo "| Lambda | \`${LAMBDA_NAME}:${LAMBDA_QUALIFIER}\` |"
             echo "| AWS region | \`${AWS_REGION}\` |"
             echo "| Deployment env | \`${DEPLOYMENT_ENV}\` |"
             echo "| Branch | \`${{ github.ref }}\` |"
@@ -199,6 +202,7 @@ jobs:
           INVOKE_RESULT=0
           aws lambda invoke \
             --function-name "${LAMBDA_NAME}" \
+            --qualifier "${LAMBDA_QUALIFIER}" \
             --invocation-type RequestResponse \
             --cli-binary-format raw-in-base64-out \
             --payload "${PAYLOAD}" \
