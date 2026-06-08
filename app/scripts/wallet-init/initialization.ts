@@ -13,12 +13,14 @@ export function initializeWallet({
   messenger,
   state,
   encryptor,
+  infuraProjectId,
   showApprovalRequest,
 }: {
   messenger: RootMessenger;
   state: Record<string, Record<string, Json>>;
   encryptor?: Encryptor;
-  showApprovalRequest?: ShowApprovalRequest;
+  infuraProjectId: string;
+  showApprovalRequest: ShowApprovalRequest;
 }) {
   return new Wallet({
     messenger,
@@ -46,6 +48,9 @@ export function initializeWallet({
         encryptor,
         keyringBuilders: getKeyringBuilders(messenger),
         keyringV2Builders: getKeyringV2Builders(),
+      },
+      networkController: {
+        infuraProjectId,
       },
       storageService: {
         storage: new BrowserStorageAdapter(),
