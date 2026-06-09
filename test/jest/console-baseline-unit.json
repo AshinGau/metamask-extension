@@ -1923,6 +1923,21 @@
       "error: Warning: ReactDOM.render is no longer": 3,
       "error: Warning: `ReactDOMTestUtils.act` is deprecated in": 1
     },
+    "ui/hooks/batch-sell/useBatchSell.test.ts": {
+      "Deprecation warnings": 1,
+      "error: Warning: ReactDOM.render is no longer": 6,
+      "error: Warning: `ReactDOMTestUtils.act` is deprecated in": 1
+    },
+    "ui/hooks/batch-sell/useBatchSellNavigation.test.ts": {
+      "Deprecation warnings": 1,
+      "error: Warning: ReactDOM.render is no longer": 6,
+      "error: Warning: `ReactDOMTestUtils.act` is deprecated in": 1
+    },
+    "ui/hooks/batch-sell/useSortBatchSellAssetsByBalance.test.ts": {
+      "Deprecation warnings": 1,
+      "error: Warning: ReactDOM.render is no longer": 11,
+      "error: Warning: `ReactDOMTestUtils.act` is deprecated in": 1
+    },
     "ui/hooks/bridge/useBridging.test.ts": {
       "Deprecation warnings": 1,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
@@ -2909,6 +2924,36 @@
     "ui/pages/asset/hooks/useTronResources.test.ts": {
       "Deprecation warnings": 1,
       "error: Warning: ReactDOM.render is no longer": 19,
+      "error: Warning: `ReactDOMTestUtils.act` is deprecated in": 1
+    },
+    "ui/pages/batch-sell/hooks/useBatchSellInfoModal.test.tsx": {
+      "Deprecation warnings": 1,
+      "error: Warning: ReactDOM.render is no longer": 7,
+      "error: Warning: `ReactDOMTestUtils.act` is deprecated in": 1
+    },
+    "ui/pages/batch-sell/pages/review/hooks/useBatchSellAggregateValidation.test.ts": {
+      "Deprecation warnings": 1,
+      "error: Warning: ReactDOM.render is no longer": 18,
+      "error: Warning: `ReactDOMTestUtils.act` is deprecated in": 1
+    },
+    "ui/pages/batch-sell/pages/review/hooks/useBatchSellQuotesConfig.test.ts": {
+      "Deprecation warnings": 1,
+      "error: Warning: ReactDOM.render is no longer": 27,
+      "error: Warning: `ReactDOMTestUtils.act` is deprecated in": 1
+    },
+    "ui/pages/batch-sell/pages/review/hooks/useBatchSellQuotesFetching.test.ts": {
+      "Deprecation warnings": 1,
+      "error: Warning: ReactDOM.render is no longer": 25,
+      "error: Warning: `ReactDOMTestUtils.act` is deprecated in": 1
+    },
+    "ui/pages/batch-sell/pages/review/hooks/useBatchSellSubmitQuotes.test.ts": {
+      "Deprecation warnings": 1,
+      "error: Warning: ReactDOM.render is no longer": 13,
+      "error: Warning: `ReactDOMTestUtils.act` is deprecated in": 1
+    },
+    "ui/pages/batch-sell/pages/review/hooks/useBatchSellTradesFetching.test.ts": {
+      "Deprecation warnings": 1,
+      "error: Warning: ReactDOM.render is no longer": 9,
       "error: Warning: `ReactDOMTestUtils.act` is deprecated in": 1
     },
     "ui/pages/bridge/hooks/useAssetSecurityData.test.ts": {
