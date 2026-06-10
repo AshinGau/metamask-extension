@@ -93,6 +93,7 @@ describe('start() entry point', () => {
 
   beforeEach(() => {
     jest.resetModules();
+    jest.clearAllMocks();
     warnSpy = jest.spyOn(console, 'warn').mockImplementation();
     errorSpy = jest.spyOn(console, 'error').mockImplementation();
     configureMocks();
