@@ -315,6 +315,7 @@ export function MusdBonusSection({
                   <TextButton
                     key="terms"
                     variant={TextVariant.BodyMd}
+                    isInverse
                     asChild
                   >
                     <a
@@ -337,7 +338,7 @@ export function MusdBonusSection({
               <Text variant={TextVariant.BodyMd} color={TextColor.InfoInverse}>
                 <strong>{t('musdAssetBonusLifetimeClaimed')}: </strong>
                 {t('musdAssetBonusInfoLifetimeClaimed')}{' '}
-                <TextButton asChild>
+                <TextButton variant={TextVariant.BodyMd} isInverse asChild>
                   <a
                     href={MUSD_SUPPORT_ARTICLE_URL}
                     target="_blank"
