@@ -783,7 +783,7 @@ class UnlockPage extends Component<UnlockPageProps, UnlockPageState> {
                   key="import-account"
                   type="button"
                   onClick={this.onForgotPasswordOrLoginWithDiffMethods}
-                  className="mb-4"
+                  className={isRehydrationFlow ? 'mb-4 text-default' : 'mb-4'}
                 >
                   {isRehydrationFlow
                     ? t('useDifferentLoginMethod')
