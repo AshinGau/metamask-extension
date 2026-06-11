@@ -142,6 +142,7 @@ export const ConfirmInfoRowAddressDisplay = memo(
             <TextButton
               variant={TextVariant.BodyMd}
               onClick={handleClick}
+              className="min-w-0 hover:bg-transparent active:bg-transparent"
               data-testid="confirm-info-row-display-name"
             >
               {name}
