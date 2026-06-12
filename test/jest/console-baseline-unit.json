@@ -276,6 +276,7 @@
     },
     "ui/components/app/assets/asset-list/asset-list-control-bar/asset-list-control-bar.test.tsx": {
       "MetaMask: Background connection not initialized": 9,
+      "React: PropTypes validation failures": 1,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
@@ -1233,27 +1234,6 @@
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
     },
     "ui/components/multichain-accounts/multichain-account-edit-modal/multichain-account-edit-modal.test.tsx": {
-      "error: Warning: I18nProvider: Support for defaultProps": 1,
-      "error: Warning: LegacyI18nProvider uses the legacy": 1,
-      "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
-    },
-    "ui/components/multichain-accounts/multichain-account-list/multichain-account-list.test.tsx": {
-      "MetaMask: Background connection not initialized": 73,
-      "error: Warning: I18nProvider: Support for defaultProps": 1,
-      "error: Warning: LegacyI18nProvider uses the legacy": 1,
-      "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
-    },
-    "ui/components/multichain-accounts/multichain-account-menu-items/multichain-account-menu-items.test.tsx": {
-      "error: Warning: I18nProvider: Support for defaultProps": 1,
-      "error: Warning: LegacyI18nProvider uses the legacy": 1,
-      "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
-    },
-    "ui/components/multichain-accounts/multichain-account-menu/multichain-account-menu.test.tsx": {
-      "error: Warning: I18nProvider: Support for defaultProps": 1,
-      "error: Warning: LegacyI18nProvider uses the legacy": 1,
-      "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
-    },
-    "ui/components/multichain-accounts/multichain-account-network-group-with-copy-icon/multichain-account-network-group-with-copy-icon.test.tsx": {
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
@@ -5369,7 +5349,8 @@
       "React: Act warnings (component updates not wrapped)": 2,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
-      "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1
+      "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1,
+      "error: Warning: React does not recognize": 3
     },
     "ui/pages/defi/components/defi-details-list.test.tsx": {
       "error: Warning: I18nProvider: Support for defaultProps": 1,
@@ -6277,6 +6258,9 @@
       "error: Warning: LegacyI18nProvider uses the legacy": 1,
       "error: Warning: LegacyMetaMetricsProvider uses the legacy": 1,
       "error: Warning: UnlockPage uses the legacy": 1
+    },
+    "ui/pages/token-management/token-management.test.tsx": {
+      "MetaMask: Background connection not initialized": 4
     },
     "ui/pages/unlock-page/unlock-page.test.tsx": {
       "MetaMask: Background connection not initialized": 1,
