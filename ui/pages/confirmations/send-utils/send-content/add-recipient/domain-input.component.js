@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { I18nContext } from '../../../../../contexts/i18n';
 import classnames from 'clsx';
 import { isHexString } from '@metamask/utils';
 import { I18nContext } from '../../../../../contexts/i18n';

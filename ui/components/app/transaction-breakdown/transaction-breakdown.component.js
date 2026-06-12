@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { I18nContext } from '../../../contexts/i18n';
 import classnames from 'clsx';
 import { I18nContext } from '../../../contexts/i18n';
 import { SuccessPill } from '../../component-library';
