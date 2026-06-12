@@ -1,4 +1,4 @@
-import React, { Component, createContext, useMemo } from 'react';
+import React, { createContext, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import {
@@ -27,29 +27,3 @@ export const I18nProvider = ({ children } = {}) => {
 I18nProvider.propTypes = {
   children: PropTypes.node,
 };
-
-export class LegacyI18nProvider extends Component {
-  static propTypes = {
-    children: PropTypes.node,
-  };
-
-  static defaultProps = {
-    children: undefined,
-  };
-
-  static contextType = I18nContext;
-
-  static childContextTypes = {
-    t: PropTypes.func,
-  };
-
-  getChildContext() {
-    return {
-      t: this.context,
-    };
-  }
-
-  render() {
-    return this.props.children;
-  }
-}
