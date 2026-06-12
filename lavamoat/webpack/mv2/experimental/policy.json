@@ -2088,6 +2088,8 @@
       "globals": {
         "Intl.NumberFormat": true,
         "URL": true,
+        "btoa.bind": true,
+        "fetch.bind": true,
         "setTimeout": true
       },
       "meta": {
@@ -2805,11 +2807,15 @@
     },
     "@metamask/wallet": {
       "packages": {
+        "@metamask/accounts-controller": true,
         "@metamask/approval-controller": true,
         "@metamask/browser-passworder": true,
+        "@metamask/connectivity-controller": true,
         "@metamask/controller-utils": true,
         "@metamask/keyring-controller": true,
         "@metamask/messenger": true,
+        "@metamask/network-controller": true,
+        "@metamask/remote-feature-flag-controller": true,
         "@metamask/storage-service": true,
         "@metamask/utils": true
       }
