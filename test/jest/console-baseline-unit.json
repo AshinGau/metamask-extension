@@ -919,11 +919,6 @@
       "error: Warning: ReactDOM.render is no longer": 17,
       "error: Warning: `ReactDOMTestUtils.act` is deprecated in": 1
     },
-    "ui/components/app/qr-hardware-popover/qr-hooks/decoder-lifecycle/useDecoderLifecycle.test.ts": {
-      "Deprecation warnings": 1,
-      "error: Warning: ReactDOM.render is no longer": 17,
-      "error: Warning: `ReactDOMTestUtils.act` is deprecated in": 1
-    },
     "ui/components/app/reveal-srp-list/reveal-srp-list.test.tsx": {
       "Reselect: Identity function warnings": 1,
       "error: Warning: I18nProvider: Support for defaultProps": 1,
