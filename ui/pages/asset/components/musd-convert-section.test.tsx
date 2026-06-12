@@ -36,14 +36,10 @@ jest.mock('../../../selectors/musd', () => {
   };
 });
 
-const mockNetworkConfigurationsByChainId = {
-  '0x1': { name: 'Ethereum Mainnet' },
-};
-
+const MOCK_NETWORK_CONFIGS = {};
 jest.mock('../../../selectors/multichain', () => ({
   ...jest.requireActual('../../../selectors/multichain'),
-  getMultichainNetworkConfigurationsByChainId: () =>
-    mockNetworkConfigurationsByChainId,
+  getMultichainNetworkConfigurationsByChainId: () => MOCK_NETWORK_CONFIGS,
   getImageForChainId: () => '',
 }));
 
