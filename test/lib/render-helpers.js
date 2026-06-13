@@ -31,9 +31,6 @@ I18nProvider.propTypes = {
   children: PropTypes.node,
 };
 
-I18nProvider.defaultProps = {
-  children: undefined,
-};
 
 export function renderWithLocalization(component) {
   const Wrapper = ({ children }) => (

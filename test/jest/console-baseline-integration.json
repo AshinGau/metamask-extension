@@ -33,6 +33,7 @@
       "warn: ⚠️ React Router Future Flag": 1
     },
     "test/integration/confirmations/signatures/permit.test.tsx": {
+      "React: Act warnings (component updates not wrapped)": 7,
       "Reselect: Identity function warnings": 3,
       "Reselect: Input stability warnings": 1,
       "error: Error: AggregateError": 1,
@@ -148,6 +149,7 @@
     },
     "test/integration/notifications&auth/notifications-activation.test.tsx": {
       "Reselect: Input stability warnings": 6,
+      "error: Warning: The current testing environment": 2,
       "warn: Selector unknown returned a different": 2,
       "warn: ⚠️ React Router Future Flag": 1
     },
@@ -160,6 +162,7 @@
       "React: Missing key props in lists": 1,
       "React: componentWill* lifecycle deprecations": 1,
       "Reselect: Input stability warnings": 8,
+      "error: Warning: The current testing environment": 2,
       "warn: Selector unknown returned a different": 2,
       "warn: ⚠️ React Router Future Flag": 1
     },

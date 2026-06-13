@@ -62,9 +62,6 @@ I18nProvider.propTypes = {
   en: PropTypes.object,
 };
 
-I18nProvider.defaultProps = {
-  children: undefined,
-};
 
 /**
  * @param {object} [options]
