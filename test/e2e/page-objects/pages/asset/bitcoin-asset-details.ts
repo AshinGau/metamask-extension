@@ -26,10 +26,6 @@ class BitcoinAssetDetailsPage {
     this.driver = driver;
   }
 
-  async checkPageIsLoaded(): Promise<void> {
-    await this.driver.waitForSelector({ text: 'Your balance' });
-  }
-
   async checkActionButtons(options: {
     swap?: boolean;
     send?: boolean;
@@ -52,22 +48,26 @@ class BitcoinAssetDetailsPage {
     }
   }
 
-  async checkPriceChart(): Promise<void> {
-    await this.driver.waitForSelector(this.priceChart);
+  async checkAllStandardSections(): Promise<void> {
+    for (const title of SECTION_TITLES) {
+      await this.checkSection(title);
+    }
   }
 
   async checkCurrentPriceHeader(): Promise<void> {
     await this.driver.waitForSelector(this.priceHeader);
   }
 
-  async checkSection(name: SectionTitle): Promise<void> {
-    await this.driver.waitForSelector({ text: name });
+  async checkPageIsLoaded(): Promise<void> {
+    await this.driver.waitForSelector({ text: 'Your balance' });
   }
 
-  async checkAllStandardSections(): Promise<void> {
-    for (const title of SECTION_TITLES) {
-      await this.checkSection(title);
-    }
+  async checkPriceChart(): Promise<void> {
+    await this.driver.waitForSelector(this.priceChart);
+  }
+
+  async checkSection(name: SectionTitle): Promise<void> {
+    await this.driver.waitForSelector({ text: name });
   }
 
   async checkStakedBalanceIsAbsent(): Promise<void> {
