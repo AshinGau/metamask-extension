@@ -12,7 +12,7 @@ class BitcoinAssetDetailsPage {
   private driver: Driver;
 
   private readonly nativeReceiveButton =
-    '[data-testid="coin-overview-receive"]';
+    '[data-testid="coin-overview-default"]';
 
   private readonly nativeSendButton = '[data-testid="coin-overview-send"]';
 

@@ -114,9 +114,8 @@ describe('BTC Account - Assets', function (this: Suite) {
         await homePage.checkPageIsLoaded();
 
         const assetList = new AssetListPage(driver);
-        await assetList.checkExpectedTokenBalanceIsDisplayed(
-          `${DEFAULT_BTC_BALANCE}`,
-          'BTC',
+        await assetList.checkTokenAmountIsDisplayed(
+          `${DEFAULT_BTC_BALANCE} BTC`,
         );
         await assetList.clickOnAsset('Bitcoin');
 
