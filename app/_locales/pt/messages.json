@@ -70,6 +70,18 @@
     "message": "Eu li e concordo com os $1",
     "description": "$1 is the `terms` message"
   },
+  "accessRestrictedContactSupport": {
+    "message": "Falar com o suporte"
+  },
+  "accessRestrictedDescriptionLine1": {
+    "message": "Este endereço de carteira foi sinalizado durante a verificação de conformidade. Como resultado, alguns serviços da MetaMask estão indisponíveis."
+  },
+  "accessRestrictedDescriptionLine2": {
+    "message": "Se você acredita que isso é um erro, entre em contato com o suporte para solicitar uma revisão."
+  },
+  "accessRestrictedTitle": {
+    "message": "Acesso restrito"
+  },
   "accessingYourCamera": {
     "message": "Acessando sua câmera..."
   },
@@ -296,6 +308,9 @@
   "activity_contractInteraction_pending_title": {
     "message": "Interação em andamento"
   },
+  "activity_contractInteraction_success_title": {
+    "message": "Interação com o contrato"
+  },
   "activity_convert_failed_description": {
     "message": "Falha na conversão"
   },
@@ -366,6 +381,12 @@
   "activity_lendingDeposit_failed_title": {
     "message": "Falha no depósito"
   },
+  "activity_lendingDeposit_pending_title": {
+    "message": "Depósito de empréstimo"
+  },
+  "activity_lendingDeposit_success_title": {
+    "message": "Depósito de empréstimo"
+  },
   "activity_lendingWithdrawal_failed_description": {
     "message": "Falha ao sacar"
   },
@@ -415,6 +436,17 @@
   },
   "activity_marketShort_success_title": {
     "message": "Posição short fechada - mercado"
+  },
+  "activity_nftBuy_failed_title": {
+    "message": "Comprar falhou"
+  },
+  "activity_nftBuy_pending_title": {
+    "message": "Comprando $1",
+    "description": "$1 is the NFT token symbol"
+  },
+  "activity_nftBuy_success_title": {
+    "message": "Comprou $1",
+    "description": "$1 is the NFT token symbol"
   },
   "activity_nftMint_failed_title": {
     "message": "Falha ao mintar"
@@ -607,7 +639,6 @@
   "activity_perpsOpenLong_success_title": {
     "message": "Abriu posição long"
   },
-
   "activity_perpsOpenShort_failed_description": {
     "message": "Abrir posição short falhou"
   },
@@ -1691,6 +1722,39 @@
   },
   "basicFunctionalityRequired_toggleLabel": {
     "message": "Funcionalidade básica"
+  },
+  "batchSell": {
+    "message": "Venda em lote"
+  },
+  "batchSellEmptyStateDescription": {
+    "message": "Sem tokens? Sem problema. Explore e compre tokens para vender em lote."
+  },
+  "batchSellGetNewQuotes": {
+    "message": "Obter novas cotações"
+  },
+  "batchSellHighRateAlert": {
+    "message": "Alerta de taxa alta"
+  },
+  "batchSellHightRateAlertModalDescription": {
+    "message": "A venda em lote de apenas um token pode resultar em uma taxa mais alta. Em vez disso, quer fazer uma troca?"
+  },
+  "batchSellMinimumReceiveExplanation": {
+    "message": "O valor mínimo que você receberá em caso de mudança do preço durante o processamento da sua transação, com base em sua tolerância ao slippage. Essa é uma estimativa dos nossos provedores de liquidez. Os valores finais podem ser diferentes."
+  },
+  "batchSellNetworkFeeTooltip": {
+    "message": "As taxas de rede dependem do nível de atividade da rede e da complexidade da sua transação."
+  },
+  "batchSellReceiveStablecoin": {
+    "message": "Selecione uma moeda estável"
+  },
+  "batchSellSelectHeaderSubtitle": {
+    "message": "É necessário que todos os tokens estejam na mesma rede."
+  },
+  "batchSellSelectHeaderTitle": {
+    "message": "Selecione até 5 tokens"
+  },
+  "batchSellSlippageDescription": {
+    "message": "Sua transação não será concluída se a variação de preço for maior que a porcentagem de slippage."
   },
   "bestQuote": {
     "message": "Melhor cotação"
@@ -5570,6 +5634,9 @@
   "noOptionsAvailableMessage": {
     "message": "Esta rota de negociação não está disponível no momento. Tente alterar a quantia, rede ou token e encontraremos a melhor opção."
   },
+  "noQuoteAvailable": {
+    "message": "Nenhuma cotação disponível"
+  },
   "noSnaps": {
     "message": "Você não tem nenhum snap instalado."
   },
@@ -6549,6 +6616,9 @@
     "message": "Disponível para negociação",
     "description": "Label for the available balance that can be used for trading"
   },
+  "perpsBalance": {
+    "message": "Saldo de perpétuos"
+  },
   "perpsBasicFunctionalityOff": {
     "message": "Esse recurso não está disponível enquanto a funcionalidade básica estiver desativada."
   },
@@ -6578,6 +6648,12 @@
   },
   "perpsCloseAll": {
     "message": "Encerrar tudo"
+  },
+  "perpsCloseAllDescription": {
+    "message": "Encerraremos todas as suas posições em aberto pelo preço de mercado atual."
+  },
+  "perpsCloseAllPositions": {
+    "message": "Encerrar todas as posições"
   },
   "perpsCloseAmount": {
     "message": "Valor de encerramento"
@@ -6730,6 +6806,9 @@
   },
   "perpsInsufficientMargin": {
     "message": "Margem insuficiente para executar esta ordem."
+  },
+  "perpsKeepPositions": {
+    "message": "Manter posições"
   },
   "perpsLearnBasics": {
     "message": "Aprenda o básico sobre perps"
@@ -8212,6 +8291,9 @@
   },
   "selectedAccountMismatch": {
     "message": "Conta diferente selecionada"
+  },
+  "sellAll": {
+    "message": "Vender tudo"
   },
   "send": {
     "message": "Enviar"
@@ -10184,6 +10266,12 @@
   "total": {
     "message": "Total"
   },
+  "totalAmount": {
+    "message": "Valor total"
+  },
+  "totalReceived": {
+    "message": "Total recebido"
+  },
   "totalVolume": {
     "message": "Volume total"
   },
@@ -10425,6 +10513,10 @@
   },
   "unexpectedBehavior": {
     "message": "Esse comportamento é inesperado e deve ser relatado como um bug, mesmo que suas contas sejam restauradas."
+  },
+  "unexpectedError": {
+    "message": "Ocorreu um erro inesperado.",
+    "description": "This is a fallback error message used for unexpected errors."
   },
   "unifiedSwapAllowSwappingOf": {
     "message": "Permitir acesso exato a $1 $2 em $3 para realizar troca"
@@ -10748,6 +10840,9 @@
   "yes": {
     "message": "Sim"
   },
+  "yesSwap": {
+    "message": "Sim, trocar"
+  },
   "you": {
     "message": "Você"
   },
@@ -10760,6 +10855,9 @@
   "youReceived": {
     "message": "Você recebeu",
     "description": "Label indicating the amount and asset the user received."
+  },
+  "youSell": {
+    "message": "Você vende"
   },
   "youSent": {
     "message": "Você enviou",

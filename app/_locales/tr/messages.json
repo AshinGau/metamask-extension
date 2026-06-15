@@ -70,6 +70,18 @@
     "message": "$1 bölümünü okudum ve kabul ediyorum",
     "description": "$1 is the `terms` message"
   },
+  "accessRestrictedContactSupport": {
+    "message": "Destek ile iletişime geç"
+  },
+  "accessRestrictedDescriptionLine1": {
+    "message": "Bu cüzdan adresi uygunluk taraması sırasında işaretlendi. Sonuç olarak bazı MetaMask hizmetleri kullanılamıyor."
+  },
+  "accessRestrictedDescriptionLine2": {
+    "message": "Bunun bir hata olduğuna inanıyorsanız inceleme talep etmek için destek bölümü ile iletişime geçin."
+  },
+  "accessRestrictedTitle": {
+    "message": "Erişim kısıtlandı"
+  },
   "accessingYourCamera": {
     "message": "Kameranıza erişim sağlanıyor..."
   },
@@ -296,6 +308,9 @@
   "activity_contractInteraction_pending_title": {
     "message": "Etkileşim sürüyor"
   },
+  "activity_contractInteraction_success_title": {
+    "message": "Sözleşme Etkileşimi"
+  },
   "activity_convert_failed_description": {
     "message": "Dönüştürme işlemi başarısız oldu"
   },
@@ -366,6 +381,12 @@
   "activity_lendingDeposit_failed_title": {
     "message": "Para yatırma işlemi başarısız oldu"
   },
+  "activity_lendingDeposit_pending_title": {
+    "message": "Borç verme para yatırma işlemi"
+  },
+  "activity_lendingDeposit_success_title": {
+    "message": "Borç verme para yatırma işlemi"
+  },
   "activity_lendingWithdrawal_failed_description": {
     "message": "Para çekme işlemi başarısız"
   },
@@ -415,6 +436,17 @@
   },
   "activity_marketShort_success_title": {
     "message": "Short kapatıldı - piyasa"
+  },
+  "activity_nftBuy_failed_title": {
+    "message": "Alış işlemi başarısız oldu"
+  },
+  "activity_nftBuy_pending_title": {
+    "message": "$1 alınıyor",
+    "description": "$1 is the NFT token symbol"
+  },
+  "activity_nftBuy_success_title": {
+    "message": "$1 satın alındı",
+    "description": "$1 is the NFT token symbol"
   },
   "activity_nftMint_failed_title": {
     "message": "Mint işlemi başarısız oldu"
@@ -607,7 +639,6 @@
   "activity_perpsOpenLong_success_title": {
     "message": "Long pozisyon açıldı"
   },
-
   "activity_perpsOpenShort_failed_description": {
     "message": "Short açılamadı"
   },
@@ -1691,6 +1722,39 @@
   },
   "basicFunctionalityRequired_toggleLabel": {
     "message": "Temel işlevsellik"
+  },
+  "batchSell": {
+    "message": "Toplu Satış"
+  },
+  "batchSellEmptyStateDescription": {
+    "message": "Token yok. Sorun değil. Toplu satış için tokenları keşfedin ve satın alın."
+  },
+  "batchSellGetNewQuotes": {
+    "message": "Yeni teklifler al"
+  },
+  "batchSellHighRateAlert": {
+    "message": "Yüksek oran uyarısı"
+  },
+  "batchSellHightRateAlertModalDescription": {
+    "message": "Tek bir tokenın toplu satışı daha yüksek bir orana neden olabilir. Onun yerine takas işlemi gerçekleştirmek ister misiniz?"
+  },
+  "batchSellMinimumReceiveExplanation": {
+    "message": "Kayma toleransınıza göre işleminiz gerçekleştirilirken fiyat değişirse alacağınız minimum tutar. Bu, likidite sağlayıcılarımızdan alınan bir tahmindir. Nihai tutarlar değişiklik gösterebilir."
+  },
+  "batchSellNetworkFeeTooltip": {
+    "message": "Ağ ücretleri, ağın yoğunluğuna ve işlemin karmaşıklığına bağlıdır."
+  },
+  "batchSellReceiveStablecoin": {
+    "message": "Bir stabil kripto para seçin"
+  },
+  "batchSellSelectHeaderSubtitle": {
+    "message": "Tüm tokenların aynı ağda olması gerekir."
+  },
+  "batchSellSelectHeaderTitle": {
+    "message": "En fazla 5 token seçin"
+  },
+  "batchSellSlippageDescription": {
+    "message": "Fiyat kayma yüzdesinden daha fazla değişirse işleminiz gerçekleşmez."
   },
   "bestQuote": {
     "message": "En iyi teklif"
@@ -5574,6 +5638,9 @@
   "noOptionsAvailableMessage": {
     "message": "Bu işlem yolu şu anda mevcut değil. Miktarı, ağı veya tokeni değiştirmeyi deneyin ve en iyi seçeneği bulalım."
   },
+  "noQuoteAvailable": {
+    "message": "Teklif mevcut değil"
+  },
   "noSnaps": {
     "message": "Yüklü snapiniz yok."
   },
@@ -6553,6 +6620,9 @@
     "message": "İşlem yapılabilir",
     "description": "Label for the available balance that can be used for trading"
   },
+  "perpsBalance": {
+    "message": "Sürekli vadeli işlem sözleşmeleri bakiyesi"
+  },
   "perpsBasicFunctionalityOff": {
     "message": "Temel işlevsellik kapalıyken bu özellik kullanılamaz."
   },
@@ -6582,6 +6652,12 @@
   },
   "perpsCloseAll": {
     "message": "Tümünü kapat"
+  },
+  "perpsCloseAllDescription": {
+    "message": "Tüm açık pozisyonlarınızı güncel piyasa fiyatından kapatacağız."
+  },
+  "perpsCloseAllPositions": {
+    "message": "Tüm pozisyonları kapat"
   },
   "perpsCloseAmount": {
     "message": "Kapanış tutarı"
@@ -6734,6 +6810,9 @@
   },
   "perpsInsufficientMargin": {
     "message": "Bu emri vermek için yeterli marj yok."
+  },
+  "perpsKeepPositions": {
+    "message": "Pozisyonları tut"
   },
   "perpsLearnBasics": {
     "message": "Sürekli vadeli işlem sözleşmeleri hakkındaki temel bilgileri öğrenin"
@@ -8220,6 +8299,9 @@
   },
   "selectedAccountMismatch": {
     "message": "Farklı hesap seçildi"
+  },
+  "sellAll": {
+    "message": "Tümünü sat"
   },
   "send": {
     "message": "Gönder"
@@ -10192,6 +10274,12 @@
   "total": {
     "message": "Toplam"
   },
+  "totalAmount": {
+    "message": "Toplam tutar"
+  },
+  "totalReceived": {
+    "message": "Toplam alınan"
+  },
   "totalVolume": {
     "message": "Toplam hacim"
   },
@@ -10433,6 +10521,10 @@
   },
   "unexpectedBehavior": {
     "message": "Bu davranış beklenmedik bir durumdur ve hesaplarınız geri yüklense bile hata olarak bildirilmelidir."
+  },
+  "unexpectedError": {
+    "message": "Beklenmedik bir hata oluştu.",
+    "description": "This is a fallback error message used for unexpected errors."
   },
   "unifiedSwapAllowSwappingOf": {
     "message": "$3 üzerinde takas işlemi yapmak için $1 $2 varlıklarına tam erişim izni ver"
@@ -10756,6 +10848,9 @@
   "yes": {
     "message": "Evet"
   },
+  "yesSwap": {
+    "message": "Evet, takas et"
+  },
   "you": {
     "message": "Siz"
   },
@@ -10768,6 +10863,9 @@
   "youReceived": {
     "message": "Aldığınız",
     "description": "Label indicating the amount and asset the user received."
+  },
+  "youSell": {
+    "message": "Sattığınız"
   },
   "youSent": {
     "message": "Gönderdiğiniz",

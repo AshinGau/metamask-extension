@@ -70,6 +70,18 @@
     "message": "我已阅读并同意 $1",
     "description": "$1 is the `terms` message"
   },
+  "accessRestrictedContactSupport": {
+    "message": "联系支持团队"
+  },
+  "accessRestrictedDescriptionLine1": {
+    "message": "该钱包地址在合规审查中已被标记。因此，部分 MetaMask 服务不可用。"
+  },
+  "accessRestrictedDescriptionLine2": {
+    "message": "若您认为此标记有误，请联系支持团队申请审核。"
+  },
+  "accessRestrictedTitle": {
+    "message": "访问受限"
+  },
   "accessingYourCamera": {
     "message": "正在访问您的相机……"
   },
@@ -296,6 +308,9 @@
   "activity_contractInteraction_pending_title": {
     "message": "正在交互"
   },
+  "activity_contractInteraction_success_title": {
+    "message": "合约交互"
+  },
   "activity_convert_failed_description": {
     "message": "兑换失败"
   },
@@ -366,6 +381,12 @@
   "activity_lendingDeposit_failed_title": {
     "message": "存款失败"
   },
+  "activity_lendingDeposit_pending_title": {
+    "message": "出借存款"
+  },
+  "activity_lendingDeposit_success_title": {
+    "message": "出借存款"
+  },
   "activity_lendingWithdrawal_failed_description": {
     "message": "提款失败"
   },
@@ -415,6 +436,17 @@
   },
   "activity_marketShort_success_title": {
     "message": "已市价平空"
+  },
+  "activity_nftBuy_failed_title": {
+    "message": "购买失败"
+  },
+  "activity_nftBuy_pending_title": {
+    "message": "正在购买 $1",
+    "description": "$1 is the NFT token symbol"
+  },
+  "activity_nftBuy_success_title": {
+    "message": "已购买 $1",
+    "description": "$1 is the NFT token symbol"
   },
   "activity_nftMint_failed_title": {
     "message": "铸造失败"
@@ -607,7 +639,6 @@
   "activity_perpsOpenLong_success_title": {
     "message": "已开设多头仓位"
   },
-
   "activity_perpsOpenShort_failed_description": {
     "message": "开空失败"
   },
@@ -1691,6 +1722,39 @@
   },
   "basicFunctionalityRequired_toggleLabel": {
     "message": "基本功能"
+  },
+  "batchSell": {
+    "message": "批量卖出"
+  },
+  "batchSellEmptyStateDescription": {
+    "message": "没有代币。没问题。浏览并购买代币，即可进行批量卖出。"
+  },
+  "batchSellGetNewQuotes": {
+    "message": "获取新报价"
+  },
+  "batchSellHighRateAlert": {
+    "message": "高费率提醒"
+  },
+  "batchSellHightRateAlertModalDescription": {
+    "message": "批量卖出一种代币可能导致更高费率。要改用兑换吗？"
+  },
+  "batchSellMinimumReceiveExplanation": {
+    "message": "若交易处理期间价格发生波动，根据您设置的滑点容差，此为您将收到的最低金额。该金额来自流动性供应商提供的预估，最终到账金额可能存在差异。"
+  },
+  "batchSellNetworkFeeTooltip": {
+    "message": "网络费用取决于网络的繁忙程度及交易的复杂程度。"
+  },
+  "batchSellReceiveStablecoin": {
+    "message": "选择一种稳定币"
+  },
+  "batchSellSelectHeaderSubtitle": {
+    "message": "所有代币需位于同一网络。"
+  },
+  "batchSellSelectHeaderTitle": {
+    "message": "选择最多 5 个代币"
+  },
+  "batchSellSlippageDescription": {
+    "message": "如果价格变化超过滑移百分比，您的交易将无法成功。"
   },
   "bestQuote": {
     "message": "最佳报价"
@@ -5570,6 +5634,9 @@
   "noOptionsAvailableMessage": {
     "message": "此交易路径目前不可用。请尝试更改金额、网络或者代币，我们会找到最佳选项。"
   },
+  "noQuoteAvailable": {
+    "message": "暂无报价"
+  },
   "noSnaps": {
     "message": "您没有安装 snap。"
   },
@@ -6549,6 +6616,9 @@
     "message": "可用于交易",
     "description": "Label for the available balance that can be used for trading"
   },
+  "perpsBalance": {
+    "message": "永续合约余额"
+  },
   "perpsBasicFunctionalityOff": {
     "message": "在基本功能关闭时，此功能不可用。"
   },
@@ -6577,6 +6647,12 @@
     "message": "分钟"
   },
   "perpsCloseAll": {
+    "message": "全部平仓"
+  },
+  "perpsCloseAllDescription": {
+    "message": "我们将按当前市价为您的所有未平仓仓位进行平仓。"
+  },
+  "perpsCloseAllPositions": {
     "message": "全部平仓"
   },
   "perpsCloseAmount": {
@@ -6730,6 +6806,9 @@
   },
   "perpsInsufficientMargin": {
     "message": "保证金不足，无法下此订单。"
+  },
+  "perpsKeepPositions": {
+    "message": "保留仓位"
   },
   "perpsLearnBasics": {
     "message": "了解永续合约的基础知识"
@@ -8212,6 +8291,9 @@
   },
   "selectedAccountMismatch": {
     "message": "已选择不同账户"
+  },
+  "sellAll": {
+    "message": "查看全部"
   },
   "send": {
     "message": "发送"
@@ -10184,6 +10266,12 @@
   "total": {
     "message": "共计"
   },
+  "totalAmount": {
+    "message": "总数额"
+  },
+  "totalReceived": {
+    "message": "总计收到"
+  },
   "totalVolume": {
     "message": "总交易额"
   },
@@ -10425,6 +10513,10 @@
   },
   "unexpectedBehavior": {
     "message": "该行为属异常行为，即使账户已成功恢复，仍须作为漏洞提交报告。"
+  },
+  "unexpectedError": {
+    "message": "发生意外错误。",
+    "description": "This is a fallback error message used for unexpected errors."
   },
   "unifiedSwapAllowSwappingOf": {
     "message": "允许在 $3 上精准授权 $1 $2 用于兑换"
@@ -10748,6 +10840,9 @@
   "yes": {
     "message": "是"
   },
+  "yesSwap": {
+    "message": "是的，兑换"
+  },
   "you": {
     "message": "您"
   },
@@ -10760,6 +10855,9 @@
   "youReceived": {
     "message": "您收到了",
     "description": "Label indicating the amount and asset the user received."
+  },
+  "youSell": {
+    "message": "您卖出"
   },
   "youSent": {
     "message": "您发送了",

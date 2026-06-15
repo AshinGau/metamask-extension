@@ -70,6 +70,18 @@
     "message": "Nabasa ko at sumasang-ayon ako sa $1",
     "description": "$1 is the `terms` message"
   },
+  "accessRestrictedContactSupport": {
+    "message": "Kontakin ang suporta"
+  },
+  "accessRestrictedDescriptionLine1": {
+    "message": "Na-flag ang address ng wallet na ito habang sinusuri sa pagsunod. Bilang resulta, hindi available ang ilang mga serbisyo ng MetaMask."
+  },
+  "accessRestrictedDescriptionLine2": {
+    "message": "Kung naniniwala ka na isa itong error, kontakin ang suporta para humiling ng pagsusuri."
+  },
+  "accessRestrictedTitle": {
+    "message": "Pinaghihigpitan ng access"
+  },
   "accessingYourCamera": {
     "message": "Ina-access ang iyong camera..."
   },
@@ -296,6 +308,9 @@
   "activity_contractInteraction_pending_title": {
     "message": "Isinasagawa ang interaksyon"
   },
+  "activity_contractInteraction_success_title": {
+    "message": "Interaksyon ng kontrata"
+  },
   "activity_convert_failed_description": {
     "message": "Nabigo ang pag-convert"
   },
@@ -366,6 +381,12 @@
   "activity_lendingDeposit_failed_title": {
     "message": "Nabigo ang pagdeposito"
   },
+  "activity_lendingDeposit_pending_title": {
+    "message": "Deposito sa pagpapautang"
+  },
+  "activity_lendingDeposit_success_title": {
+    "message": "Deposito sa pagpapautang"
+  },
   "activity_lendingWithdrawal_failed_description": {
     "message": "Pumalya ang pag-withdraw"
   },
@@ -415,6 +436,17 @@
   },
   "activity_marketShort_success_title": {
     "message": "Naisara ang short - market"
+  },
+  "activity_nftBuy_failed_title": {
+    "message": "Nabigo ang pagbili"
+  },
+  "activity_nftBuy_pending_title": {
+    "message": "Bumibili ng $1",
+    "description": "$1 is the NFT token symbol"
+  },
+  "activity_nftBuy_success_title": {
+    "message": "Bumili ng $1",
+    "description": "$1 is the NFT token symbol"
   },
   "activity_nftMint_failed_title": {
     "message": "Nabigong mag-mint"
@@ -607,7 +639,6 @@
   "activity_perpsOpenLong_success_title": {
     "message": "Bukas na long"
   },
-
   "activity_perpsOpenShort_failed_description": {
     "message": "Nabigong buksan ang short"
   },
@@ -1691,6 +1722,39 @@
   },
   "basicFunctionalityRequired_toggleLabel": {
     "message": "Batayang kapakinabangan"
+  },
+  "batchSell": {
+    "message": "Magbenta nang Naka-batch"
+  },
+  "batchSellEmptyStateDescription": {
+    "message": "Walang mga token. Walang problema. Tuklasin at bumili ng mga token para magbenta nang naka-batch."
+  },
+  "batchSellGetNewQuotes": {
+    "message": "Kumuha ng mga bagong quote"
+  },
+  "batchSellHighRateAlert": {
+    "message": "Alerto sa mataas na rate"
+  },
+  "batchSellHightRateAlertModalDescription": {
+    "message": "Ang pagbebenta ng isang token nang naka-batch may maaaring humantong sa mas mataas na rate. Gusto mo bang mag-swap na lang?"
+  },
+  "batchSellMinimumReceiveExplanation": {
+    "message": "Ang pinakamababang halaga na iyong matatanggap kapag nagbago ang presyo habang pinoproseso ang iyong transaksyon, batay sa iyong slippage tolerance. Pagtantiya ito mula sa aming mga liquidity provider. Posibleng mag-iba ang pinal na halaga."
+  },
+  "batchSellNetworkFeeTooltip": {
+    "message": "Nagbabago ang bayad sa network depende kung gaano karami ang gumagamit at kung gaano kahirap ang transaksyon mo."
+  },
+  "batchSellReceiveStablecoin": {
+    "message": "Pumili ng stablecoin"
+  },
+  "batchSellSelectHeaderSubtitle": {
+    "message": "Ang lahat ng token ay kailangang nasa parehong network."
+  },
+  "batchSellSelectHeaderTitle": {
+    "message": "Pumili ng hanggang 5 token"
+  },
+  "batchSellSlippageDescription": {
+    "message": "Hindi magpapatuloy ang iyong transaksyon kapag nagbago ang presyo nang higit sa porsiyento ng slippage."
   },
   "bestQuote": {
     "message": "Pinakamagandang quote"
@@ -5570,6 +5634,9 @@
   "noOptionsAvailableMessage": {
     "message": "Hindi available sa ngayon ang ruta ng trade na ito. Subukang baguhin ang halaga, network, o token at hahanapin namin ang pinakamainam na opsyon."
   },
+  "noQuoteAvailable": {
+    "message": "Walang available na quote"
+  },
   "noSnaps": {
     "message": "Wala kang naka-install na snaps."
   },
@@ -6549,6 +6616,9 @@
     "message": "Available para i-trade",
     "description": "Label for the available balance that can be used for trading"
   },
+  "perpsBalance": {
+    "message": "Balanse ng perps"
+  },
   "perpsBasicFunctionalityOff": {
     "message": "Hindi available ang feature na ito habang naka-off ang pangunahing functionality."
   },
@@ -6578,6 +6648,12 @@
   },
   "perpsCloseAll": {
     "message": "Isara lahat"
+  },
+  "perpsCloseAllDescription": {
+    "message": "Isasara namin ang lahat ng bukas na posisyon mo sa kasalukuyang presyo sa merkado."
+  },
+  "perpsCloseAllPositions": {
+    "message": "Isara ang lahat ng posisyon"
   },
   "perpsCloseAmount": {
     "message": "Isara ang halaga"
@@ -6730,6 +6806,9 @@
   },
   "perpsInsufficientMargin": {
     "message": "Hindi sapat ang margin para mailagay ang order na ito."
+  },
+  "perpsKeepPositions": {
+    "message": "Panatilihin ang mga posisyon"
   },
   "perpsLearnBasics": {
     "message": "Matutunan ang mga pangunahing kaalaman tungkol sa perps"
@@ -8212,6 +8291,9 @@
   },
   "selectedAccountMismatch": {
     "message": "Ibang account ang pinili"
+  },
+  "sellAll": {
+    "message": "Ibenta lahat"
   },
   "send": {
     "message": "Ipadala"
@@ -10184,6 +10266,12 @@
   "total": {
     "message": "Kabuuan"
   },
+  "totalAmount": {
+    "message": "Kabuuang halaga"
+  },
+  "totalReceived": {
+    "message": "Kabuuang natanggap"
+  },
   "totalVolume": {
     "message": "Kabuuang volume"
   },
@@ -10425,6 +10513,10 @@
   },
   "unexpectedBehavior": {
     "message": "Hindi inaasahan ang pangyayaring ito at dapat itong iulat bilang bug, kahit na maibalik ang iyong mga account."
+  },
+  "unexpectedError": {
+    "message": "Nagkaroon ng hindi inaasahang error.",
+    "description": "This is a fallback error message used for unexpected errors."
   },
   "unifiedSwapAllowSwappingOf": {
     "message": "Pahintulutan ang eksaktong access sa $1 $2 sa $3 para sa pag-swap"
@@ -10748,6 +10840,9 @@
   "yes": {
     "message": "Oo"
   },
+  "yesSwap": {
+    "message": "Oo, i-swap"
+  },
   "you": {
     "message": "Ikaw"
   },
@@ -10760,6 +10855,9 @@
   "youReceived": {
     "message": "Nakatanggap ka ng",
     "description": "Label indicating the amount and asset the user received."
+  },
+  "youSell": {
+    "message": "Nagbebenta ka ng"
   },
   "youSent": {
     "message": "Nagpadala ka ng",

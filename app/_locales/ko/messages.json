@@ -70,6 +70,18 @@
     "message": "$1의 내용을 읽고 이에 동의합니다",
     "description": "$1 is the `terms` message"
   },
+  "accessRestrictedContactSupport": {
+    "message": "지원팀에 문의"
+  },
+  "accessRestrictedDescriptionLine1": {
+    "message": "이 지갑 주소는 규정 준수 심사 중 플래그 처리되었습니다. 그 결과, 일부 MetaMask 서비스를 이용할 수 없습니다."
+  },
+  "accessRestrictedDescriptionLine2": {
+    "message": "오류라고 생각되면 지원팀에 문의하여 검토를 요청하세요."
+  },
+  "accessRestrictedTitle": {
+    "message": "액세스 제한"
+  },
   "accessingYourCamera": {
     "message": "카메라에 접근 중..."
   },
@@ -296,6 +308,9 @@
   "activity_contractInteraction_pending_title": {
     "message": "상호작용 진행 중"
   },
+  "activity_contractInteraction_success_title": {
+    "message": "계약 인터렉션"
+  },
   "activity_convert_failed_description": {
     "message": "전환 실패"
   },
@@ -366,6 +381,12 @@
   "activity_lendingDeposit_failed_title": {
     "message": "예치 실패"
   },
+  "activity_lendingDeposit_pending_title": {
+    "message": "대출 예치"
+  },
+  "activity_lendingDeposit_success_title": {
+    "message": "대출 예치"
+  },
   "activity_lendingWithdrawal_failed_description": {
     "message": "출금 실패"
   },
@@ -415,6 +436,17 @@
   },
   "activity_marketShort_success_title": {
     "message": "숏 청산 완료 - 시장가"
+  },
+  "activity_nftBuy_failed_title": {
+    "message": "매수 실패"
+  },
+  "activity_nftBuy_pending_title": {
+    "message": "$1 매수 중",
+    "description": "$1 is the NFT token symbol"
+  },
+  "activity_nftBuy_success_title": {
+    "message": "$1 구매",
+    "description": "$1 is the NFT token symbol"
   },
   "activity_nftMint_failed_title": {
     "message": "민팅 실패"
@@ -607,7 +639,6 @@
   "activity_perpsOpenLong_success_title": {
     "message": "오픈한 롱"
   },
-
   "activity_perpsOpenShort_failed_description": {
     "message": "숏 포지션 열기 실패"
   },
@@ -669,7 +700,7 @@
     "message": "출금 실패"
   },
   "activity_perpsWithdraw_pending_description": {
-    "message": "자금 출금 중"
+    "message": "자금 출금"
   },
   "activity_perpsWithdraw_pending_title": {
     "message": "자금 출금"
@@ -1691,6 +1722,39 @@
   },
   "basicFunctionalityRequired_toggleLabel": {
     "message": "기본 기능"
+  },
+  "batchSell": {
+    "message": "일괄 매도"
+  },
+  "batchSellEmptyStateDescription": {
+    "message": "토큰이 없습니다. 그래도 문제없습니다. 둘러보고 토큰을 매입한 후 일괄 매도하세요."
+  },
+  "batchSellGetNewQuotes": {
+    "message": "새 견적을 받기"
+  },
+  "batchSellHighRateAlert": {
+    "message": "높은 환율 알림"
+  },
+  "batchSellHightRateAlertModalDescription": {
+    "message": "하나의 토큰을 일괄 매도하면 환율이 높아질 수 있습니다. 그 대신 스왑을 하시겠습니까?"
+  },
+  "batchSellMinimumReceiveExplanation": {
+    "message": "이는 트랜잭션 처리 중 가격이 변동될 경우, 사용자의 슬리피지 허용 범위에 따라 최소한으로 수령할 수 있는 금액입니다. 이는 유동성 공급자들의 추정치이며, 최종 금액은 달라질 수 있습니다."
+  },
+  "batchSellNetworkFeeTooltip": {
+    "message": "네트워크 수수료는 네트워크의 혼잡도와 트랜잭션의 복잡성에 따라 달라집니다."
+  },
+  "batchSellReceiveStablecoin": {
+    "message": "스테이블코인 선택"
+  },
+  "batchSellSelectHeaderSubtitle": {
+    "message": "모든 토큰은 동일한 네트워크에 있어야 합니다."
+  },
+  "batchSellSelectHeaderTitle": {
+    "message": "최대 5개 토큰 선택"
+  },
+  "batchSellSlippageDescription": {
+    "message": "가격이 슬리피지 비율보다 더 크게 변동하면 트랜잭션이 처리되지 않습니다."
   },
   "bestQuote": {
     "message": "최적 견적"
@@ -5574,6 +5638,9 @@
   "noOptionsAvailableMessage": {
     "message": "현재 이 거래 경로를 사용할 수 없습니다. 금액, 네트워크, 토큰을 변경하면 최적의 옵션을 찾아드립니다."
   },
+  "noQuoteAvailable": {
+    "message": "사용 가능한 견적 없음"
+  },
   "noSnaps": {
     "message": "설치된 스냅이 없습니다"
   },
@@ -6553,6 +6620,9 @@
     "message": "거래 가능",
     "description": "Label for the available balance that can be used for trading"
   },
+  "perpsBalance": {
+    "message": "무기한 선물 잔액"
+  },
   "perpsBasicFunctionalityOff": {
     "message": "기본 기능이 꺼져 있는 동안에는 이 기능을 사용할 수 없습니다."
   },
@@ -6582,6 +6652,12 @@
   },
   "perpsCloseAll": {
     "message": "모두 종료"
+  },
+  "perpsCloseAllDescription": {
+    "message": "회원님의 모든 포지션을 현재 시장가에 종료합니다."
+  },
+  "perpsCloseAllPositions": {
+    "message": "모든 포지션 종료"
   },
   "perpsCloseAmount": {
     "message": "종료 금액"
@@ -6734,6 +6810,9 @@
   },
   "perpsInsufficientMargin": {
     "message": "이 주문을 제출하기에 마진이 부족합니다."
+  },
+  "perpsKeepPositions": {
+    "message": "포지션 유지"
   },
   "perpsLearnBasics": {
     "message": "무기한 선물 기초 배우기"
@@ -8220,6 +8299,9 @@
   },
   "selectedAccountMismatch": {
     "message": "다른 계정이 선택됨"
+  },
+  "sellAll": {
+    "message": "모두 매도"
   },
   "send": {
     "message": "전송"
@@ -10192,6 +10274,12 @@
   "total": {
     "message": "총액"
   },
+  "totalAmount": {
+    "message": "총 금액"
+  },
+  "totalReceived": {
+    "message": " 총 수령량"
+  },
   "totalVolume": {
     "message": "총 거래량"
   },
@@ -10433,6 +10521,10 @@
   },
   "unexpectedBehavior": {
     "message": "이 동작은 예상치 못한 것이며 계정이 복원되더라도 버그로 신고해야 합니다."
+  },
+  "unexpectedError": {
+    "message": "예기치 않은 오류가 발생했습니다.",
+    "description": "This is a fallback error message used for unexpected errors."
   },
   "unifiedSwapAllowSwappingOf": {
     "message": "스왑을 위해 $3의 $1 $2에 대한 정확한 액세스 허용"
@@ -10756,6 +10848,9 @@
   "yes": {
     "message": "예"
   },
+  "yesSwap": {
+    "message": "예, 스왑하겠습니다"
+  },
   "you": {
     "message": "회원님"
   },
@@ -10768,6 +10863,9 @@
   "youReceived": {
     "message": "받음:",
     "description": "Label indicating the amount and asset the user received."
+  },
+  "youSell": {
+    "message": "매도:"
   },
   "youSent": {
     "message": "보냄:",

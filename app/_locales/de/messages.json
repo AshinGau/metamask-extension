@@ -70,6 +70,18 @@
     "message": "Ich habe die $1 gelesen und stimme ihnen zu.",
     "description": "$1 is the `terms` message"
   },
+  "accessRestrictedContactSupport": {
+    "message": "Support kontaktieren"
+  },
+  "accessRestrictedDescriptionLine1": {
+    "message": "Diese Wallet-Adresse wurde beim Compliance-Screening markiert. Infolgedessen sind einige MetaMask-Dienste nicht verfügbar."
+  },
+  "accessRestrictedDescriptionLine2": {
+    "message": "Wenn Sie dies für einen Fehler halten, wenden Sie sich an den Support, um eine Überprüfung anzufordern."
+  },
+  "accessRestrictedTitle": {
+    "message": "Zugriff eingeschränkt"
+  },
   "accessingYourCamera": {
     "message": "Zugriff auf Ihre Kamera …"
   },
@@ -296,6 +308,9 @@
   "activity_contractInteraction_pending_title": {
     "message": "Interaktion läuft"
   },
+  "activity_contractInteraction_success_title": {
+    "message": "Contract-Interaktion"
+  },
   "activity_convert_failed_description": {
     "message": "Umrechnung fehlgeschlagen"
   },
@@ -366,6 +381,12 @@
   "activity_lendingDeposit_failed_title": {
     "message": "Einzahlung fehlgeschlagen"
   },
+  "activity_lendingDeposit_pending_title": {
+    "message": "Krediteinzahlung"
+  },
+  "activity_lendingDeposit_success_title": {
+    "message": "Krediteinzahlung"
+  },
   "activity_lendingWithdrawal_failed_description": {
     "message": "Auszahlung fehlgeschlagen"
   },
@@ -415,6 +436,17 @@
   },
   "activity_marketShort_success_title": {
     "message": "Short-Position geschlossen ‒ Markt"
+  },
+  "activity_nftBuy_failed_title": {
+    "message": "Kauf fehlgeschlagen"
+  },
+  "activity_nftBuy_pending_title": {
+    "message": "$1 kaufen",
+    "description": "$1 is the NFT token symbol"
+  },
+  "activity_nftBuy_success_title": {
+    "message": "$1 gekauft",
+    "description": "$1 is the NFT token symbol"
   },
   "activity_nftMint_failed_title": {
     "message": "Prägung fehlgeschlagen"
@@ -607,7 +639,6 @@
   "activity_perpsOpenLong_success_title": {
     "message": "Geöffnete Long-Position"
   },
-
   "activity_perpsOpenShort_failed_description": {
     "message": "Eröffnen der Short-Position fehlgeschlagen"
   },
@@ -1691,6 +1722,39 @@
   },
   "basicFunctionalityRequired_toggleLabel": {
     "message": "Grundfunktionalität"
+  },
+  "batchSell": {
+    "message": "Batch-Verkauf"
+  },
+  "batchSellEmptyStateDescription": {
+    "message": "Keine Token. Kein Problem. Entdecken und kaufen Sie Token für den Batch-Verkauf."
+  },
+  "batchSellGetNewQuotes": {
+    "message": "Neue Angebote einholen"
+  },
+  "batchSellHighRateAlert": {
+    "message": "Hochpreisbenachrichtigung"
+  },
+  "batchSellHightRateAlertModalDescription": {
+    "message": "Batch-Verkauf von einem Token könnte zu einem höheren Preis führen. Möchten Sie stattdessen swappen?"
+  },
+  "batchSellMinimumReceiveExplanation": {
+    "message": "Der Mindestbetrag, den Sie erhalten, wenn sich der Kurs während der Bearbeitung Ihrer Transaktion entsprechend Ihrer Slippage-Toleranz ändert. Dies ist eine Schätzung unserer Liquiditätsanbieter. Die Endbeträge können abweichen."
+  },
+  "batchSellNetworkFeeTooltip": {
+    "message": "Die Netzwerkgebühren richten sich nach der Netzwerkauslastung und der Komplexität Ihrer Transaktion."
+  },
+  "batchSellReceiveStablecoin": {
+    "message": "Stablecoin wählen"
+  },
+  "batchSellSelectHeaderSubtitle": {
+    "message": "Alle Token müssen sich im selben Netzwerk befinden."
+  },
+  "batchSellSelectHeaderTitle": {
+    "message": "Wählen Sie bis zu 5 Token"
+  },
+  "batchSellSlippageDescription": {
+    "message": "Ihre Transaktion wird nicht durchgeführt, wenn sich der Preis um mehr als den Slippage-Prozentsatz ändert."
   },
   "bestQuote": {
     "message": "Bester Kurs"
@@ -5570,6 +5634,9 @@
   "noOptionsAvailableMessage": {
     "message": "Diese Handelsroute ist derzeit nicht verfügbar. Versuchen Sie, den Betrag, das Netzwerk oder den Token zu ändern, und wir werden die bestmögliche Option suchen."
   },
+  "noQuoteAvailable": {
+    "message": "Kein Angebot verfügbar"
+  },
   "noSnaps": {
     "message": "Keine Snaps installiert"
   },
@@ -6549,6 +6616,9 @@
     "message": "Zum Handeln verfügbar",
     "description": "Label for the available balance that can be used for trading"
   },
+  "perpsBalance": {
+    "message": "Perps-Saldo"
+  },
   "perpsBasicFunctionalityOff": {
     "message": "Diese Funktion ist nicht verfügbar, solange die Basisfunktionalität ausgeschaltet ist."
   },
@@ -6578,6 +6648,12 @@
   },
   "perpsCloseAll": {
     "message": "Alle schließen"
+  },
+  "perpsCloseAllDescription": {
+    "message": "Wir werden alle Ihre offenen Positionen zum aktuellen Marktpreis schließen."
+  },
+  "perpsCloseAllPositions": {
+    "message": "Alle Positionen schließen"
   },
   "perpsCloseAmount": {
     "message": "Schlussbetrag"
@@ -6730,6 +6806,9 @@
   },
   "perpsInsufficientMargin": {
     "message": "Margin nicht ausreichend, um diese Order zu erteilen."
+  },
+  "perpsKeepPositions": {
+    "message": "Positionen beibehalten"
   },
   "perpsLearnBasics": {
     "message": "Lernen Sie die Grundlagen von Perps"
@@ -8212,6 +8291,9 @@
   },
   "selectedAccountMismatch": {
     "message": "Anderes Konto ausgewählt"
+  },
+  "sellAll": {
+    "message": "Alle verkaufen"
   },
   "send": {
     "message": "Senden"
@@ -10184,6 +10266,12 @@
   "total": {
     "message": "Gesamt"
   },
+  "totalAmount": {
+    "message": "Gesamtbetrag"
+  },
+  "totalReceived": {
+    "message": "Insgesamt empfangen"
+  },
   "totalVolume": {
     "message": "Gesamtvolumen"
   },
@@ -10425,6 +10513,10 @@
   },
   "unexpectedBehavior": {
     "message": "Dieses Verhalten ist unerwartet und sollte als Fehler gemeldet werden, auch wenn Ihre Konten wiederhergestellt werden."
+  },
+  "unexpectedError": {
+    "message": "Ein unerwarteter Fehler ist aufgetreten.",
+    "description": "This is a fallback error message used for unexpected errors."
   },
   "unifiedSwapAllowSwappingOf": {
     "message": "Genehmigen Sie für das Swappen genauen Zugriff auf $1 $2 für $3"
@@ -10748,6 +10840,9 @@
   "yes": {
     "message": "Ja"
   },
+  "yesSwap": {
+    "message": "Ja, swappen"
+  },
   "you": {
     "message": "Sie"
   },
@@ -10760,6 +10855,9 @@
   "youReceived": {
     "message": "Sie erhielten",
     "description": "Label indicating the amount and asset the user received."
+  },
+  "youSell": {
+    "message": "Sie verkaufen"
   },
   "youSent": {
     "message": "Sie sandten",

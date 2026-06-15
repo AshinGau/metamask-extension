@@ -70,6 +70,18 @@
     "message": "Я прочитал(-а) $1 и согласен(-на) с ними",
     "description": "$1 is the `terms` message"
   },
+  "accessRestrictedContactSupport": {
+    "message": "Связаться с поддержкой"
+  },
+  "accessRestrictedDescriptionLine1": {
+    "message": "Этот адрес кошелька был отмечен во время проверки на соответствие требованиям. В результате некоторые сервисы MetaMask недоступны."
+  },
+  "accessRestrictedDescriptionLine2": {
+    "message": "Если вы считаете, что это ошибка, обратитесь в службу поддержки для запроса проверки."
+  },
+  "accessRestrictedTitle": {
+    "message": "Доступ ограничен"
+  },
   "accessingYourCamera": {
     "message": "Доступ к камере..."
   },
@@ -296,6 +308,9 @@
   "activity_contractInteraction_pending_title": {
     "message": "Взаимодействие выполняется"
   },
+  "activity_contractInteraction_success_title": {
+    "message": "Взаимодействие по контракту"
+  },
   "activity_convert_failed_description": {
     "message": "Ошибка конвертации"
   },
@@ -366,6 +381,12 @@
   "activity_lendingDeposit_failed_title": {
     "message": "Ошибка депозита"
   },
+  "activity_lendingDeposit_pending_title": {
+    "message": "Кредитный депозит"
+  },
+  "activity_lendingDeposit_success_title": {
+    "message": "Кредитный депозит"
+  },
   "activity_lendingWithdrawal_failed_description": {
     "message": "Ошибка вывода средств"
   },
@@ -415,6 +436,17 @@
   },
   "activity_marketShort_success_title": {
     "message": "Короткая позиция закрыта — рынок"
+  },
+  "activity_nftBuy_failed_title": {
+    "message": "Ошибка покупки"
+  },
+  "activity_nftBuy_pending_title": {
+    "message": "Покупка $1",
+    "description": "$1 is the NFT token symbol"
+  },
+  "activity_nftBuy_success_title": {
+    "message": "Куплено $1",
+    "description": "$1 is the NFT token symbol"
   },
   "activity_nftMint_failed_title": {
     "message": "Ошибка минтинга"
@@ -607,7 +639,6 @@
   "activity_perpsOpenLong_success_title": {
     "message": "Открыта длинная позиция"
   },
-
   "activity_perpsOpenShort_failed_description": {
     "message": "Ошибка открытия короткой позиции"
   },
@@ -1691,6 +1722,39 @@
   },
   "basicFunctionalityRequired_toggleLabel": {
     "message": "Базовый функционал"
+  },
+  "batchSell": {
+    "message": "Пакетная продажа"
+  },
+  "batchSellEmptyStateDescription": {
+    "message": "Нет токенов. Нет проблем. Ищите и покупайте токены для пакетной продажи."
+  },
+  "batchSellGetNewQuotes": {
+    "message": "Получить новые котировки"
+  },
+  "batchSellHighRateAlert": {
+    "message": "Предупреждение о высоком курсе"
+  },
+  "batchSellHightRateAlertModalDescription": {
+    "message": "Пакетная продажа одного токена может привести к более высокому курсу. Хотите вместо этого выполнить своп?"
+  },
+  "batchSellMinimumReceiveExplanation": {
+    "message": "Минимальная сумма, которую вы получите, если цена изменится во время обработки вашей транзакции, рассчитывается исходя из вашей допустимой задержки. Это оценка, предоставленная нашими поставщиками ликвидности. Окончательные суммы могут отличаться."
+  },
+  "batchSellNetworkFeeTooltip": {
+    "message": "Комиссии сети зависят от загруженности сети и сложности транзакции."
+  },
+  "batchSellReceiveStablecoin": {
+    "message": "Выберите стейблкоин"
+  },
+  "batchSellSelectHeaderSubtitle": {
+    "message": "Все токены должны быть в одной сети."
+  },
+  "batchSellSelectHeaderTitle": {
+    "message": "Выберите до 5 токенов"
+  },
+  "batchSellSlippageDescription": {
+    "message": "Ваша транзакция не будет завершена, если изменение цены превысит допустимый процент проскальзывания."
   },
   "bestQuote": {
     "message": "Лучшая котировка"
@@ -5570,6 +5634,9 @@
   "noOptionsAvailableMessage": {
     "message": "Этот торговый путь сейчас недоступен. Попробуйте изменить сумму, сеть или токен и мы подберем лучший вариант."
   },
+  "noQuoteAvailable": {
+    "message": "Нет доступных котировок"
+  },
   "noSnaps": {
     "message": "Snaps не установлены."
   },
@@ -6549,6 +6616,9 @@
     "message": "Доступно для торговли",
     "description": "Label for the available balance that can be used for trading"
   },
+  "perpsBalance": {
+    "message": "Баланс перпов"
+  },
   "perpsBasicFunctionalityOff": {
     "message": "Эта функция недоступна, пока отключены базовые функции."
   },
@@ -6578,6 +6648,12 @@
   },
   "perpsCloseAll": {
     "message": "Закрыть все"
+  },
+  "perpsCloseAllDescription": {
+    "message": "Мы закроем все ваши открытые позиции по текущей рыночной цене."
+  },
+  "perpsCloseAllPositions": {
+    "message": "Закрыть все позиции"
   },
   "perpsCloseAmount": {
     "message": "Сумма закрытия"
@@ -6730,6 +6806,9 @@
   },
   "perpsInsufficientMargin": {
     "message": "Недостаточно маржи для размещения этого ордера."
+  },
+  "perpsKeepPositions": {
+    "message": "Сохранить позиции"
   },
   "perpsLearnBasics": {
     "message": "Изучите основы перпов"
@@ -8212,6 +8291,9 @@
   },
   "selectedAccountMismatch": {
     "message": "Выбран другой счет"
+  },
+  "sellAll": {
+    "message": "Продать все"
   },
   "send": {
     "message": "Отправить"
@@ -10184,6 +10266,12 @@
   "total": {
     "message": "Итого"
   },
+  "totalAmount": {
+    "message": "Общая сумма"
+  },
+  "totalReceived": {
+    "message": "Всего получено"
+  },
   "totalVolume": {
     "message": "Общий объем"
   },
@@ -10425,6 +10513,10 @@
   },
   "unexpectedBehavior": {
     "message": "Такое поведение является неожиданным, и о нем следует сообщить как об ошибке, даже если ваши счета восстановлены."
+  },
+  "unexpectedError": {
+    "message": "Произошла неожиданная ошибка.",
+    "description": "This is a fallback error message used for unexpected errors."
   },
   "unifiedSwapAllowSwappingOf": {
     "message": "Разрешите точный доступ к $1 $2 на $3 для обмена"
@@ -10748,6 +10840,9 @@
   "yes": {
     "message": "Да"
   },
+  "yesSwap": {
+    "message": "Да, выполнить своп"
+  },
   "you": {
     "message": "Вы"
   },
@@ -10760,6 +10855,9 @@
   "youReceived": {
     "message": "Вы получили",
     "description": "Label indicating the amount and asset the user received."
+  },
+  "youSell": {
+    "message": "Вы продаете"
   },
   "youSent": {
     "message": "Вы отправили",

@@ -70,6 +70,18 @@
     "message": "मैंने $1 पढ़ लिया है और मैं सहमत हूं",
     "description": "$1 is the `terms` message"
   },
+  "accessRestrictedContactSupport": {
+    "message": "सपोर्ट टीम से कॉन्टेक्ट करें"
+  },
+  "accessRestrictedDescriptionLine1": {
+    "message": "कम्प्लायंस स्क्रीनिंग के दौरान इस वॉलेट एड्रेस की शिक़ायत मिली है। इस वजह से, कुछ MetaMask सर्विस उपलब्ध नहीं हैं।"
+  },
+  "accessRestrictedDescriptionLine2": {
+    "message": "अगर आपको लगता है कि यह एक गड़बड़ी है, तो रिव्यू के लिए सपोर्ट से संपर्क करें।"
+  },
+  "accessRestrictedTitle": {
+    "message": "एक्सेस प्रतिबंधित"
+  },
   "accessingYourCamera": {
     "message": "आपके कैमरे को एक्सेस कर रहे हैं..."
   },
@@ -296,6 +308,9 @@
   "activity_contractInteraction_pending_title": {
     "message": "इंटरेक्शन प्रोग्रेस में है"
   },
+  "activity_contractInteraction_success_title": {
+    "message": "कॉन्ट्रैक्ट इंटरैक्शन"
+  },
   "activity_convert_failed_description": {
     "message": "कन्वर्शन नहीं हो पाया"
   },
@@ -366,6 +381,12 @@
   "activity_lendingDeposit_failed_title": {
     "message": "डिपॉज़िट नहीं हो पाया"
   },
+  "activity_lendingDeposit_pending_title": {
+    "message": "डिपॉज़िट उधार दिया जा रहा है"
+  },
+  "activity_lendingDeposit_success_title": {
+    "message": "डिपॉज़िट उधार दिया जा रहा है"
+  },
   "activity_lendingWithdrawal_failed_description": {
     "message": "विदड्रॉवल नहीं हो पाया"
   },
@@ -415,6 +436,17 @@
   },
   "activity_marketShort_success_title": {
     "message": "शॉर्ट क्लोज़ किया जा रहा है - मार्केट क्लोज़"
+  },
+  "activity_nftBuy_failed_title": {
+    "message": "खरीदना नहीं हो पाया"
+  },
+  "activity_nftBuy_pending_title": {
+    "message": "$1 खरीद रहे हैं",
+    "description": "$1 is the NFT token symbol"
+  },
+  "activity_nftBuy_success_title": {
+    "message": "$1 खरीदा गया",
+    "description": "$1 is the NFT token symbol"
   },
   "activity_nftMint_failed_title": {
     "message": "मिंट नहीं हो पाया"
@@ -607,7 +639,6 @@
   "activity_perpsOpenLong_success_title": {
     "message": "खुला लॉन्ग"
   },
-
   "activity_perpsOpenShort_failed_description": {
     "message": "शॉर्ट ओपन नहीं हो पाया"
   },
@@ -1691,6 +1722,39 @@
   },
   "basicFunctionalityRequired_toggleLabel": {
     "message": "बेसिक फंक्शनलिटी"
+  },
+  "batchSell": {
+    "message": "बैच सेल"
+  },
+  "batchSellEmptyStateDescription": {
+    "message": "कोई टोकन नहीं। कोई प्रॉब्लम नहीं। बैच सेल के लिए टोकन एक्सप्लोर करें और खरीदें।"
+  },
+  "batchSellGetNewQuotes": {
+    "message": "नए उद्धरण प्राप्त करें"
+  },
+  "batchSellHighRateAlert": {
+    "message": "हाई रेट अलर्ट"
+  },
+  "batchSellHightRateAlertModalDescription": {
+    "message": "एक टोकन बैच में बेचने पर रेट ज़्यादा हो सकता है। क्या आप इसके बजाय स्वैप करना चाहते हैं?"
+  },
+  "batchSellMinimumReceiveExplanation": {
+    "message": "आपके ट्रांसेक्शन के प्रोसेस होने के दौरान प्राइस बदलने पर जो न्यूनतम राशि आपको प्राप्त होगी, वह आपके स्लिपेज (slippage) टॉलरेंस पर आधारित है। यह हमारे लिक्विडिटी प्रदाताओं से एक अनुमान है। अंतिम राशि भिन्न हो सकती है।"
+  },
+  "batchSellNetworkFeeTooltip": {
+    "message": "नेटवर्क फीस इस बात पर निर्भर करते हैं कि नेटवर्क कितना व्यस्त है और आपका ट्रांसेक्शन कितना जटिल है।"
+  },
+  "batchSellReceiveStablecoin": {
+    "message": "एक स्टेबलकॉइन चुनें"
+  },
+  "batchSellSelectHeaderSubtitle": {
+    "message": "सभी टोकन एक ही नेटवर्क पर होने चाहिए।"
+  },
+  "batchSellSelectHeaderTitle": {
+    "message": "5 टोकन तक चुनें"
+  },
+  "batchSellSlippageDescription": {
+    "message": "अगर प्राइस स्लिपेज परसेंट से ज़्यादा बदल जाता है, तो आपका ट्रांसेक्शन पूरा नहीं होगा।"
   },
   "bestQuote": {
     "message": "सबसे अच्छी क्वोट"
@@ -5570,6 +5634,9 @@
   "noOptionsAvailableMessage": {
     "message": "यह ट्रेड रूट अभी उपलब्ध नहीं है। राशि, नेटवर्क या टोकन बदलने का प्रयास करें और हम सबसे अच्छा विकल्प ढूंढ लेंगे।"
   },
+  "noQuoteAvailable": {
+    "message": "कोई कोटेशन उपलब्ध नहीं है"
+  },
   "noSnaps": {
     "message": "आपके पास इंस्टाल किए गए Snap नहीं हैं।"
   },
@@ -6549,6 +6616,9 @@
     "message": "ट्रेड करने के लिए उपलब्ध है",
     "description": "Label for the available balance that can be used for trading"
   },
+  "perpsBalance": {
+    "message": "पर्प्स बैलेंस"
+  },
   "perpsBasicFunctionalityOff": {
     "message": "जब बेसिक फ़ंक्शनैलिटी बंद होती है, तो यह सुविधा उपलब्ध नहीं होती।"
   },
@@ -6578,6 +6648,12 @@
   },
   "perpsCloseAll": {
     "message": "सब बंद करें"
+  },
+  "perpsCloseAllDescription": {
+    "message": "हम आपकी सभी ओपन पोज़िशन को वर्तमान मार्केट प्राइस पर बंद कर देंगे।"
+  },
+  "perpsCloseAllPositions": {
+    "message": "सभी पोज़िशन बंद करें"
   },
   "perpsCloseAmount": {
     "message": "अमाउंट क्लोज़ करें"
@@ -6730,6 +6806,9 @@
   },
   "perpsInsufficientMargin": {
     "message": "इस ऑर्डर को लगाने के लिए पर्याप्त मार्जिन नहीं है।"
+  },
+  "perpsKeepPositions": {
+    "message": "पोज़िशन्स रखें"
   },
   "perpsLearnBasics": {
     "message": "पर्प्स की मूल बातें सीखें"
@@ -8212,6 +8291,9 @@
   },
   "selectedAccountMismatch": {
     "message": "अलग खाता चुना गया"
+  },
+  "sellAll": {
+    "message": "सभी को बेचें"
   },
   "send": {
     "message": "भेजें"
@@ -10184,6 +10266,12 @@
   "total": {
     "message": "कुल"
   },
+  "totalAmount": {
+    "message": "कुल रकम"
+  },
+  "totalReceived": {
+    "message": "टोटल प्राप्त हुआ"
+  },
   "totalVolume": {
     "message": "टोटल वॉल्यूम"
   },
@@ -10425,6 +10513,10 @@
   },
   "unexpectedBehavior": {
     "message": "यह व्यवहार अप्रत्याशित है और इसे बग के रूप में रिपोर्ट किया जाना चाहिए, भले ही आपके एकाउंट्स रिस्टोर कर दिए गए हों।"
+  },
+  "unexpectedError": {
+    "message": "एक अनपेक्षित गड़बड़ी हुई।",
+    "description": "This is a fallback error message used for unexpected errors."
   },
   "unifiedSwapAllowSwappingOf": {
     "message": "स्वैपिंग के लिए $3 पर $1 $2 तक सटीक पहुंच की अनुमति दें"
@@ -10748,6 +10840,9 @@
   "yes": {
     "message": "हां"
   },
+  "yesSwap": {
+    "message": "हाँ, स्वैप करें"
+  },
   "you": {
     "message": "आप"
   },
@@ -10760,6 +10855,9 @@
   "youReceived": {
     "message": "आपको प्राप्त हुआ",
     "description": "Label indicating the amount and asset the user received."
+  },
+  "youSell": {
+    "message": "आप बेचते हैं"
   },
   "youSent": {
     "message": "आपने भेजा",

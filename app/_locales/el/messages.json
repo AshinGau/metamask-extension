@@ -70,6 +70,18 @@
     "message": "Έχω διαβάσει και συμφωνώ με το $1",
     "description": "$1 is the `terms` message"
   },
+  "accessRestrictedContactSupport": {
+    "message": "Επικοινωνήστε με την υποστήριξη"
+  },
+  "accessRestrictedDescriptionLine1": {
+    "message": "Αυτή η διεύθυνση πορτοφολιού έχει επισημανθεί κατά τον έλεγχο συμμόρφωσης. Ως αποτέλεσμα, ορισμένες υπηρεσίες στο MetaMask δεν είναι διαθέσιμες."
+  },
+  "accessRestrictedDescriptionLine2": {
+    "message": "Αν θεωρείτε ότι έχει γίνει λάθος, επικοινωνήστε με την υποστήριξη για επανέλεγχο."
+  },
+  "accessRestrictedTitle": {
+    "message": "Περιορισμένη πρόσβαση"
+  },
   "accessingYourCamera": {
     "message": "Πρόσβαση στην κάμερά σας..."
   },
@@ -296,6 +308,9 @@
   "activity_contractInteraction_pending_title": {
     "message": "Η αλληλεπίδραση βρίσκεται σε εξέλιξη"
   },
+  "activity_contractInteraction_success_title": {
+    "message": "Αλληλεπίδραση συμβολαίου"
+  },
   "activity_convert_failed_description": {
     "message": "Η μετατροπή απέτυχε"
   },
@@ -366,6 +381,12 @@
   "activity_lendingDeposit_failed_title": {
     "message": "Η κατάθεση απέτυχε"
   },
+  "activity_lendingDeposit_pending_title": {
+    "message": "Κατάθεση για δανεισμό"
+  },
+  "activity_lendingDeposit_success_title": {
+    "message": "Κατάθεση για δανεισμό"
+  },
   "activity_lendingWithdrawal_failed_description": {
     "message": "Η ανάληψη απέτυχε"
   },
@@ -415,6 +436,17 @@
   },
   "activity_marketShort_success_title": {
     "message": "Η θέση πώλησης έκλεισε – αγορά"
+  },
+  "activity_nftBuy_failed_title": {
+    "message": "Η αγορά απέτυχε"
+  },
+  "activity_nftBuy_pending_title": {
+    "message": "Αγορά $1",
+    "description": "$1 is the NFT token symbol"
+  },
+  "activity_nftBuy_success_title": {
+    "message": "Αγοράσατε $1",
+    "description": "$1 is the NFT token symbol"
   },
   "activity_nftMint_failed_title": {
     "message": "Η δημιουργία token απέτυχε"
@@ -607,7 +639,6 @@
   "activity_perpsOpenLong_success_title": {
     "message": "Άνοιξε θέση αγοράς (long)"
   },
-
   "activity_perpsOpenShort_failed_description": {
     "message": "Το άνοιγμα της θέσης πώλησης απέτυχε"
   },
@@ -1691,6 +1722,39 @@
   },
   "basicFunctionalityRequired_toggleLabel": {
     "message": "Βασικές λειτουργίες"
+  },
+  "batchSell": {
+    "message": "Μαζική πώληση"
+  },
+  "batchSellEmptyStateDescription": {
+    "message": "Δεν έχετε tokens. Κανένα πρόβλημα. Εξερευνήστε και αγοράστε tokens για μαζική πώληση."
+  },
+  "batchSellGetNewQuotes": {
+    "message": "Λάβετε νέες προσφορές"
+  },
+  "batchSellHighRateAlert": {
+    "message": "Ειδοποίηση υψηλής μεταβλητότητας"
+  },
+  "batchSellHightRateAlertModalDescription": {
+    "message": "Η μαζική πώληση ενός token μπορεί να οδηγήσει σε υψηλότερη τιμή. Θέλετε να κάνετε ανταλλαγή αντί γι' αυτό;"
+  },
+  "batchSellMinimumReceiveExplanation": {
+    "message": "Το ελάχιστο ποσό που θα λάβετε, αν η τιμή αλλάξει όσο η συναλλαγή σας εκτελείται, με βάση την ανοχή σας στην απόκλιση. Πρόκειται για εκτίμηση από τους παρόχους ρευστότητας. Τα τελικά ποσά ενδέχεται να διαφέρουν."
+  },
+  "batchSellNetworkFeeTooltip": {
+    "message": "Τα τέλη δικτύου εξαρτώνται από το φόρτο του δικτύου και από το πόσο περίπλοκη είναι η συναλλαγή σας."
+  },
+  "batchSellReceiveStablecoin": {
+    "message": "Επιλέξτε ένα stablecoin"
+  },
+  "batchSellSelectHeaderSubtitle": {
+    "message": "Όλα τα tokens πρέπει να βρίσκονται στο ίδιο δίκτυο."
+  },
+  "batchSellSelectHeaderTitle": {
+    "message": "Επιλέξτε έως 5 tokens"
+  },
+  "batchSellSlippageDescription": {
+    "message": "Η συναλλαγή σας δεν θα ολοκληρωθεί εάν η τιμή αλλάξει περισσότερο από το ποσοστό απόκλισης."
   },
   "bestQuote": {
     "message": "Καλύτερη προσφορά"
@@ -5570,6 +5634,9 @@
   "noOptionsAvailableMessage": {
     "message": "Αυτή η διαδρομή της συναλλαγής δεν είναι διαθέσιμη προς το παρόν. Δοκιμάστε να αλλάξετε το ποσό, το δίκτυο ή το token και θα βρούμε την καλύτερη επιλογή."
   },
+  "noQuoteAvailable": {
+    "message": "Δεν υπάρχει διαθέσιμη προσφορά"
+  },
   "noSnaps": {
     "message": "Δεν έχετε εγκαταστήσει κανένα snap."
   },
@@ -6549,6 +6616,9 @@
     "message": "Διαθέσιμο ποσό για συναλλαγές",
     "description": "Label for the available balance that can be used for trading"
   },
+  "perpsBalance": {
+    "message": "Υπόλοιπο Perps"
+  },
   "perpsBasicFunctionalityOff": {
     "message": "Αυτή η λειτουργία δεν είναι διαθέσιμη όσο είναι απενεργοποιημένες οι βασικές λειτουργίες."
   },
@@ -6578,6 +6648,12 @@
   },
   "perpsCloseAll": {
     "message": "Κλείσιμο όλων"
+  },
+  "perpsCloseAllDescription": {
+    "message": "Θα κλείσουμε όλες τις ανοιχτές θέσεις σας στην τρέχουσα τιμή της αγοράς."
+  },
+  "perpsCloseAllPositions": {
+    "message": "Κλείσιμο όλων των θέσεων"
   },
   "perpsCloseAmount": {
     "message": "Ποσό κλεισίματος"
@@ -6730,6 +6806,9 @@
   },
   "perpsInsufficientMargin": {
     "message": "Μη επαρκές περιθώριο για την εκτέλεση αυτής της εντολής."
+  },
+  "perpsKeepPositions": {
+    "message": "Διατήρηση θέσεων"
   },
   "perpsLearnBasics": {
     "message": "Μάθετε τα βασικά για τα perpetual συμβόλαια"
@@ -8212,6 +8291,9 @@
   },
   "selectedAccountMismatch": {
     "message": "Επιλογή διαφορετικού λογαριασμού"
+  },
+  "sellAll": {
+    "message": "Πώληση όλων"
   },
   "send": {
     "message": "Αποστολή"
@@ -10184,6 +10266,12 @@
   "total": {
     "message": "Σύνολο"
   },
+  "totalAmount": {
+    "message": "Συνολικό ποσό"
+  },
+  "totalReceived": {
+    "message": "Συνολικό ποσό που λάβατε"
+  },
   "totalVolume": {
     "message": "Συνολικός όγκος"
   },
@@ -10425,6 +10513,10 @@
   },
   "unexpectedBehavior": {
     "message": "Αυτή η συμπεριφορά είναι απρόβλεπτη και πρέπει να αναφερθεί ως σφάλμα, ακόμη κι αν οι λογαριασμοί σας έχουν αποκατασταθεί."
+  },
+  "unexpectedError": {
+    "message": "Παρουσιάστηκε απρόσμενο σφάλμα.",
+    "description": "This is a fallback error message used for unexpected errors."
   },
   "unifiedSwapAllowSwappingOf": {
     "message": "Επιτρέψτε την ακριβή πρόσβαση των $1 $2 στο $3 για ανταλλαγή"
@@ -10748,6 +10840,9 @@
   "yes": {
     "message": "Ναι"
   },
+  "yesSwap": {
+    "message": "Ναι, ανταλλαγή"
+  },
   "you": {
     "message": "Εσείς"
   },
@@ -10760,6 +10855,9 @@
   "youReceived": {
     "message": "Λάβατε",
     "description": "Label indicating the amount and asset the user received."
+  },
+  "youSell": {
+    "message": "Πουλάτε"
   },
   "youSent": {
     "message": "Στείλατε",

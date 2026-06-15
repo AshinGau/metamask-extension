@@ -70,6 +70,18 @@
     "message": "Saya telah membaca dan menyetujui $1",
     "description": "$1 is the `terms` message"
   },
+  "accessRestrictedContactSupport": {
+    "message": "Hubungi dukungan"
+  },
+  "accessRestrictedDescriptionLine1": {
+    "message": "Alamat dompet ini telah ditandai selama pemeriksaan kepatuhan. Akibatnya, beberapa layanan MetaMask tidak tersedia."
+  },
+  "accessRestrictedDescriptionLine2": {
+    "message": "Jika Anda yakin ini merupakan kesalahan, hubungi dukungan untuk meminta peninjauan."
+  },
+  "accessRestrictedTitle": {
+    "message": "Akses dibatasi"
+  },
   "accessingYourCamera": {
     "message": "Mengakses kamera Anda..."
   },
@@ -296,6 +308,9 @@
   "activity_contractInteraction_pending_title": {
     "message": "Interaksi sedang berlangsung"
   },
+  "activity_contractInteraction_success_title": {
+    "message": "Interaksi kontrak"
+  },
   "activity_convert_failed_description": {
     "message": "Konversi gagal"
   },
@@ -366,6 +381,12 @@
   "activity_lendingDeposit_failed_title": {
     "message": "Deposit gagal"
   },
+  "activity_lendingDeposit_pending_title": {
+    "message": "Deposit pinjaman"
+  },
+  "activity_lendingDeposit_success_title": {
+    "message": "Deposit pinjaman"
+  },
   "activity_lendingWithdrawal_failed_description": {
     "message": "Penarikan gagal"
   },
@@ -415,6 +436,17 @@
   },
   "activity_marketShort_success_title": {
     "message": "Posisi short ditutup - pasar"
+  },
+  "activity_nftBuy_failed_title": {
+    "message": "Pembelian gagal"
+  },
+  "activity_nftBuy_pending_title": {
+    "message": "Membeli $1",
+    "description": "$1 is the NFT token symbol"
+  },
+  "activity_nftBuy_success_title": {
+    "message": "Dibeli senilai $1",
+    "description": "$1 is the NFT token symbol"
   },
   "activity_nftMint_failed_title": {
     "message": "Pencetakan gagal"
@@ -607,7 +639,6 @@
   "activity_perpsOpenLong_success_title": {
     "message": "Long terbuka"
   },
-
   "activity_perpsOpenShort_failed_description": {
     "message": "Pembukaan posisi short gagal"
   },
@@ -1691,6 +1722,39 @@
   },
   "basicFunctionalityRequired_toggleLabel": {
     "message": "Fungsionalitas dasar"
+  },
+  "batchSell": {
+    "message": "Penjualan Massal"
+  },
+  "batchSellEmptyStateDescription": {
+    "message": "Tidak punya token? Tidak masalah. Jelajahi dan beli token untuk dijual secara massal."
+  },
+  "batchSellGetNewQuotes": {
+    "message": "Dapatkan kuotasi baru"
+  },
+  "batchSellHighRateAlert": {
+    "message": "Peringatan harga tinggi"
+  },
+  "batchSellHightRateAlertModalDescription": {
+    "message": "Menjual satu token secara massal dapat menghasilkan harga yang lebih tinggi. Ingin melakukan swap saja?"
+  },
+  "batchSellMinimumReceiveExplanation": {
+    "message": "Jumlah minimum yang akan Anda terima jika harga berubah selama transaksi diproses, berdasarkan toleransi selip. Ini merupakan estimasi dari penyedia likuiditas kami. Jumlah akhir dapat berbeda."
+  },
+  "batchSellNetworkFeeTooltip": {
+    "message": "Biaya jaringan bergantung pada seberapa sibuk jaringan dan seberapa rumit transaksi Anda."
+  },
+  "batchSellReceiveStablecoin": {
+    "message": "Pilih stablecoin"
+  },
+  "batchSellSelectHeaderSubtitle": {
+    "message": "Semua token harus berada di jaringan yang sama."
+  },
+  "batchSellSelectHeaderTitle": {
+    "message": "Pilih maksimal 5 token"
+  },
+  "batchSellSlippageDescription": {
+    "message": "Transaksi Anda tidak akan berhasil jika harga berubah lebih dari persentase selip."
   },
   "bestQuote": {
     "message": "Kuotasi terbaik"
@@ -5574,6 +5638,9 @@
   "noOptionsAvailableMessage": {
     "message": "Rute perdagangan ini tidak tersedia untuk saat ini. Coba ubah jumlah, jaringan, atau token, dan kami akan menemukan opsi terbaik."
   },
+  "noQuoteAvailable": {
+    "message": "Kuotasi tidak tersedia"
+  },
   "noSnaps": {
     "message": "Belum ada snap yang diinstal."
   },
@@ -6553,6 +6620,9 @@
     "message": "Tersedia untuk diperdagangkan",
     "description": "Label for the available balance that can be used for trading"
   },
+  "perpsBalance": {
+    "message": "Saldo perp"
+  },
   "perpsBasicFunctionalityOff": {
     "message": "Fitur ini tidak tersedia saat fungsi dasar dinonaktifkan."
   },
@@ -6582,6 +6652,12 @@
   },
   "perpsCloseAll": {
     "message": "Tutup semua"
+  },
+  "perpsCloseAllDescription": {
+    "message": "Kami akan menutup semua posisi terbuka pada harga pasar saat ini."
+  },
+  "perpsCloseAllPositions": {
+    "message": "Tutup semua posisi"
   },
   "perpsCloseAmount": {
     "message": "Jumlah penutupan"
@@ -6734,6 +6810,9 @@
   },
   "perpsInsufficientMargin": {
     "message": "Margin tidak cukup untuk membuat order ini."
+  },
+  "perpsKeepPositions": {
+    "message": "Pertahankan posisi"
   },
   "perpsLearnBasics": {
     "message": "Pelajari dasar-dasar perp"
@@ -8220,6 +8299,9 @@
   },
   "selectedAccountMismatch": {
     "message": "Akun yang berbeda dipilih"
+  },
+  "sellAll": {
+    "message": "Jual semua"
   },
   "send": {
     "message": "Kirim"
@@ -10192,6 +10274,12 @@
   "total": {
     "message": "Total"
   },
+  "totalAmount": {
+    "message": "Jumlah total"
+  },
+  "totalReceived": {
+    "message": "Total yang diterima"
+  },
   "totalVolume": {
     "message": "Volume total"
   },
@@ -10433,6 +10521,10 @@
   },
   "unexpectedBehavior": {
     "message": "Perilaku ini tidak terduga dan harus dilaporkan sebagai bug, bahkan jika akun Anda dipulihkan."
+  },
+  "unexpectedError": {
+    "message": "Terjadi kesalahan tidak terduga.",
+    "description": "This is a fallback error message used for unexpected errors."
   },
   "unifiedSwapAllowSwappingOf": {
     "message": "Izinkan akses yang tepat ke $1 $2 pada $3 untuk swap"
@@ -10756,6 +10848,9 @@
   "yes": {
     "message": "Ya"
   },
+  "yesSwap": {
+    "message": "Ya, swap"
+  },
   "you": {
     "message": "Anda"
   },
@@ -10768,6 +10863,9 @@
   "youReceived": {
     "message": "Anda menerima",
     "description": "Label indicating the amount and asset the user received."
+  },
+  "youSell": {
+    "message": "Anda menjual"
   },
   "youSent": {
     "message": "Anda mengirim",

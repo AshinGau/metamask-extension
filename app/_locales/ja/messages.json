@@ -70,6 +70,18 @@
     "message": "$1を読んで同意しました",
     "description": "$1 is the `terms` message"
   },
+  "accessRestrictedContactSupport": {
+    "message": "サポートへのお問い合わせ"
+  },
+  "accessRestrictedDescriptionLine1": {
+    "message": "このウォレットアドレスは、コンプライアンス審査の過程でフラグが立てられました。その結果、MetaMaskの一部のサービスをご利用いただけません。"
+  },
+  "accessRestrictedDescriptionLine2": {
+    "message": "これが誤りであると思われる場合は、サポートに連絡して再調査を依頼してください。"
+  },
+  "accessRestrictedTitle": {
+    "message": "アクセスが制限されました"
+  },
   "accessingYourCamera": {
     "message": "カメラにアクセス中..."
   },
@@ -296,6 +308,9 @@
   "activity_contractInteraction_pending_title": {
     "message": "操作中です"
   },
+  "activity_contractInteraction_success_title": {
+    "message": "コントラクトインタラクション"
+  },
   "activity_convert_failed_description": {
     "message": "換金に失敗しました"
   },
@@ -366,6 +381,12 @@
   "activity_lendingDeposit_failed_title": {
     "message": "デポジット失敗"
   },
+  "activity_lendingDeposit_pending_title": {
+    "message": "レンディング用デポジット"
+  },
+  "activity_lendingDeposit_success_title": {
+    "message": "レンディング用デポジット"
+  },
   "activity_lendingWithdrawal_failed_description": {
     "message": "出金失敗"
   },
@@ -415,6 +436,17 @@
   },
   "activity_marketShort_success_title": {
     "message": "ショートをクローズしました - マーケット"
+  },
+  "activity_nftBuy_failed_title": {
+    "message": "購入に失敗しました"
+  },
+  "activity_nftBuy_pending_title": {
+    "message": "$1を購入しています",
+    "description": "$1 is the NFT token symbol"
+  },
+  "activity_nftBuy_success_title": {
+    "message": "$1を購入しました",
+    "description": "$1 is the NFT token symbol"
   },
   "activity_nftMint_failed_title": {
     "message": "ミントに失敗しました"
@@ -607,7 +639,6 @@
   "activity_perpsOpenLong_success_title": {
     "message": "ロングをオープンしました"
   },
-
   "activity_perpsOpenShort_failed_description": {
     "message": "ショートのオープンに失敗しました"
   },
@@ -1691,6 +1722,39 @@
   },
   "basicFunctionalityRequired_toggleLabel": {
     "message": "基本機能"
+  },
+  "batchSell": {
+    "message": "一括売却"
+  },
+  "batchSellEmptyStateDescription": {
+    "message": "トークンがありません。でも問題ありません。一括売却するトークンを検索して購入しましょう。"
+  },
+  "batchSellGetNewQuotes": {
+    "message": "新しいクォートを入手"
+  },
+  "batchSellHighRateAlert": {
+    "message": "割高レートに関するアラート"
+  },
+  "batchSellHightRateAlertModalDescription": {
+    "message": "一括売却するトークンが1種類の場合は、レートが高くなる可能性があります。代わりにスワップを行いますか？"
+  },
+  "batchSellMinimumReceiveExplanation": {
+    "message": "トランザクションの処理中に価格が変動した場合に、お客様のスリッページ許容値に基づいて受け取る最低額です。これは流動性プロバイダーからの見積もりであり、最終的な金額は異なる場合があります。"
+  },
+  "batchSellNetworkFeeTooltip": {
+    "message": "ネットワーク手数料は、ネットワークの混雑状況とトランザクションの複雑さによって異なります。"
+  },
+  "batchSellReceiveStablecoin": {
+    "message": "ステーブルコインを選択"
+  },
+  "batchSellSelectHeaderSubtitle": {
+    "message": "すべてのトークンが同一ネットワーク上にある必要があります。"
+  },
+  "batchSellSelectHeaderTitle": {
+    "message": "トークンを最大5つまでお選びください"
+  },
+  "batchSellSlippageDescription": {
+    "message": "価格がスリッページの割合を超えて変動した場合、トランザクションは処理されません。"
   },
   "bestQuote": {
     "message": "最も有利なクォート"
@@ -5574,6 +5638,9 @@
   "noOptionsAvailableMessage": {
     "message": "この取引ルートは現在使用できません。金額、ネットワーク、またはトークンを変更すれば、最適なオプションをお探しします。"
   },
+  "noQuoteAvailable": {
+    "message": "クォートが利用できません"
+  },
   "noSnaps": {
     "message": "snapがインストールされていません"
   },
@@ -6553,6 +6620,9 @@
     "message": "取引に利用可能",
     "description": "Label for the available balance that can be used for trading"
   },
+  "perpsBalance": {
+    "message": "パーペチュアル残高"
+  },
   "perpsBasicFunctionalityOff": {
     "message": "この機能は、基本機能がオフの間利用できません。"
   },
@@ -6582,6 +6652,12 @@
   },
   "perpsCloseAll": {
     "message": "すべてクローズ"
+  },
+  "perpsCloseAllDescription": {
+    "message": "すべての未決済のポジションを現在の市場価格でクローズします。"
+  },
+  "perpsCloseAllPositions": {
+    "message": "すべてのポジションをクローズ"
   },
   "perpsCloseAmount": {
     "message": "クローズ金額"
@@ -6734,6 +6810,9 @@
   },
   "perpsInsufficientMargin": {
     "message": "この注文に十分な証拠金がありません。"
+  },
+  "perpsKeepPositions": {
+    "message": "ポジションをキープ"
   },
   "perpsLearnBasics": {
     "message": "パーペチュアルの基本"
@@ -8216,6 +8295,9 @@
   },
   "selectedAccountMismatch": {
     "message": "別のアカウントが選択されました"
+  },
+  "sellAll": {
+    "message": "すべて売却"
   },
   "send": {
     "message": "送金"
@@ -10188,6 +10270,12 @@
   "total": {
     "message": "合計"
   },
+  "totalAmount": {
+    "message": "合計額"
+  },
+  "totalReceived": {
+    "message": "受取額合計"
+  },
   "totalVolume": {
     "message": "トークン数"
   },
@@ -10429,6 +10517,10 @@
   },
   "unexpectedBehavior": {
     "message": "これは予期せぬ動作なので、アカウントが復元されたとしても、バグとして報告すべきです。"
+  },
+  "unexpectedError": {
+    "message": "予期せぬエラーが発生しました。",
+    "description": "This is a fallback error message used for unexpected errors."
   },
   "unifiedSwapAllowSwappingOf": {
     "message": "スワップ用に$3での$1 $2への正確なアクセスを許可してください"
@@ -10752,6 +10844,9 @@
   "yes": {
     "message": "はい"
   },
+  "yesSwap": {
+    "message": "はい、スワップを行います"
+  },
   "you": {
     "message": "ユーザー"
   },
@@ -10764,6 +10859,9 @@
   "youReceived": {
     "message": "受取額:",
     "description": "Label indicating the amount and asset the user received."
+  },
+  "youSell": {
+    "message": "売却"
   },
   "youSent": {
     "message": "送金額:",
